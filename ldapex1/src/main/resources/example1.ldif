@@ -1,0 +1,39 @@
+dn: dc=example,dc=com
+objectClass: top
+objectClass: domain
+dc: example
+description: This is the first description value
+description: This is the second description value
+
+
+dn: ou=Enemies,dc=example,dc=com
+objectClass: organizationalUnit
+objectClass: top
+ou: Enemies
+street: Acacia Avenue
+description: The bad guys
+
+
+dn: cn=Tom Baker,dc=example,dc=com
+objectClass: person
+objectClass: inetorgperson
+objectclass: organizationalperson
+objectClass: top
+cn: Tom Baker
+description: Fourth Doctor
+description: The one and only!
+sn: Baker
+uid: bat
+telephonenumber: 4
+
+
+dn: cn=Markus Mueller,dc=example,dc=com
+objectClass: person
+objectClass: inetorgperson
+objectclass: organizationalperson
+objectClass: top
+cn: Markus Mueller
+description: The real one!
+sn: Mueller
+uid: mue
+telephonenumber: 1
