@@ -1,0 +1,68 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>ch.m1m.examples</groupId>
+  <artifactId>zipkinbrave</artifactId>
+  <packaging>jar</packaging>
+  <version>1.0-SNAPSHOT</version>
+  <name>zipkinbrave</name>
+  <url>http://maven.apache.org</url>
+  <dependencies>
+
+      <!-- https://mvnrepository.com/artifact/io.zipkin.brave/brave -->
+      <dependency>
+          <groupId>io.zipkin.brave</groupId>
+          <artifactId>brave</artifactId>
+          <version>4.5.2</version>
+      </dependency>
+
+
+      <!-- https://mvnrepository.com/artifact/io.zipkin.brave/brave-core -->
+      <dependency>
+          <groupId>io.zipkin.brave</groupId>
+          <artifactId>brave-core</artifactId>
+          <version>4.5.2</version>
+      </dependency>
+
+      <!-- https://mvnrepository.com/artifact/io.zipkin.brave/brave-http -->
+      <dependency>
+          <groupId>io.zipkin.brave</groupId>
+          <artifactId>brave-http</artifactId>
+          <version>4.5.2</version>
+      </dependency>
+
+      <!-- https://mvnrepository.com/artifact/io.zipkin.reporter/zipkin-reporter -->
+      <dependency>
+          <groupId>io.zipkin.reporter</groupId>
+          <artifactId>zipkin-reporter</artifactId>
+          <version>1.0.1</version>
+      </dependency>
+
+      <!-- https://mvnrepository.com/artifact/io.zipkin.reporter/zipkin-sender-okhttp3 -->
+      <dependency>
+          <groupId>io.zipkin.reporter</groupId>
+          <artifactId>zipkin-sender-okhttp3</artifactId>
+          <version>1.0.1</version>
+      </dependency>
+
+
+
+
+      <!-- https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp
+      <dependency>
+          <groupId>com.squareup.okhttp3</groupId>
+          <artifactId>okhttp</artifactId>
+          <version>3.8.1</version>
+      </dependency> -->
+
+
+
+      <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>test</scope>
+    </dependency>
+
+  </dependencies>
+</project>
