@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="info">
+  <Properties>
+    <Property name="filename">logs/test_app</Property>
+    <Property name="defaultpattern">%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg %X%n</Property>
+    <Property name="XIDpattern">%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} XID=%X{XID} - %msg%n</Property>
+  </Properties>
+  <Appenders>
+    <Console name="Console" target="SYSTEM_OUT">
+      <PatternLayout pattern="${defaultpattern}" />
+    </Console>
+    <RollingFile name="DailyFile" fileName="${filename}.log" filePattern="${filename}-%d{yyyy-MM-dd}-%i.log.gz" append="true">
+      <PatternLayout>
+        <ScriptPatternSelector defaultPattern="${defaultpattern}">
+          <Script name="PatternSelector" language="js"><![CDATA[
+              result = null;
+              if (logEvent.getContextMap().containsKey("XID")) {
+                result = "XID";
+              }
+              result;
+            ]]>
+          </Script>
+          <PatternMatch key="XID" pattern="${XIDpattern}" />
+        </ScriptPatternSelector>
+      </PatternLayout>
+      <Policies>
+        <TimeBasedTriggeringPolicy />
+        <OnStartupTriggeringPolicy />
+      </Policies>
+    </RollingFile>
+    <Async name="Async">
+      <AppenderRef ref="DailyFile" />
+    </Async>
+  </Appenders>
+  <Loggers>
+	<!--
+	// to log the input/output soap messages in DEV
+	<Logger name="org.apache.cxf.services" level="info" />
+	// normal PROD setup is
+	<Logger name="org.apache.cxf.services" level="warn" />
+	-->
+    <Logger name="org.apache.cxf.services" level="debug" />
+    <Logger name="org.apache.cxf" level="debug" />
+    
+    <Root level="debug">
+    <!--  -->
+      <AppenderRef ref="Console" />
+      <AppenderRef ref="Async" />
+    </Root>
+  </Loggers>
+</Configuration>

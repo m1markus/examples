@@ -1,0 +1,11 @@
+grant codebase "file:./target/jaas1-1.0-SNAPSHOT.jar" {
+
+
+   permission javax.security.auth.AuthPermission
+                    "modifyPrincipals";
+
+   permission javax.security.auth.AuthPermission "createLoginContext.Sample";
+
+};
+
+

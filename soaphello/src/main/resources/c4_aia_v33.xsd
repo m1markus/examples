@@ -1,0 +1,1192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Mit XMLSpy v2012 rel. 2 (x64) (http://www.altova.com) von - (Stiftung Sympany) bearbeitet -->
+<!-- edited with XMLSpy v2006 sp1 U (http://www.altova.com) by advance4u IT Solutions AG (advance4u IT Solutions AG) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://xmlns.sympany.ch/ApplicationObjects/C4/schemas" targetNamespace="http://xmlns.sympany.ch/ApplicationObjects/C4/schemas" elementFormDefault="qualified">
+	<xs:element name="Correspondence">
+		<xs:complexType>
+			<xs:choice>
+				<xs:element name="Create" type="tns:Dokument"/>
+				<xs:element name="Update">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Startup" type="xs:anyType"/>
+							<xs:element name="NeueDocId" type="xs:string"/>
+							<xs:element name="Benutzername" type="xs:string"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="Dokument">
+		<xs:annotation>
+			<xs:documentation>Comment describing your root element</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Metadaten">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="DokumentTyp" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>/Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentKopf/DokumentTyp</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Id" type="xs:string" minOccurs="0"/>
+									<xs:element name="KurzBezeichnung" type="xs:string" minOccurs="0"/>
+									<xs:element name="Bezeichnung" type="xs:string" minOccurs="0"/>
+								</xs:sequence>
+								<!--  
+								<xs:attribute name="Id" type="xs:string"/>
+								<xs:attribute name="KurzBezeichnung" type="xs:string"/>
+								<xs:attribute name="Bezeichnung" type="xs:string"/>
+								-->
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="Quelle" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>//element(*,ExportKopf_Typ)/Quelle</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="Mandant" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>//element(*,ExportKopf_Typ)/Mandant</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="ClientUserName" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>//element(*,ExportKopf_Typ)/ClientUserName</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="DruckDatum" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>//element(*,ExportKopf_Typ)/DruckDatum</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="UserId" type="xs:string" minOccurs="1">
+							<xs:annotation>
+								<xs:documentation>authenticated userid from the security header. in the jms message
+									for saving the document, the /Metadata/Cust_Archiver field is set from legodo
+									</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element ref="tns:DokumentVariable" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="Cust_ActivityId" type="xs:string" minOccurs="0"/>
+						<xs:element name="Cust_Archiver" type="xs:string" minOccurs="0"/>
+						<xs:element name="Cust_Assignee" type="xs:string" minOccurs="0"/>
+						<xs:element name="Cust_BarcodeId" type="xs:string" minOccurs="0"/>
+						<xs:element name="Cust_BenefitNr" type="xs:string" minOccurs="0"/>
+						<xs:element name="Cust_BusinessDate" type="xs:string" minOccurs="0"/>
+						<xs:element name="Cust_CaseNr" type="xs:string" minOccurs="0"/>
+						<xs:element name="Cust_Comment" type="xs:string" minOccurs="0"/>
+						<xs:element name="Cust_ContractNr" type="xs:string" minOccurs="0"/>
+						<xs:element name="Cust_Creator" type="xs:string" minOccurs="0"/>
+						<xs:element name="Cust_DistributionChannel" type="xs:string" minOccurs="0"/>
+						<xs:element name="Cust_EmailCC" type="xs:string" minOccurs="0"/>
+						<xs:element name="Cust_EmailFrom" type="xs:string" minOccurs="0"/>
+						<xs:element name="Cust_EmailSentOn" type="xs:string" minOccurs="0"/>
+						<xs:element name="Cust_EmailSubject" type="xs:string" minOccurs="0"/>
+						<xs:element name="Cust_EmailTo" type="xs:string" minOccurs="0"/>
+						<xs:element name="Cust_Employee" type="xs:string" minOccurs="0"/>
+						<xs:element name="Cust_EntryDate" type="xs:string" minOccurs="0"/>
+						<xs:element name="Cust_FrameContractNr" type="xs:string" minOccurs="0"/>
+						<xs:element name="Cust_Guid" type="xs:string" minOccurs="0"/>
+						<xs:element name="Cust_InboundActivityId" type="xs:string" minOccurs="0"/>
+						<xs:element name="Cust_InboundAssignee" type="xs:string" minOccurs="0"/>
+						<xs:element name="Cust_InboundDocClass" type="xs:string" minOccurs="0"/>
+						<xs:element name="Cust_InboundDocCode" type="xs:string" minOccurs="0"/>
+						<xs:element name="Cust_InboundOU" type="xs:string" minOccurs="0"/>
+						<xs:element name="Cust_InboundWorkflowId" type="xs:string" minOccurs="0"/>
+						<xs:element name="Cust_InvoiceNr" type="xs:string" minOccurs="0"/>
+						<xs:element name="Cust_KoGuNr" type="xs:string" minOccurs="0"/>
+						<xs:element name="Cust_Mandator" type="xs:string" minOccurs="0"/>
+						<xs:element name="Cust_OfferId" type="xs:string" minOccurs="0"/>
+						<xs:element name="Cust_PartnerNrSec" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+						<xs:element name="Cust_SocialSecNr" type="xs:string" minOccurs="0"/>
+						<xs:element name="Cust_SourceChannel" type="xs:string" minOccurs="0"/>
+						<xs:element name="Cust_SourceDirection" type="xs:string" minOccurs="0"/>
+						<xs:element name="Cust_State" type="xs:string" minOccurs="0"/>
+						<xs:element name="Cust_TecNotes" type="xs:string" minOccurs="0"/>
+						<xs:element name="Cust_WorkflowId" type="xs:string" minOccurs="0"/>
+						<xs:element name="Cust_WorkflowEvtTrigger" type="xs:string" minOccurs="0"/>
+						<xs:element name="Cust_SyrDocOrderId" type="xs:string" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentKopf/DokumentBestellung/DocBestellungId</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="symp_soa_context" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>SOA Data fuer den Merge PDF Case</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="activityID" minOccurs="0"/>
+									<xs:element name="voidBase64" type="xs:base64Binary" minOccurs="0"/>
+									<xs:element name="voidString" type="xs:string" minOccurs="0"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="DokumentenKopf">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Sprache" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>/Export/ExportInhalt/DokumentMappe/DokumentMappenKopf/Sprache</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:attribute name="Bezeichnung" type="xs:string"/>
+								<xs:attribute name="KurzBezeichnung" type="xs:string"/>
+								<xs:attribute name="Id" type="xs:string"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="tns:Empfaenger">
+							<xs:annotation>
+								<xs:documentation>Export/ExportInhalt/DokumentMappe/DokumentMappenKopf/EmpfaengerAdresse</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element ref="tns:Kontaktperson"/>
+						<xs:element name="Kopien" minOccurs="0" maxOccurs="1">
+							<xs:annotation>
+								<xs:documentation>Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentKopf/Original mit False vorhanden. Für jeden Eintrag muss das entsprechende EmpfängerObjekt erzeugt werden.</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element ref="tns:Empfaenger" minOccurs="0" maxOccurs="unbounded"/>
+								</xs:sequence>
+								<xs:attribute name="Vorhanden" type="xs:string">
+									<xs:annotation>
+										<xs:documentation>Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentKopf/Original falls das Attribute mit false vorhanden ist bitte dieses Attribute mit true belegen</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="Unterschriften" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentKopf/DokumentBestellung/Unterschriften</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Unterschrift_1" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentKopf/DokumentBestellung/Unterschriften/ErstUnterschrift</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="Name" type="xs:string" minOccurs="0"/>
+												<xs:element name="Vorname" type="xs:string" minOccurs="0"/>
+												<xs:element name="BenutzerName" type="xs:string" minOccurs="0"/>
+												<xs:element name="email" type="xs:string" minOccurs="0"/>
+												<xs:element name="Position" type="xs:string" minOccurs="0">
+													<xs:annotation>
+														<xs:documentation>Benutzer/Beschreibung</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="Unterschrift_2" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentKopf/DokumentBestellung/Unterschriften/ZweitUnterschrift</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="Name" type="xs:string" minOccurs="0"/>
+												<xs:element name="Vorname" type="xs:string" minOccurs="0"/>
+												<xs:element name="BenutzerName" type="xs:string" minOccurs="0"/>
+												<xs:element name="email" type="xs:string" minOccurs="0"/>
+												<xs:element name="Position" type="xs:string" minOccurs="0">
+													<xs:annotation>
+														<xs:documentation>Benutzer/Beschreibung</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="RuecksendeInformationen" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentKopf/DokumentBestellung/RuecksendeInformationen</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:sequence>
+										<xs:element name="RuecksendeSachbearbeiter">
+											<xs:annotation>
+												<xs:documentation>Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentKopf/DokumentBestellung/RuecksendeInformationen/RuecksendeSachbearbeiter</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element ref="tns:Kontaktperson">
+														<xs:annotation>
+															<xs:documentation>Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentKopf/DokumentBestellung/RuecksendeInformationen/RuecksendeSachbearbeiter</xs:documentation>
+														</xs:annotation>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="RuecksendeAdresse">
+											<xs:annotation>
+												<xs:documentation>Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentKopf/DokumentBestellung/RuecksendeInformationen/RuecksendeAdresse</xs:documentation>
+											</xs:annotation>
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element ref="tns:OrganisationsEinheit"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+									<xs:element name="AbsendeAdresse">
+										<xs:annotation>
+											<xs:documentation>Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentKopf/DokumentBestellung/AbsenderInformationen</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element ref="tns:OrganisationsEinheit"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="DokumentenInhalt" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Versicherungsnehmer_Partner" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>
+									DocType=Leistungsfall 			=> Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/Leistungsfall/Vertragsnehmer
+									DocType=DMIndiv 				=> Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/GlobalAntragPolice/AntragsKopfPartner
+									DoCType=Partner 				=> Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/Person*
+									DocType=CaseManagement 			=> Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/FdossDeckblatt/Partner
+									DocType=KOGU  					=> Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/KoGu/Versicherter
+									DocType=DOT_KORRE_KVANONYM_*	=> Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/KVertragAnonym/KVAnonymPartner
+								</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element ref="tns:Partner"/>
+									<xs:element ref="tns:Adresse"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="Versicherteperson" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>
+									DocType=KOGU  			=> Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/KoGu/Versicherter
+									DocType=Leistungsfall 	=> Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/Leistungsfall/Versicherter
+									DocType=Leistungen 		=> Export/ExportInhalt/DokumentMappe[1]/DokumentMappenInhalt/Dokument/DokumentInhalt/LeistungsAbrechnungIndividual/Versicherter
+								</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element ref="tns:Partner"/>
+									<xs:element ref="tns:Adresse"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element ref="tns:Leistungserbringer" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>
+									DocType=KOGU 	=> Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/KoGu/AusfuehrArzt/Leistungserbringer                  
+									Leistungen 		=> Export/ExportInhalt/DokumentMappe[1]/DokumentMappenInhalt/Dokument/DokumentInhalt/LeistungsAbrechnungIndividual/Leistungserbringer
+								</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="Antrag" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="AntragsKopf">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="ErstelltAm">
+													<xs:annotation>
+														<xs:documentation>GlobalAntragPolice/ErstelltAm</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+												<xs:element name="Vertriebspartner">
+													<xs:annotation>
+														<xs:documentation>Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/GlobalAntragPolice/Antrag/BetrVPartner/VtriebPPartner</xs:documentation>
+													</xs:annotation>
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element ref="tns:Partner"/>
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+												<xs:element name="Zahler">
+													<xs:annotation>
+														<xs:documentation>GlobalAntragPolice/Antrag/Zahler</xs:documentation>
+													</xs:annotation>
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="IBAN">
+																<xs:annotation>
+																	<xs:documentation>GlobalAntragPolice/Antrag/Zahler/IBAN</xs:documentation>
+																</xs:annotation>
+															</xs:element>
+															<xs:element ref="tns:Partner">
+																<xs:annotation>
+																	<xs:documentation>GlobalAntragPolice/Antrag/Zahler/PartnerZahler</xs:documentation>
+																</xs:annotation>
+															</xs:element>
+															<xs:element name="BankClearingNr">
+																<xs:annotation>
+																	<xs:documentation>GlobalAntragPolice/Antrag/Zahler/BankClearingNr</xs:documentation>
+																</xs:annotation>
+															</xs:element>
+															<xs:element name="Postkontonummer">
+																<xs:annotation>
+																	<xs:documentation>GlobalAntragPolice/Antrag/Zahler/Postkontonummer</xs:documentation>
+																</xs:annotation>
+															</xs:element>
+															<xs:element name="Bankkontonummer">
+																<xs:annotation>
+																	<xs:documentation>GlobalAntragPolice/Antrag/Zahler/Bankkontonummer</xs:documentation>
+																</xs:annotation>
+															</xs:element>
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+												<xs:element name="StatusAntrag">
+													<xs:annotation>
+														<xs:documentation>GlobalAntragPolice/StatusAntrag</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+												<xs:element name="Status">
+													<xs:annotation>
+														<xs:documentation>GlobalAntragPolice/Status</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+												<xs:element ref="tns:PrintingParameter" minOccurs="0" maxOccurs="unbounded">
+													<xs:annotation>
+														<xs:documentation>Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/GlobalAntragPolice/AntragsKopfPartner/PrintingParameter</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="AntragsInhalt" maxOccurs="unbounded">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="Vorversicherer" minOccurs="0">
+													<xs:annotation>
+														<xs:documentation>GlobalAntragPolice/Antrag/Vorversicherer</xs:documentation>
+													</xs:annotation>
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="BSVCode">
+																<xs:annotation>
+																	<xs:documentation>GlobalAntragPolice/Antrag/Vorversicherer/BSVCode</xs:documentation>
+																</xs:annotation>
+															</xs:element>
+															<xs:element ref="tns:Partner">
+																<xs:annotation>
+																	<xs:documentation>GlobalAntragPolice/Antrag/Vorversicherer/Partner</xs:documentation>
+																</xs:annotation>
+															</xs:element>
+															<xs:element name="Bezeichnung">
+																<xs:annotation>
+																	<xs:documentation>GlobalAntragPolice/Antrag/Vorversicherer/Bezeichnung</xs:documentation>
+																</xs:annotation>
+															</xs:element>
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+												<xs:element ref="tns:Partner">
+													<xs:annotation>
+														<xs:documentation>GlobalAntragPolice/Antrag/Versicherter</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+												<xs:element name="VersichertesObjekt">
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="AntragProdukt" maxOccurs="unbounded">
+																<xs:complexType>
+																	<xs:sequence>
+																		<xs:element ref="tns:Leistungserbringer" minOccurs="0">
+																			<xs:annotation>
+																				<xs:documentation>GlobalAntragPolice/Antrag/VersichertesObjekt/AntragProdukt/Hausarzt/Leistungserbringer</xs:documentation>
+																			</xs:annotation>
+																		</xs:element>
+																		<xs:element name="GesetzGrund">
+																			<xs:annotation>
+																				<xs:documentation>GlobalAntragPolice/Antrag/VersichertesObjekt/AntragProdukt/GesetzGrund</xs:documentation>
+																			</xs:annotation>
+																		</xs:element>
+																		<xs:element name="Sequenz">
+																			<xs:annotation>
+																				<xs:documentation>GlobalAntragPolice/Antrag/VersichertesObjekt/AntragProdukt/Sequenz</xs:documentation>
+																			</xs:annotation>
+																		</xs:element>
+																		<xs:element name="TextBaustein">
+																			<xs:annotation>
+																				<xs:documentation>GlobalAntragPolice/Antrag/VersichertesObjekt/AntragProdukt/TextBaustein</xs:documentation>
+																			</xs:annotation>
+																		</xs:element>
+																		<xs:element name="TextBaustein2">
+																			<xs:annotation>
+																				<xs:documentation>GlobalAntragPolice/Antrag/VersichertesObjekt/AntragProdukt/TextBaustein2</xs:documentation>
+																			</xs:annotation>
+																		</xs:element>
+																		<xs:element ref="tns:Vorbehalt" minOccurs="0"/>
+																		<xs:element ref="tns:PrintingParameter" minOccurs="0" maxOccurs="unbounded"/>
+																	</xs:sequence>
+																</xs:complexType>
+															</xs:element>
+														</xs:sequence>
+													</xs:complexType>
+												</xs:element>
+												<xs:element name="ProduktSparte">
+													<xs:annotation>
+														<xs:documentation>GlobalAntragPolice/Antrag/ProduktSparte</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+												<xs:element name="Eingangsdatum">
+													<xs:annotation>
+														<xs:documentation>GlobalAntragPolice/Antrag/Eingangsdatum</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+												<xs:element name="Zeichnungsdatum">
+													<xs:annotation>
+														<xs:documentation>GlobalAntragPolice/Antrag/Zeichnungsdatum</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+												<xs:element name="VertragsBeginn">
+													<xs:annotation>
+														<xs:documentation>GlobalAntragPolice/Antrag/VertragsBeginn</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+												<xs:element name="DatumAblauf">
+													<xs:annotation>
+														<xs:documentation>GlobalAntragPolice/Antrag/DatumAblauf</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+												<xs:element name="DatumBeginn">
+													<xs:annotation>
+														<xs:documentation>GlobalAntragPolice/Antrag/DatumBeginn</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+												<xs:element ref="tns:Vorbehalt" minOccurs="0">
+													<xs:annotation>
+														<xs:documentation>GlobalAntragPolice/Antrag/Vorbehalte</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+												<xs:element ref="tns:PrintingParameter" minOccurs="0" maxOccurs="unbounded">
+													<xs:annotation>
+														<xs:documentation>Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/GlobalAntragPolice/Antrag/PrintingParameter</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element ref="tns:PrintingParameter">
+										<xs:annotation>
+											<xs:documentation>Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/GlobalAntragPolice/PrintingParameter</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="KoGu" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/KoGu</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Behandlungsbeginn"/>
+									<xs:element name="Behandlungsende"/>
+									<xs:element name="Anfragedatum"/>
+									<xs:element name="Status">
+										<xs:complexType>
+											<xs:attribute name="Bezeichnung" type="xs:string"/>
+											<xs:attribute name="KurzBezeichnung" type="xs:string"/>
+											<xs:attribute name="Id" type="xs:string"/>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="ExtComment" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/KoGu/ExtComment</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="VerlKoGu" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/KoGu/VerlKoGu/@Id</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="FallNr" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/KoGu/FallNr</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="VerfallTage" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/KoGu/Typdefinition/VerfallTage</xs:documentation>
+										</xs:annotation>
+										<xs:complexType/>
+									</xs:element>
+									<xs:element name="KoGuTyp" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/KoGu/Typdefinition/KoGuTyp</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:attribute name="Bezeichnung" type="xs:string"/>
+											<xs:attribute name="Id" type="xs:string"/>
+											<xs:attribute name="KurzBezeichnung" type="xs:string"/>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="Typdefinition" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/KoGu/Typdefinition</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:attribute name="Bezeichnung" type="xs:string"/>
+											<xs:attribute name="Id" type="xs:string"/>
+											<xs:attribute name="KurzBezeichnung" type="xs:string"/>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="PatientenNr" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/KoGu/PatientenNr</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="Dauer" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>/Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/KoGu/AnzTage</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:sequence minOccurs="0" maxOccurs="unbounded">
+										<xs:element name="KoGuPos" minOccurs="0">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="ExtComment" type="xs:string" minOccurs="0"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="Leistungen" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Export/ExportInhalt/DokumentMappe[1]/DokumentMappenInhalt/Dokument/DokumentInhalt/LeistungsAbrechnungIndividual/LAKopfdaten</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="LstAbrTyp">
+										<xs:annotation>
+											<xs:documentation>DokumentMappenInhalt/Dokument/DokumentInhalt/LeistungsAbrechnungIndividual/LAKopfdaten/LstAbrTyp/@Id</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="Rechnungseingang">
+										<xs:annotation>
+											<xs:documentation>/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/LeistungsAbrechnungIndividual/LAKopfdaten/Rechnungseingang</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="Behandlungsbeginn">
+										<xs:annotation>
+											<xs:documentation>/DokumentMapp/DokumentMappenInhalt/Dokument/DokumentInhalt/LeistungsAbrechnungIndividual/LAKopfdaten/Behandlungsbeginn</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="Behandlungsende">
+										<xs:annotation>
+											<xs:documentation>DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/LeistungsAbrechnungIndividual/LAKopfdaten/Behandlungsende</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="Rechnungsdatum"/>
+									<xs:element name="Rechnungsnummer"/>
+									<xs:element name="Rechnungstotal"/>
+									<xs:element name="AnzTage"/>
+									<xs:element name="Status">
+										<xs:annotation>
+											<xs:documentation>Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/LeistungsAbrechnungIndividual/LAKopfdaten/Status/@Id</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="Falldossier" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/Falldossier</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="FalldossierNr">
+										<xs:annotation>
+											<xs:documentation>Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/Falldossier/FalldossierNr</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="FalldossierBez">
+										<xs:annotation>
+											<xs:documentation>Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/Falldossier/FalldossierBez</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="Ereignisdatum">
+										<xs:annotation>
+											<xs:documentation>Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/Falldossier/Ereignisdatum</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="Erledigungsdatum" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/Falldossier/Erledigungsdatum</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="Geschaeftsbereich" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/Falldossier/Geschaeftsbereich</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:attribute name="KurzBezeichnung" type="xs:string"/>
+											<xs:attribute name="Id" type="xs:string"/>
+											<xs:attribute name="Bezeichnung" type="xs:string"/>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="StartZustand" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/Falldossier/FDossZusatz/StateFrom</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="EndeZustand" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/Falldossier/FDossZusatz/StateUpto</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="Leistungsfall" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/Leistungsfall</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Leistungsfallnummer">
+										<xs:annotation>
+											<xs:documentation>/Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/Leistungsfall/Leistungsfallnummer</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="Schadennummer">
+										<xs:annotation>
+											<xs:documentation>/Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/Leistungsfall/Schadennummer</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="StateFrom">
+										<xs:annotation>
+											<xs:documentation>Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/Leistungsfall/FdossZusatz/StateFrom</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="StateUpto">
+										<xs:annotation>
+											<xs:documentation>Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/Leistungsfall/FdossZusatz/StateUpto</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="BerufFreitext">
+										<xs:annotation>
+											<xs:documentation>/Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/Leistungsfall/BerufFreitext</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="Beruf">
+										<xs:annotation>
+											<xs:documentation>/Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/Leistungsfall/Beruf</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="KleinsterBehandlBeginn">
+										<xs:annotation>
+											<xs:documentation>/Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/Leistungsfall/KleinsterBehandlBeginn</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="GroesstesBehandlEnde">
+										<xs:annotation>
+											<xs:documentation>/Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/Leistungsfall/GroesstesBehandlEnde</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="LeistungssummeKOA">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="tnsKostenart">
+													<xs:annotation>
+														<xs:documentation>/Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/Leistungsfall/LeistungssummeKOA/Kostenart</xs:documentation>
+													</xs:annotation>
+													<xs:complexType>
+														<xs:attribute name="Id" type="xs:string"/>
+														<xs:attribute name="KurzBezeichnung" type="xs:string"/>
+														<xs:attribute name="Bezeichnung" type="xs:string"/>
+													</xs:complexType>
+												</xs:element>
+												<xs:element name="Summe">
+													<xs:annotation>
+														<xs:documentation>/Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/Leistungsfall/LeistungssummeKOA/Summe</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="LeistungssummeGesamt">
+										<xs:annotation>
+											<xs:documentation>/Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/Leistungsfall/LeistungssummeGesamt/Summe</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="SummeAnzahlTage">
+										<xs:annotation>
+											<xs:documentation>/Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/Leistungsfall/SummeAnzahlTage</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="AnzahlTage"/>
+												<xs:element name="AnzahlTageEffektiv"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="Ereignisdatum">
+										<xs:annotation>
+											<xs:documentation>/Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/Leistungsfall/Ereignisdatum</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="GueltAb">
+										<xs:annotation>
+											<xs:documentation>/Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/Leistungsfall/GueltAb</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="KVAnonymSparte">
+										<xs:annotation>
+											<xs:documentation>/Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/Leistungsfall/Deckung/PersonenGruppe/KVAnonymSparte</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:attribute name="Bezeichnung" type="xs:string"/>
+											<xs:attribute name="KurzBezeichnung" type="xs:string"/>
+											<xs:attribute name="Id" type="xs:string"/>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="Vertrag" minOccurs="0">
+							<xs:annotation>
+								<xs:documentation>Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/KVertragAnonym</xs:documentation>
+							</xs:annotation>
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="VertragsNr" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/KVertragAnonym/VertragsNr--------------------------------Leistungsfall: DokumentInhalt/Leistungsfall/Deckung/PersonenGruppe/VertragsNr</xs:documentation>
+										</xs:annotation>
+									</xs:element>
+									<xs:element name="KVAnonymPartner">
+										<xs:annotation>
+											<xs:documentation>Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/KVertragAnonym/KVAnonymPartner</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element ref="tns:Adresse"/>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="KVAnonymSparte">
+										<xs:annotation>
+											<xs:documentation>Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/KVertragAnonym/KVAnonymSparte--Leistungsfall => DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/Leistungsfall/Deckung/PersonenGruppe/KVAnonymSparte</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:attribute name="Id" type="xs:string"/>
+											<xs:attribute name="KurzBezeichnung" type="xs:string"/>
+											<xs:attribute name="Bezeichnung" type="xs:string"/>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="RVAnonym" minOccurs="0">
+										<xs:annotation>
+											<xs:documentation>Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/KVertragAnonym/RVAnonym</xs:documentation>
+										</xs:annotation>
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="VertragsNr">
+													<xs:annotation>
+														<xs:documentation>Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/KVertragAnonym/RVAnonym/VertragsNr</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+												<xs:element ref="tns:Partner">
+													<xs:annotation>
+														<xs:documentation>Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/KVertragAnonym/RVAnonym/RahmenVertragPartner/*</xs:documentation>
+													</xs:annotation>
+												</xs:element>
+											</xs:sequence>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="CaseManagment" minOccurs="0"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Dateien" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>SOA Data für den Merge PDF Case</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Datei" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:extension base="xs:base64Binary">
+										<xs:attribute name="DocId"/>
+										<xs:attribute name="Format"/>
+										<xs:attribute name="Size"/>
+										<xs:attribute name="Name"/>
+									</xs:extension>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Empfaenger">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tns:Partner"/>
+				<xs:element ref="tns:Adresse"/>
+			</xs:sequence>
+			<xs:attribute name="VersandartBezeichnung" type="xs:string"/>
+			<xs:attribute name="VersandartID" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentKopf/Versandart</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="OrganisationsEinheit">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Name"/>
+				<xs:element name="KurzBez" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Kurzbezeichnung der Organisationseinheit</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Bemerkung1" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Bemerkungen 1 fuer Info</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="tns:Adresse"/>
+				<xs:sequence/>
+				<xs:element name="Sprache" minOccurs="0">
+					<xs:complexType/>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="Bezeichnung" type="xs:string"/>
+			<xs:attribute name="KurzBezeichnung" type="xs:string"/>
+			<xs:attribute name="Id" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Partner">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="PartnerNr" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Partnernummer des Versicherten. Sie wird vom System vorgegeben und ist eindeutig</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Name">
+					<xs:annotation>
+						<xs:documentation>Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/NatPerson or JurPerson/Name</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Vorname" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/NatPerson/Vorname</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Titel" type="xs:string" minOccurs="0"/>
+				<xs:element name="BerufsGruppe" type="xs:string" minOccurs="0"/>
+				<xs:element name="Geburtstag" type="xs:date" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Geburtstag des Partners</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Todesdatum" type="xs:date" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Todesdatum des Partners</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="SozialVersNr" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Soziale Versicherungsnummer des Partners.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Geschlecht" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/NatPerson/Geschlecht/@Id</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Sprache" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/*/Sprache/@Id</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="NamePrefix" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Freier Namens Prefix</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="FamilienStellung" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentInhalt/NatPerson/FamilienStellung/@Id</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="FamilienNr" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Enthaelt die PartnerNr des Familienoberhauptes. (Vergleiche BO-Dokumentation itsGruppeRef von Partner)</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="PartnerSchutz" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Partnerschutz, der fuer diesen Partner gilt. (allg. Partner, Mitarbeiter, Leistungerbringer)</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Typ">
+					<xs:annotation>
+						<xs:documentation>JurPartner or NatPartner</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Anrede" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="DokumentVariable">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Wert">
+					<xs:complexType>
+						<xs:attribute name="Id" type="xs:string"/>
+						<xs:attribute name="KurzBezeichnung" type="xs:string"/>
+						<xs:attribute name="Bezeichnung" type="xs:string"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="Id" type="xs:string"/>
+			<xs:attribute name="KurzBezeichnung" type="xs:string"/>
+			<xs:attribute name="Bezeichnung" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Leistungserbringer">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tns:Partner"/>
+				<xs:element ref="tns:Adresse"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Vorbehalt">
+		<xs:annotation>
+			<xs:documentation>GlobalAntragPolice/Antrag/VersichertesObjekt/AntragProdukt/Vorbehalte</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="Adresse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="KontaktName" minOccurs="0"/>
+				<xs:element name="KontaktVorname" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Vorname der Kontaktperson.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="KontaktFirmenname" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Firmenname, nur bei Juristischen Person.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="AdresseTyp" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Adresstyp (DomizilAdresse, ZusatzAdresse, KontaktAdresse)</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="RolleKontaktPerson" type="xs:string" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>Rolle der Kontaktperson. Erlaubt eine frei definierbare Einteilung der Kontakte. Beispiele: Verkauf, Marketing, Stiftungsrat, etc.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Strasse" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Strassename der Adresse</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Hausnummer" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Hausnummer der Adresse</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="HausnummerZusatz" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Hausnummer Zusatz der Adresse</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="StrasseHausnummer" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>zusammengesetzes Feld aus Strasse und Hausnummer, getrennt durch Leerzeichen</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Ort" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Ortsbezeichnung der Adresse</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="PLZ" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Postleitzahl der Adresse</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="PLZZusatz" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Postleitzahl-Zusatz der Adresse</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Land" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>das Staatsgebiet dieser Adresse</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Postfach" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Postfach der Adresse</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Zusatz1" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Zusatz 1 der Adresse</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Zusatz2" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Zusatz 2 der Adresse</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Zusatz3" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Zusatz 3 der Adresse</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Kanton" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Erlaubt die Zuordnung zu einem der 26 schweizer Kantone. ZusÃ¤tzlich: Lichtenstein, Ausland, nicht bekannt</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="TelefonNr" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Telefonnummer dieser Adresse</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="NatelNr" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Mobiltelefonnummer der Adresse</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="FaxNr" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Faxnummer dieser Adresse</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="EMail" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>EMail dieser Adresse</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="CO" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Zusatz in Adresse co. Die Zustell-Anweisung c/o steht fuer care of und bedeutet sinngemaess wohnhaft bei.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Anrede" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>EmpfaengerAdresse/NatPerson/Adresse/Anrede</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="HasParentAdress" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Adresse/HasParentAdress</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="PrintingParameter">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Key"/>
+				<xs:element name="StringValue"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Kontaktperson">
+		<xs:annotation>
+			<xs:documentation>Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentKopf/KontaktPerson</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tns:OrganisationsEinheit">
+					<xs:annotation>
+						<xs:documentation>Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentKopf/DokumentBestellung/RuecksendeInformationen/RuecksendeSachbearbeiter/OrganisationsEinheit</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Anrede" minOccurs="0"/>
+				<xs:element name="BenutzerName" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Muss dem Namen des Subjects vom LDAP entsprechen: fachlicher Schluessel</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Name" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Der Nachname des Benutzers</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Vorname" type="xs:string">
+					<xs:annotation>
+						<xs:documentation>Der Vorname des Benutzers</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Kuerzel" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>immer leer</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Beschreibung" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Beschreibung oder Kommentare zum Benutzer</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="TelefonNrExtern" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Die externe Telefonnummer des Benutzers</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="TelefonNrIntern" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Die interne Telefonnummer des Benutzers</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="DirektFaxNr" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Die direkte Faxnummer des Benutzers</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="EMail" type="xs:string" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Die EMailadresse des Benutzers</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="Position" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Export/ExportInhalt/DokumentMappe/DokumentMappenInhalt/Dokument/DokumentKopf/KontaktPerson/Benutzer/Beschreibung</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
