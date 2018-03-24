@@ -9,7 +9,15 @@
 
   <title>Immo Plus GmbH</title>
 
-  <!--
+<!--
+
+menu underline:
+===============
+http://tobiasahlin.com/blog/css-trick-animating-link-underlines/
+https://codepad.co/snippet/FQaiCzbb
+https://foundation.zurb.com/building-blocks/blocks/hover-underline-menu.html
+
+
 grid frameworks:
 ================
 http://simplegrid.io/
@@ -27,6 +35,17 @@ https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Res
 color picker:
 =============
 https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Colors/Color_picker_tool
+
+
+gradient tool:
+==============
+http://www.colorzilla.com/gradient-editor/
+
+
+box-shadow tool:
+================
+http://html-css-js.com/css/generator/box-shadow/
+https://www.cssmatic.com/box-shadow
 
 -->
 
@@ -96,11 +115,25 @@ html {
 
     .navbar {
       overflow: hidden;
+      /*
       background-color: rgb(90, 88, 88);
+      */
       position: fixed;
       top: 0;
       width: 100%;
       z-index: 10;
+
+      /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#7d7e7d+0,0e0e0e+100;Black+3D */
+      background: rgb(125, 126, 125);
+      /* Old browsers */
+      background: -moz-linear-gradient(top, rgba(125, 126, 125, 1) 0%, rgba(14, 14, 14, 1) 100%);
+      /* FF3.6-15 */
+      background: -webkit-linear-gradient(top, rgba(125, 126, 125, 1) 0%, rgba(14, 14, 14, 1) 100%);
+      /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(to bottom, rgba(125, 126, 125, 1) 0%, rgba(14, 14, 14, 1) 100%);
+      /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7e7d', endColorstr='#0e0e0e', GradientType=0);
+      /* IE6-9 */
     }
 
     .navbar a {
@@ -168,6 +201,12 @@ html {
       background-color: rgba(163, 1, 1, 0.84);
       background-color: rgba(146, 16, 16, 0.84);
     }
+
+    .my-shadow {
+      box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11),
+      0 5px 15px 0 rgba(0, 0, 0, 0.08);
+    }
+
   </style>
 </head>
 
@@ -179,18 +218,6 @@ html {
     <a href="#contact">Contact</a>
   </div>
 
-  <!--
-  <div class="header">
-    <h1>Chania</h1>
-  </div>
-
-  <div>
-    <img class="my-img-bw" src="img/header.png" >
-  </div>
-
-  <div class="row center-cropped my-img-bw" style="background-image: url('img/header-s2.png');">
-  </div>
--->
 
   <div class="center-cropped my-img-bw" style="background-image: url('img/header-s2.png');">
 
@@ -202,25 +229,16 @@ html {
 
   </div>
 
-  <!--
-  <div class="center-text">
-    <h1>This is just some header 1st line text</h1>
-    <h2>This is just some header 2nd line text</h2>
-  </div>
-
-
--->
-
 
   <div class="container">
     <div class="row">
-      <div class="col-4">
+      <div class="col-4 my-shadow">
         <h1>The City</h1>
         <p>Chania is the capital of the Chania region on the island of Crete. The city can be divided in two parts, the old town and the modern city.</p>
         <p>Resize the browser window to see how the content respond to the resizing.</p>
       </div>
 
-      <div class="col-4 my-card">
+      <div class="col-4 my-card my-shadow">
         <div class="">
           this goes avay once the icon is in place
         </div>
@@ -229,7 +247,7 @@ html {
         <p>Resize the browser window to see how the content respond to the resizing.</p>
       </div>
 
-      <div class="col-4">
+      <div class="col-4 my-shadow">
         <h1>The City</h1>
         <p>Chania is the capital of the Chania region on the island of Crete. The city can be divided in two parts, the old town and the modern city.</p>
         <p>Resize the browser window to see how the content respond to the resizing.</p>
