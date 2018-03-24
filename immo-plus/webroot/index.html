@@ -88,12 +88,35 @@ html {
     background-color: #0099cc;
 }
 
-
     img {
       width: 100%;
       height: auto;
     }
     */
+
+    .navbar {
+      overflow: hidden;
+      background-color: #333;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 10;
+    }
+
+    .navbar a {
+      float: left;
+      display: block;
+      color: #f2f2f2;
+      text-align: center;
+      padding: 14px 16px;
+      text-decoration: none;
+      font-size: 17px;
+    }
+
+    .navbar a:hover {
+      background: #ddd;
+      color: black;
+    }
 
     .center-cropped {
       width: auto;
@@ -106,7 +129,6 @@ html {
       -webkit-filter: grayscale(100%);
       filter: grayscale(100%);
     }
-
 
     .center-text {
       width: auto;
@@ -143,11 +165,17 @@ html {
 
 <body>
 
+  <div class="navbar">
+    <a href="#home">Home</a>
+    <a href="#news">News</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <!--
   <div class="header">
     <h1>Chania</h1>
   </div>
 
-  <!--
   <div>
     <img class="my-img-bw" src="img/header.png" >
   </div>
@@ -171,6 +199,8 @@ html {
     <h1>This is just some header 1st line text</h1>
     <h2>This is just some header 2nd line text</h2>
   </div>
+
+
 -->
 
 
