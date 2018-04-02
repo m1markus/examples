@@ -28,13 +28,22 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Colors/Color_picker_tool
   <!-- http://simplegrid.io/ -->
 
   <style>
+    html {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
     /*
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+
+
 .row::after {
     content: "";
     clear: both;
@@ -89,18 +98,37 @@ html {
     }
     */
 
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
     body {
+    }
 
-      color: red;
+    .col-blue {
+      background-color: blue;
+      margin: 0px 0px 0px 0px;
+      top: -22px;
+    }
 
+    .col-red {
+      background-color: red;
+      margin: 0px 0px 0px 0px;
+      color: black;
     }
   </style>
 </head>
 
 <body>
 
-  <div class="header">
-    <h1>Chania</h1>
+  <div class="col-blue">
+    <h1>color blue background</h1>
+  </div>
+
+  <div class="col-red">
+    <h1>color blue background</h1>
   </div>
 
   <!--
@@ -149,9 +177,6 @@ html {
 
   <div class="footer-1">
     <h1>footer 1</h1>
-  </div>
-  <div class="footer-2">
-    <h1>footer 2</h1>
   </div>
 
 </body>
