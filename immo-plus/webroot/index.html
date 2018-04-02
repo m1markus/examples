@@ -42,6 +42,7 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Colors/Color_picker_tool
 
 gradient tool:
 ==============
+http://angrytools.com/gradient/
 http://www.colorzilla.com/gradient-editor/
 
 
@@ -56,13 +57,15 @@ https://www.cssmatic.com/box-shadow
   <link rel="stylesheet" href="css/simple-grid.css">
 
   <style>
-    /*
+
+/*
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
+
 .row::after {
     content: "";
     clear: both;
@@ -126,17 +129,21 @@ html {
       width: 100%;
       z-index: 10;
 
-      /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#7d7e7d+0,0e0e0e+100;Black+3D */
-      background: rgb(125, 126, 125);
-      /* Old browsers */
-      background: -moz-linear-gradient(top, rgba(125, 126, 125, 1) 0%, rgba(14, 14, 14, 1) 100%);
-      /* FF3.6-15 */
-      background: -webkit-linear-gradient(top, rgba(125, 126, 125, 1) 0%, rgba(14, 14, 14, 1) 100%);
-      /* Chrome10-25,Safari5.1-6 */
-      background: linear-gradient(to bottom, rgba(125, 126, 125, 1) 0%, rgba(14, 14, 14, 1) 100%);
-      /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#7d7e7d', endColorstr='#0e0e0e', GradientType=0);
-      /* IE6-9 */
+
+      background: -moz-linear-gradient(90deg, rgba(40, 48, 72, 1) 0%, rgba(133, 147, 152, 1) 100%);
+      /* ff3.6+ */
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(133, 147, 152, 1)), color-stop(100%, rgba(40, 48, 72, 1)));
+      /* safari4+,chrome */
+      background: -webkit-linear-gradient(90deg, rgba(40, 48, 72, 1) 0%, rgba(133, 147, 152, 1) 100%);
+      /* safari5.1+,chrome10+ */
+      background: -o-linear-gradient(90deg, rgba(40, 48, 72, 1) 0%, rgba(133, 147, 152, 1) 100%);
+      /* opera 11.10+ */
+      background: -ms-linear-gradient(90deg, rgba(40, 48, 72, 1) 0%, rgba(133, 147, 152, 1) 100%);
+      /* ie10+ */
+      background: linear-gradient(0deg, rgba(40, 48, 72, 1) 0%, rgba(133, 147, 152, 1) 100%);
+      /* w3c */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#859398', endColorstr='#283048', GradientType=0);
+      /* ie6-9 */
     }
 
     .navbar a {
@@ -181,10 +188,12 @@ html {
       background-repeat: no-repeat;
     }
 
+/*
     .my-img-bw {
       -webkit-filter: grayscale(100%);
       filter: grayscale(100%);
     }
+*/
 
     .center-text {
       width: auto;
@@ -207,14 +216,22 @@ html {
 
 
     .footer-1 {
-      color: red;
-      /*
-      background-color: rgba(102, 102, 153, 0.54);
-      */
+
+      background-color: rgba(200, 200, 200, 1.0);
+
+      background: -moz-linear-gradient(90deg, rgba(40, 48, 72, 1) 0%, rgba(133, 147, 152, 1) 100%);
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(133, 147, 152, 1)), color-stop(100%, rgba(40, 48, 72, 1)));
+      background: -webkit-linear-gradient(90deg, rgba(40, 48, 72, 1) 0%, rgba(133, 147, 152, 1) 100%);
+      background: -o-linear-gradient(90deg, rgba(40, 48, 72, 1) 0%, rgba(133, 147, 152, 1) 100%);
+      background: -ms-linear-gradient(90deg, rgba(40, 48, 72, 1) 0%, rgba(133, 147, 152, 1) 100%);
+      background: linear-gradient(0deg, rgba(40, 48, 72, 1) 0%, rgba(133, 147, 152, 1) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#859398', endColorstr='#283048', GradientType=0);
     }
 
-    .footer-2 {
-      background-color: rgba(102, 102, 153, 0.54);
+
+    .footer-1 h1,
+    .footer-1 p {
+      color: color: rgb(193, 193, 193);
     }
 
 
@@ -239,7 +256,9 @@ html {
     <a href="#contact">Contact</a>
   </div>
 
-  <!--  my-img-bw   -->
+  <!--
+  background image on top
+  -->
   <div class="center-cropped" style="background-image: url('img/header-s2.png');">
 
     <div class="center-text">
@@ -278,10 +297,11 @@ html {
 
 
   <div class="footer-1">
-    <h1 class="center-text-color">footer 1</h1>
-  </div>
-  <div class="footer-2">
-    <h1 class="my-img-bw" style="color:white">footer 2</h1>
+    <h1 style="color:rgb(191,191,191)">footer 1</h1>
+    <p style="color:rgb(191,191,191)">line 1</p>
+    <p style="color:rgb(191,191,191)">line 2</p>
+    <p style="color:rgb(191,191,191)">line 3</p>
+    <p style="color:rgb(191,191,191)">line 4</p>
   </div>
 
 </body>
