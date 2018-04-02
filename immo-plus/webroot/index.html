@@ -42,8 +42,14 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Colors/Color_picker_tool
 
 gradient tool:
 ==============
+http://www.cssportal.com/css-gradient-generator/
 http://angrytools.com/gradient/
 http://www.colorzilla.com/gradient-editor/
+
+https://uigradients.com/#Predawn
+(Royal / Titanium)
+
+https://www.webpagefx.com/blog/web-design/css-gradient-generators/
 
 
 box-shadow tool:
@@ -58,7 +64,13 @@ https://www.cssmatic.com/box-shadow
 
   <style>
 
-/*
+  * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+  }
+
+    /*
 
 * {
     box-sizing: border-box;
@@ -129,21 +141,29 @@ html {
       width: 100%;
       z-index: 10;
 
-
-      background: -moz-linear-gradient(90deg, rgba(40, 48, 72, 1) 0%, rgba(133, 147, 152, 1) 100%);
+      background: -moz-linear-gradient(89deg, rgba(255, 255, 255, 0.3) 0%, rgba(94, 94, 94, 1) 89%);
       /* ff3.6+ */
-      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(133, 147, 152, 1)), color-stop(100%, rgba(40, 48, 72, 1)));
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(11%, rgba(94, 94, 94, 1)), color-stop(100%, rgba(255, 255, 255, 0.3)));
       /* safari4+,chrome */
-      background: -webkit-linear-gradient(90deg, rgba(40, 48, 72, 1) 0%, rgba(133, 147, 152, 1) 100%);
+      background: -webkit-linear-gradient(89deg, rgba(255, 255, 255, 0.3) 0%, rgba(94, 94, 94, 1) 89%);
       /* safari5.1+,chrome10+ */
-      background: -o-linear-gradient(90deg, rgba(40, 48, 72, 1) 0%, rgba(133, 147, 152, 1) 100%);
+      background: -o-linear-gradient(89deg, rgba(255, 255, 255, 0.3) 0%, rgba(94, 94, 94, 1) 89%);
       /* opera 11.10+ */
-      background: -ms-linear-gradient(90deg, rgba(40, 48, 72, 1) 0%, rgba(133, 147, 152, 1) 100%);
+      background: -ms-linear-gradient(89deg, rgba(255, 255, 255, 0.3) 0%, rgba(94, 94, 94, 1) 89%);
       /* ie10+ */
-      background: linear-gradient(0deg, rgba(40, 48, 72, 1) 0%, rgba(133, 147, 152, 1) 100%);
+      background: linear-gradient(1deg, rgba(255, 255, 255, 0.3) 0%, rgba(94, 94, 94, 1) 89%);
       /* w3c */
-      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#859398', endColorstr='#283048', GradientType=0);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5E5E5E', endColorstr='#FFFFFF', GradientType=0);
       /* ie6-9 */
+      /*
+      background: -moz-linear-gradient(90deg, rgba(40, 48, 72, 1) 0%, rgba(133, 147, 152, 1) 100%);
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(133, 147, 152, 1)), color-stop(100%, rgba(40, 48, 72, 1)));
+      background: -webkit-linear-gradient(90deg, rgba(40, 48, 72, 1) 0%, rgba(133, 147, 152, 1) 100%);
+      background: -o-linear-gradient(90deg, rgba(40, 48, 72, 1) 0%, rgba(133, 147, 152, 1) 100%);
+      background: -ms-linear-gradient(90deg, rgba(40, 48, 72, 1) 0%, rgba(133, 147, 152, 1) 100%);
+      background: linear-gradient(0deg, rgba(40, 48, 72, 1) 0%, rgba(133, 147, 152, 1) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#859398', endColorstr='#283048', GradientType=0);
+*/
     }
 
     .navbar a {
@@ -183,12 +203,12 @@ html {
 
     .center-cropped {
       width: auto;
-      height: 300px;
+      height: 250px;
       background-position: center center;
       background-repeat: no-repeat;
     }
 
-/*
+    /*
     .my-img-bw {
       -webkit-filter: grayscale(100%);
       filter: grayscale(100%);
@@ -229,9 +249,12 @@ html {
     }
 
 
-    .footer-1 h1,
+    .footer-1 h1 {
+      color: rgb(193, 193, 193);
+    }
+
     .footer-1 p {
-      color: color: rgb(193, 193, 193);
+      color: rgb(193, 193, 193);
     }
 
 
@@ -297,11 +320,11 @@ html {
 
 
   <div class="footer-1">
-    <h1 style="color:rgb(191,191,191)">footer 1</h1>
-    <p style="color:rgb(191,191,191)">line 1</p>
-    <p style="color:rgb(191,191,191)">line 2</p>
-    <p style="color:rgb(191,191,191)">line 3</p>
-    <p style="color:rgb(191,191,191)">line 4</p>
+    <h1>footer 1</h1>
+    <p>line 1</p>
+    <p>line 2</p>
+    <p>line 3</p>
+    <p>line 4</p>
   </div>
 
 </body>
