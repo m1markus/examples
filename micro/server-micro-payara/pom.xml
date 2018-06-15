@@ -19,6 +19,10 @@
 	</properties>
 
     <dependencies>
+        <dependency>
+            <groupId>fish.payara.extras</groupId>
+            <artifactId>payara-micro</artifactId>
+        </dependency>
     </dependencies>
 
 </project>

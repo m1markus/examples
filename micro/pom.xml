@@ -1,21 +1,32 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>ch.m1m.micro</groupId>
-	<artifactId>micro-parent</artifactId>
-	<packaging>pom</packaging>
-	<version>1.0.0-SNAPSHOT</version>
-	<name>micro-parent</name>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>ch.m1m.micro</groupId>
+    <artifactId>micro-parent</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0.0-SNAPSHOT</version>
+    <name>micro-parent</name>
 
-	<properties>
+    <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-	</properties>
+
+        <payara.version>5.182</payara.version>
+
+    </properties>
 
     <dependencyManagement>
+        <dependencies>
+            <!-- https://mvnrepository.com/artifact/fish.payara.extras/payara-micro -->
+            <dependency>
+                <groupId>fish.payara.extras</groupId>
+                <artifactId>payara-micro</artifactId>
+                <version>${payara.version}</version>
+            </dependency>
+        </dependencies>
     </dependencyManagement>
 
     <modules>
