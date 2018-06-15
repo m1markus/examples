@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified"
+           targetNamespace="http://xmlns.m1m.ch/soap/hello"
+           xmlns="http://xmlns.m1m.ch/soap/hello">
+
+    <xs:element name="HelloRequest" type="HelloRequestType"/>
+    <xs:element name="HelloResponse" type="HelloResponseType"/>
+    <xs:complexType name="HelloRequestType">
+        <xs:sequence>
+            <xs:element name="FirstName" type="xs:string"/>
+            <xs:element name="LastName" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="HelloResponseType">
+        <xs:sequence>
+            <xs:element name="Person" type="PersonType"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="PersonType">
+        <xs:sequence>
+            <xs:element name="Id" type="xs:string"/>
+            <xs:element name="FirstName" type="xs:string"/>
+            <xs:element name="LastName" type="xs:string"/>
+            <xs:element name="Sex" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

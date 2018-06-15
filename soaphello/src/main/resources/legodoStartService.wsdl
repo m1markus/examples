@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="startService" targetNamespace="http://legodo.com/startService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://legodo.com/startService/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://legodo.com/startService/">
+      <xsd:element name="startCorrespondence">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="mode" type="tns:mode">
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="startup" type="tns:startup">
+            </xsd:element>
+            <xsd:element maxOccurs="1" minOccurs="0" name="settings" type="tns:settings">
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="startDesigner">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="mode" type="tns:mode"/>
+            <xsd:element maxOccurs="1" minOccurs="0" name="settings" type="tns:settings">
+            </xsd:element>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:simpleType name="mode">
+        <xsd:restriction base="xsd:string">
+          <xsd:enumeration value="CLASSIC"/>
+          <xsd:enumeration value="NET"/>
+          <xsd:enumeration value="WEB_BASIC"/>
+          <xsd:enumeration value="WEB_PLUS"/>
+        </xsd:restriction>
+      </xsd:simpleType>
+      <xsd:complexType mixed="true" name="startup">
+        <xsd:sequence>
+          <xsd:any maxOccurs="unbounded" minOccurs="0"/>
+        </xsd:sequence>
+        <xsd:attribute name="adapterId" type="xsd:string"/>
+      </xsd:complexType>
+      <xsd:complexType name="setting">
+        <xsd:simpleContent>
+          <xsd:extension base="xsd:string">
+            <xsd:attribute name="name" type="xsd:string" use="required">
+            </xsd:attribute>
+          </xsd:extension>
+        </xsd:simpleContent>
+      </xsd:complexType>
+      <xsd:complexType name="settings">
+        <xsd:sequence>
+          <xsd:element maxOccurs="unbounded" minOccurs="0" name="setting" type="tns:setting"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="startResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="url" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="fault">
+        <xsd:complexType mixed="true">
+          <xsd:sequence>
+            <xsd:any maxOccurs="unbounded" minOccurs="0"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="startCorrespondenceFault">
+    <wsdl:part name="parameters" element="tns:fault">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="startCorrespondenceResponse">
+    <wsdl:part name="parameters" element="tns:startResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="startDesignerRequest">
+    <wsdl:part name="parameters" element="tns:startDesigner">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="startCorrespondenceRequest">
+    <wsdl:part name="parameters" element="tns:startCorrespondence">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="startDesignerResponse">
+    <wsdl:part name="parameters" element="tns:startResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="startDesignerFault">
+    <wsdl:part name="parameters" element="tns:fault">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="startService">
+    <wsdl:operation name="startCorrespondence">
+      <wsdl:input message="tns:startCorrespondenceRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:startCorrespondenceResponse">
+    </wsdl:output>
+      <wsdl:fault name="fault" message="tns:startCorrespondenceFault">
+    </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="startDesigner">
+      <wsdl:input message="tns:startDesignerRequest">
+    </wsdl:input>
+      <wsdl:output message="tns:startDesignerResponse">
+    </wsdl:output>
+      <wsdl:fault name="fault" message="tns:startDesignerFault">
+    </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="startServiceSOAP" type="tns:startService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="startCorrespondence">
+      <soap:operation soapAction="http://legodo.com/startService/startCorrespondence"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="startDesigner">
+      <soap:operation soapAction="http://legodo.com/startService/startDesigner"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="fault">
+        <soap:fault name="fault" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="startService">
+    <wsdl:port name="startServiceSOAP" binding="tns:startServiceSOAP">
+      <soap:address location="http://localhost:8080/SoapHelloEndpoint/services/StartCorrespondenceService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="de-CH">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="keywords" content="Immobilen Verwaltung Immobilienverwaltung Dienstleistung">
+  <meta name="description" content="Dienstleistungen für Immobilienverwaltungen">
+  <meta name="author" content="Markus Müller">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Immo Plus GmbH</title>
+
+  <!--
+
+menu underline:
+===============
+http://tobiasahlin.com/blog/css-trick-animating-link-underlines/
+https://codepad.co/snippet/FQaiCzbb
+https://foundation.zurb.com/building-blocks/blocks/hover-underline-menu.html
+https://www.rgraph.net/blog/html5-effects-an-example-of-an-expanding-animated-underline-effect.html
+
+
+grid frameworks:
+================
+http://simplegrid.io/
+http://getskeleton.com/
+http://origin.css.gd/#usage    (* smart grid - active)
+http://flexboxgrid.com/
+http://thisisdallas.github.io/Simple-Grid/
+
+
+responsive image:
+=================
+https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images
+
+
+color picker:
+=============
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Colors/Color_picker_tool
+
+
+gradient tool:
+==============
+http://www.cssportal.com/css-gradient-generator/
+http://angrytools.com/gradient/
+http://www.colorzilla.com/gradient-editor/
+
+https://uigradients.com/#Predawn
+(Royal / Titanium)
+
+https://www.webpagefx.com/blog/web-design/css-gradient-generators/
+
+
+box-shadow tool:
+================
+http://html-css-js.com/css/generator/box-shadow/
+https://www.cssmatic.com/box-shadow
+
+-->
+
+  <!-- http://simplegrid.io/ -->
+  <link rel="stylesheet" href="css/smart-grid.css">
+
+  <style>
+
+  * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+  }
+
+    /*
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+[class*="col-"] {
+    float: left;
+    padding: 0px;
+}
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+html {
+    font-family: "Lucida Sans", sans-serif;
+}
+.header {
+    background-color: #9933cc;
+    color: #ffffff;
+    padding: 5px;
+}
+.menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.menu li {
+    padding: 18px;
+    margin-bottom: 0px;
+    background-color: #33b5e5;
+    color: #ffffff;
+    /*
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+
+}
+.menu li:hover {
+    background-color: #0099cc;
+}
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+    */
+
+    .navbar {
+      overflow: hidden;
+      /*
+      background-color: rgb(90, 88, 88);
+      */
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 10;
+
+      background: -moz-linear-gradient(89deg, rgba(255, 255, 255, 0.3) 0%, rgba(94, 94, 94, 1) 89%);
+      /* ff3.6+ */
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(11%, rgba(94, 94, 94, 1)), color-stop(100%, rgba(255, 255, 255, 0.3)));
+      /* safari4+,chrome */
+      background: -webkit-linear-gradient(89deg, rgba(255, 255, 255, 0.3) 0%, rgba(94, 94, 94, 1) 89%);
+      /* safari5.1+,chrome10+ */
+      background: -o-linear-gradient(89deg, rgba(255, 255, 255, 0.3) 0%, rgba(94, 94, 94, 1) 89%);
+      /* opera 11.10+ */
+      background: -ms-linear-gradient(89deg, rgba(255, 255, 255, 0.3) 0%, rgba(94, 94, 94, 1) 89%);
+      /* ie10+ */
+      background: linear-gradient(1deg, rgba(255, 255, 255, 0.3) 0%, rgba(94, 94, 94, 1) 89%);
+      /* w3c */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#5E5E5E', endColorstr='#FFFFFF', GradientType=0);
+      /* ie6-9 */
+      /*
+      background: -moz-linear-gradient(90deg, rgba(40, 48, 72, 1) 0%, rgba(133, 147, 152, 1) 100%);
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(133, 147, 152, 1)), color-stop(100%, rgba(40, 48, 72, 1)));
+      background: -webkit-linear-gradient(90deg, rgba(40, 48, 72, 1) 0%, rgba(133, 147, 152, 1) 100%);
+      background: -o-linear-gradient(90deg, rgba(40, 48, 72, 1) 0%, rgba(133, 147, 152, 1) 100%);
+      background: -ms-linear-gradient(90deg, rgba(40, 48, 72, 1) 0%, rgba(133, 147, 152, 1) 100%);
+      background: linear-gradient(0deg, rgba(40, 48, 72, 1) 0%, rgba(133, 147, 152, 1) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#859398', endColorstr='#283048', GradientType=0);
+*/
+    }
+
+    .navbar a {
+      float: left;
+      display: block;
+      text-align: center;
+      padding: 10px 10px;
+      font-size: 16px;
+      /*
+      color: rgb(232, 231, 231);
+      color: rgb(163, 163, 163);
+      color: rgb(173, 173, 173); */
+      color: rgb(193, 193, 193);
+      text-decoration: none;
+      position: relative;
+    }
+
+    .navbar a:hover {
+      /*
+      background: #ddd;  */
+      color: white;
+    }
+
+    a:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0%;
+      border-bottom: 5px solid rgba(146, 16, 16, 0.84);
+      transition: 0.4s;
+    }
+
+    a:hover:after {
+      width: 100%;
+    }
+
+    .center-cropped {
+      width: auto;
+      height: 250px;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+
+    /*
+    .my-img-bw {
+      -webkit-filter: grayscale(100%);
+      filter: grayscale(100%);
+    }
+*/
+
+    .center-text {
+      width: auto;
+      height: 300px;
+
+      margin-top: auto;
+      margin-bottom: auto;
+      text-align: center;
+
+      color: red;
+      background-color: rgba(102, 102, 153, 0.0);
+      /*
+      background-color: rgba(153, 102, 102, 0.54);
+      */
+    }
+
+    .center-text-color {
+      color: red;
+    }
+
+
+    .footer-1 {
+
+      background-color: rgba(200, 200, 200, 1.0);
+
+      background: -moz-linear-gradient(90deg, rgba(40, 48, 72, 1) 0%, rgba(133, 147, 152, 1) 100%);
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(133, 147, 152, 1)), color-stop(100%, rgba(40, 48, 72, 1)));
+      background: -webkit-linear-gradient(90deg, rgba(40, 48, 72, 1) 0%, rgba(133, 147, 152, 1) 100%);
+      background: -o-linear-gradient(90deg, rgba(40, 48, 72, 1) 0%, rgba(133, 147, 152, 1) 100%);
+      background: -ms-linear-gradient(90deg, rgba(40, 48, 72, 1) 0%, rgba(133, 147, 152, 1) 100%);
+      background: linear-gradient(0deg, rgba(40, 48, 72, 1) 0%, rgba(133, 147, 152, 1) 100%);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#859398', endColorstr='#283048', GradientType=0);
+    }
+
+
+    .footer-1 h1 {
+      color: rgb(193, 193, 193);
+    }
+
+    .footer-1 p {
+      color: rgb(193, 193, 193);
+    }
+
+
+    .my-card {
+      background-color: rgba(163, 2, 2, 0.7);
+      background-color: rgba(163, 1, 1, 0.84);
+      background-color: rgba(146, 16, 16, 0.84);
+    }
+
+    .my-shadow {
+      box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.11),
+      0 5px 15px 0 rgba(0, 0, 0, 0.08);
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="navbar">
+    <a href="#home">Home</a>
+    <a href="#news">News</a>
+    <a href="#contact">Contact</a>
+  </div>
+
+  <!--
+  background image on top
+  -->
+  <div class="center-cropped" style="background-image: url('img/header-s2.png');">
+
+    <div class="center-text">
+      <h2 style="color:white"> &nbsp; </h2>
+      <h1 style="color:white">Immo Plus GmbH</h1>
+      <h2 style="color:white">Dienstleistungen für Immobilienverwaltungen</h2>
+    </div>
+
+  </div>
+
+
+  <div class="container row">
+
+      <div class="columns four my-shadow">
+        <h1>The City</h1>
+        <p>Chania is the capital of the Chania region on the island of Crete. The city can be divided in two parts, the old town and the modern city.</p>
+        <p>Resize the browser window to see how the content respond to the resizing.</p>
+      </div>
+
+      <div class="columns four my-card my-shadow">
+        <div class="">
+          this goes avay once the icon is in place
+        </div>
+        <h1>The City</h1>
+        <p>Chania is the capital of the Chania region on the island of Crete. The city can be divided in two parts, the old town and the modern city.</p>
+        <p>Resize the browser window to see how the content respond to the resizing.</p>
+      </div>
+
+      <div class="columns four my-shadow">
+        <h1>The City</h1>
+        <p>Chania is the capital of the Chania region on the island of Crete. The city can be divided in two parts, the old town and the modern city.</p>
+        <p>Resize the browser window to see how the content respond to the resizing.</p>
+      </div>
+  </div>
+
+
+  <div class="footer-1">
+    <h1>footer 1</h1>
+    <p>line 1</p>
+    <p>line 2</p>
+    <p>line 3</p>
+    <p>line 4</p>
+  </div>
+
+</body>
+
+</html>
