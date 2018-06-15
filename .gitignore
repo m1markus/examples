@@ -1,3 +1,13 @@
 **/.idea
 **/*.iml
 .DS_Store
+.apt_generated/
+.checkstyle
+.classpath
+.factorypath
+.idea
+.project
+.settings/
+logs
+target
+*.launch
