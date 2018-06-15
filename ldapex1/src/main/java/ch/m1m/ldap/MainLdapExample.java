@@ -89,11 +89,9 @@ public class MainLdapExample {
 		connExternal.bind("cn=Manager", "myPassword");
 		doSimpleQuery(connExternal);
 
-		
-		
+
 		connExternal.bind("uid=mue,ou=People,dc=example,dc=com", "myPassword");
-		
-		
+
 
 		// Disconnect from the server and cause the server to shut down.
 		connExternal.close();
