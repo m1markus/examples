@@ -15,7 +15,6 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
         <payara.version>5.182</payara.version>
-
     </properties>
 
     <dependencyManagement>
@@ -30,11 +29,11 @@
     </dependencyManagement>
 
     <modules>
-        <module>server-micro-payara</module>
         <module>server-tomee</module>
-        <!--
+        <!--        -->
+        <module>server-micro-payara</module>
+
         <module>server-micronaut</module>
-        -->
         <module>client</module>
     </modules>
 
