@@ -4,7 +4,7 @@ import io.micronaut.http.annotation.*;
 
 @Controller("/hello")
 public class HelloController {
-    @Get("/")
+    @Get("/world")
     public String index() {
         return "Hello World";
     }

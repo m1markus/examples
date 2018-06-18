@@ -22,11 +22,11 @@ public class SimpleClient {
 
         try {
 
-            test_jackson();
-            System.exit(1);
+            //test_jackson();
+            //System.exit(1);
 
-            String url = "http://localhost:8080/hello";
-            url = "http://x";
+            String url = "http://localhost:8080/hello/world";
+            //url = "http://x";
             //url = "http://tvvvgslwls039.sympany-test.ads:8001/em/";
             String resp = get(url);
             System.out.println(String.format("success: url=%s resp=%s", url, resp));
