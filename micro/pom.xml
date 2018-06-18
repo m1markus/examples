@@ -31,7 +31,10 @@
 
     <modules>
         <module>server-micro-payara</module>
+        <module>server-tomee</module>
+        <!--
         <module>server-micronaut</module>
+        -->
         <module>client</module>
     </modules>
 

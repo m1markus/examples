@@ -8,6 +8,12 @@ public class Main
 {
     public static void main(String[] args) throws BootstrapException
     {
-        PayaraMicro.getInstance().setUserLogFile("/tmp/PayaraMicro.log").bootStrap();
+        PayaraMicro micro = PayaraMicro.getInstance();
+
+//        micro.setUserLogFile("/tmp/PayaraMicro.log");
+
+        micro.bootStrap();
+
+        // PayaraMicro.getInstance().shutdown();
     }
 }
