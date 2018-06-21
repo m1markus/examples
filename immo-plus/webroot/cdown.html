@@ -8,12 +8,18 @@
   <meta name="author" content="Markus Müller">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>Immo Quick GmbH</title>
+
   <!--
   https://favicon.io/
   -->
   <link rel="icon" type="image/png" href="favicon.png">
 
-  <title>Immo Quick GmbH</title>
+  <!--
+bg-warning
+bg-info
+bg-success
+
 
   <style>
     * {
@@ -31,22 +37,59 @@
       margin-top: 50px;
     }
   </style>
+  -->
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+
+  <style>
+    #deck {
+      margin-top: 50px;
+    }
+  </style>
+
 
 </head>
 
 <body>
 
-  <div id="deck" class="center">
-    <h1 class="center">Immo Quick GmbH</h1>
-    <p class="center">Comming in
-      <my id="countdown">...calculating...</my>
-    </p>
+  <div id="deck" class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <h1 class="text-center">Immo Quick GmbH</h1>
+        <p class="text-center">Comming in</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-4">
+      </div>
+
+      <div class="col-sm-1 text-center">
+        <my id="cdDays"></my>
+      </div>
+      <div class="col-sm-1 text-center">
+        <my id="cdHours"></my>
+      </div>
+      <div class="col-sm-1 text-center">
+        <my id="cdMinutes"></my>
+      </div>
+      <div class="col-sm-1 text-center">
+        <my id="cdSeconds"></my>
+      </div>
+
+      <div class="col-sm-4">
+      </div>
+    </div>
+
   </div>
 
 
   <script>
     // Set the date we're counting down to
-    var countDownDate = new Date("Aug 1, 2018 00:00:01").getTime();
+    var countDownDate = new Date("Aug 1, 2018 00:00:00").getTime();
     var outputElementId = "countdown"
 
     // Update the count down every 1 second
@@ -63,6 +106,13 @@
       var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+
+      document.getElementById("cdDays").innerHTML = days + "<p>days";
+      document.getElementById("cdHours").innerHTML = hours + "<p>hours";
+      document.getElementById("cdMinutes").innerHTML = minutes + "<p>min";
+      document.getElementById("cdSeconds").innerHTML = seconds + "<p>sec";
+
 
       // Display the result in the element with id="demo"
       document.getElementById(outputElementId).innerHTML = days + "d " + hours + "h "
