@@ -10,11 +10,72 @@
   <link rel="stylesheet" href="css/my.css">
 
   <title>Test 1</title>
+
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+  <style>
+    .pane {
+      color: white;
+    }
+    #pane-1 {
+      background-color: rgb(134, 9, 9);
+    }
+
+    #pane-2 {
+      background-color: rgb(16, 109, 8);
+    }
+
+    #pane-3 {
+      background-color: rgb(48, 15, 168);
+    }
+
+    #pane-4 {
+      background-color: rgb(151, 9, 104);
+    }
+  </style>
+
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+    crossorigin="anonymous"></script>
+
+  <script>
+
+    $(document).ready(function() {
+      //alert('dom ready');
+    });
+
+    function fmy1() {
+      alert('something has triggered this dialog');
+      return true;
+    }
+
+  </script>
+
 </head>
 
 <body>
-  <div class="my-header">
+  <a href="#" onclick="$('#pane-3').hide();">click-1</a>
+  <a href="#" onclick="$('#pane-3').show();">click-2</a>
+  <a href="#" onclick='$("#pane-4").css("background-color", "yellow");'>click-3</a>
+  <a href="javascript:void(0)">click-4</a>
+
+  <div id="pane-1" class="w3-container">
+    <h2>pane 1</h2>
   </div>
-  hello
+
+  <div id="pane-2" class="w3-container">
+    <h2>pane 2</h2>
+  </div>
+
+  <div id="pane-3" class="w3-container">
+    <h2>pane 3</h2>
+  </div>
+
+  <div id="pane-4" class="w3-container">
+    <h2>pane 4</h2>
+  </div>
+
 </body>
+
 </html>
