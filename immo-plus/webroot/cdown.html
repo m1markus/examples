@@ -45,9 +45,21 @@ bg-success
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 
   <style>
+
     #deck {
       margin-top: 50px;
     }
+
+    @font-face {
+      font-family: 'mylcd';
+      src: url('LCDPHONE.TTF');
+    }
+
+    #numberCountDown {
+      font-family: 'mylcd';
+      font-size: 24px;
+    }
+
   </style>
 
 
@@ -88,6 +100,16 @@ bg-success
 
 
   <script>
+
+    function format2DigitNumber(n) {
+      return n > 9 ? "" + n : "0" + n;
+    }
+
+    function formatHtmlForNumber(n, timeUnit) {
+      var html = '<span id="numberCountDown">' + n + '</span><p>' + timeUnit + '</p>';
+      return html;
+    }
+
     // Set the date we're counting down to
     var countDownDate = new Date("Aug 1, 2018 00:00:00").getTime();
     var outputElementId = "countdown"
@@ -107,12 +129,15 @@ bg-success
       var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
+      days = format2DigitNumber(days);
+      hours = format2DigitNumber(hours);
+      minutes = format2DigitNumber(minutes);
+      seconds = format2DigitNumber(seconds);
 
-      document.getElementById("cdDays").innerHTML = days + "<p>days";
-      document.getElementById("cdHours").innerHTML = hours + "<p>hours";
-      document.getElementById("cdMinutes").innerHTML = minutes + "<p>min";
-      document.getElementById("cdSeconds").innerHTML = seconds + "<p>sec";
-
+      document.getElementById("cdDays").innerHTML = formatHtmlForNumber(days, "days");
+      document.getElementById("cdHours").innerHTML = formatHtmlForNumber(hours, "hours");
+      document.getElementById("cdMinutes").innerHTML = formatHtmlForNumber(minutes, "min");
+      document.getElementById("cdSeconds").innerHTML = formatHtmlForNumber(seconds, "sec");
 
       // Display the result in the element with id="demo"
       document.getElementById(outputElementId).innerHTML = days + "d " + hours + "h "

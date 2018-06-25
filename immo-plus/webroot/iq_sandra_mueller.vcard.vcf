@@ -1,0 +1,12 @@
+BEGIN:VCARD
+VERSION:3.0
+TITLE:Geschäftsführerin
+N:Müller;Sandra;;Frau;
+FN:Sandra Müller
+ORG:Immo Quick GmbH
+TEL;TYPE=WORK,VOICE:+41 61 402 02 12
+ADR;TYPE=WORK,PREF:;;Blumenstrasse 15;Binningen;BL;4102;Switzerland
+LABEL;TYPE=WORK,PREF:Blumenstrasse 15\nCH-4102 Binningen
+EMAIL:info@immo-quick.ch
+REV:2018-06-10T18:42:00Z
+END:VCARD

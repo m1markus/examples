@@ -15,15 +15,31 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
     <style>
-
         /* menu
          */
+
+        #logo-text {
+            font-size: 36px;
+            margin-left: 36px;
+            margin-right:  36px;
+        }
+
         #mynavbar ul {
             list-style-type: none;
             margin: 0;
             padding: 0;
             overflow: hidden;
+            background-color: white;
+            height: 80px;
+
+            position: fixed;
+            top: 0;
+            width: 100%;
+
+            /*
             background-color: #333;
+            position: fixed;
+            */
         }
 
         #mynavbar li {
@@ -32,20 +48,30 @@
 
         #mynavbar li a {
             display: block;
+            /*
             color: white;
+            */
             text-align: center;
             padding: 14px 16px;
             text-decoration: none;
         }
 
         #mynavbar li a:hover {
+            color: gray;
+            /*
             background-color: #111;
+            */
+        }
+
+        .spacer-menu {
+            background-color: blue;
+            height: 80px;
         }
 
         /* original menu
         */
 
-/*
+        /*
         ul {
     list-style-type: none;
     margin: 0;
@@ -70,13 +96,20 @@ li a:hover {
     background-color: #111;
 }
 */
+
         /* main content
          */
+
         #main {
             width: 100%;
-            background-image: url("img/rom_mauer.jpg");
+            height: 730px;
+            background-image: url("img/immo_quick_rasen_haus_original.jpg");
             background-repeat: no-repeat;
             background-size: 100%;
+        }
+
+        .footer p {
+            color: white;
         }
     </style>
 </head>
@@ -85,32 +118,38 @@ li a:hover {
 
     <div id="mynavbar">
         <ul>
+            <span class="w3-bar-item">immo quick</span>
             <li>
-                <a href="default.asp">Home</a>
+                <a href="#home">Home</a>
             </li>
             <li>
-                <a href="news.asp">News</a>
+                <a href="#idService">Dienstleisungen</a>
             </li>
             <li>
-                <a href="contact.asp">Contact</a>
+                <a href="#idAboutMe">über mich</a>
             </li>
             <li>
-                <a href="about.asp">About</a>
+                <a href="#idContact">Kontakt</a>
             </li>
         </ul>
     </div>
 
-    <div class="w3-container w3-teal">
-        <h1>new home page iq</h1>
+
+    <div id="home" class="w3-container spacer-menu">
     </div>
 
+    <!--
+
+        Dienstleistungen für Immobilienverwaltungen
+
+    <div class="w3-container">
+        <h1>immo quick gmbh</h1>
+    </div>
+    -->
 
     <div id="main" class="w3-container" style="display: block">
 
-        <div class="w3-row-padding">
-            <p>A car is a wheeled, self-powered motor vehicle used for transportation.</p>
-        </div>
-
+        <!--
         <div class="w3-row-padding">
             <div class="w3-third">
                 <div class="w3-card w3-yellow">
@@ -134,10 +173,107 @@ li a:hover {
                 </div>
             </div>
         </div>
+        -->
 
     </div>
 
-    <div class="w3-container w3-teal">
+
+    <div id="idService" class="w3-container w3-gray">
+        <p>My Dienstleisungen</p>
+        <p>My Dienstleisungen</p>
+        <p>My Dienstleisungen</p>
+        <p>My Dienstleisungen</p>
+        <p>My Dienstleisungen</p>
+        <p>My Dienstleisungen</p>
+        <p>My Dienstleisungen</p>
+        <p>My Dienstleisungen</p>
+        <p>My Dienstleisungen</p>
+        <p>My Dienstleisungen</p>
+        <p>My Dienstleisungen</p>
+        <p>My Dienstleisungen</p>
+        <p>My Dienstleisungen</p>
+        <p>My Dienstleisungen</p>
+        <p>My Dienstleisungen</p>
+        <p>My Dienstleisungen</p>
+        <p>My Dienstleisungen</p>
+        <p>My Dienstleisungen</p>
+        <p>My Dienstleisungen</p>
+        <p>My Dienstleisungen</p>
+        <p>My Dienstleisungen</p>
+        <p>My Dienstleisungen</p>
+        <p>My Dienstleisungen</p>
+        <p>My Dienstleisungen</p>
+        <p>My Dienstleisungen</p>
+        <p>My Dienstleisungen</p>
+        <p>My Dienstleisungen</p>
+        <p>My Dienstleisungen</p>
+    </div>
+
+
+    <div id="idAboutMe" class="w3-container w3-gray">
+        <p>My über mich</p>
+        <p>My über mich</p>
+        <p>My über mich</p>
+        <p>My über mich</p>
+        <p>My über mich</p>
+        <p>My über mich</p>
+        <p>My über mich</p>
+        <p>My über mich</p>
+        <p>My über mich</p>
+        <p>My über mich</p>
+        <p>My über mich</p>
+        <p>My über mich</p>
+        <p>My über mich</p>
+        <p>My über mich</p>
+        <p>My über mich</p>
+        <p>My über mich</p>
+        <p>My über mich</p>
+        <p>My über mich</p>
+        <p>My über mich</p>
+        <p>My über mich</p>
+        <p>My über mich</p>
+        <p>My über mich</p>
+        <p>My über mich</p>
+        <p>My über mich</p>
+    </div>
+
+
+    <div id="idContact" class="w3-container w3-gray">
+        <p>My Kontakt</p>
+        <p>My Kontakt</p>
+        <p>My Kontakt</p>
+        <p>My Kontakt</p>
+        <p>My Kontakt</p>
+        <p>My Kontakt</p>
+        <p>My Kontakt</p>
+        <p>My Kontakt</p>
+        <p>My Kontakt</p>
+        <p>My Kontakt</p>
+        <p>My Kontakt</p>
+        <p>My Kontakt</p>
+        <p>My Kontakt</p>
+        <p>My Kontakt</p>
+        <p>My Kontakt</p>
+        <p>My Kontakt</p>
+        <p>My Kontakt</p>
+        <p>My Kontakt</p>
+        <p>My Kontakt</p>
+        <p>My Kontakt</p>
+        <p>My Kontakt</p>
+        <p>My Kontakt</p>
+        <p>My Kontakt</p>
+        <p>My Kontakt</p>
+        <p>My Kontakt</p>
+        <p>My Kontakt</p>
+        <p>My Kontakt</p>
+        <p>My Kontakt</p>
+    </div>
+
+
+    <div class="w3-container w3-gray footer">
+        <p>My Footer</p>
+        <p>My Footer</p>
+        <p>My Footer</p>
         <p>My Footer</p>
     </div>
 
