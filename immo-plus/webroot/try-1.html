@@ -19,19 +19,29 @@
     }
 
     #pane-1 {
-      background-color: rgb(134, 9, 9);
+      background-color: rgb(159, 161, 159);
     }
 
     #pane-2 {
-      background-color: rgb(16, 109, 8);
+      background-color: rgb(146, 69, 6);
+
+      /* width: 100%
+       */
+      width: 300px;
+      height: 300px;
+
+      background-image: url("img/immo_quick_rasen_haus_original.jpg");
+      background-repeat: no-repeat;
+      background-size: 100%;
+      background-position: -50px -50px;
     }
 
     #pane-3 {
-      background-color: rgb(48, 15, 168);
+      background-color: rgb(67, 66, 68);
     }
 
     #pane-4 {
-      background-color: rgb(151, 9, 104);
+      background-color: rgb(197, 194, 196);
     }
   </style>
 
@@ -44,11 +54,30 @@
 
     $(document).ready(function () {
       //alert('dom ready');
+      debugger;
+
+      window.addEventListener("resize", onBrowserResize);
     });
 
     function fmy1() {
       alert('something has triggered this dialog');
       return true;
+    }
+
+
+    function onBrowserResize() {
+
+      var width = window.innerWidth
+        || document.documentElement.clientWidth
+        || document.body.clientWidth;
+
+      var height = window.innerHeight
+        || document.documentElement.clientHeight
+        || document.body.clientHeight;
+
+      var screenDimension = "x:" + width + " y:" + height;
+      
+      objDisplaySize = $("#display-size").text(screenDimension);
     }
 
   </script>
@@ -62,7 +91,7 @@
   <a href="javascript:void(0)">click-4</a>
 
   <div id="pane-1" class="w3-container">
-    <h2>pane 1</h2>
+    <h2 id="display-size">pane 1</h2>
   </div>
 
   <div id="pane-2" class="w3-container">
@@ -92,7 +121,7 @@
       <div class="w3-container w3-third w3-red">
         <h6>content 3/3</h6>
       </div>
-      
+
     </div>
   </div>
 
