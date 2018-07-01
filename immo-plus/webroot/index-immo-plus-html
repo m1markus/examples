@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="de-CH">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="keywords" content="Immobilen Verwaltung Immobilienverwaltung Dienstleistung">
+  <meta name="description" content="Dienstleistungen für Immobilienverwaltungen">
+  <meta name="author" content="Markus Müller">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Immo irgendwas-kunterbunt GmbH</title>
+
+  <!--
+
+menu underline:
+===============
+http://tobiasahlin.com/blog/css-trick-animating-link-underlines/
+https://codepad.co/snippet/FQaiCzbb
+https://foundation.zurb.com/building-blocks/blocks/hover-underline-menu.html
+https://www.rgraph.net/blog/html5-effects-an-example-of-an-expanding-animated-underline-effect.html
+
+
+grid frameworks:
+================
+http://simplegrid.io/
+http://getskeleton.com/
+http://origin.css.gd/#usage    (* smart grid - active)
+http://flexboxgrid.com/
+http://thisisdallas.github.io/Simple-Grid/
+
+
+responsive image:
+=================
+https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images
+
+
+color picker:
+=============
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Colors/Color_picker_tool
+
+
+gradient tool:
+==============
+http://www.cssportal.com/css-gradient-generator/
+http://angrytools.com/gradient/
+http://www.colorzilla.com/gradient-editor/
+
+https://uigradients.com/#Predawn
+(Royal / Titanium)
+
+https://www.webpagefx.com/blog/web-design/css-gradient-generators/
+
+
+box-shadow tool:
+================
+http://html-css-js.com/css/generator/box-shadow/
+https://www.cssmatic.com/box-shadow
+
+-->
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+  <style>
+    /*
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+    }
+    
+    */
+  </style>
+</head>
+
+<body>
+
+  <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+      <a class="navbar-brand" href="#">Hidden brand</a>
+      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">Disabled</a>
+        </li>
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+
+  <!--
+  background image on top
+  -->
+  <div class="center-cropped" style="background-image: url('img/header-s2.png');">
+
+    <div class="center-text">
+      <h2 style="color:white"> &nbsp; </h2>
+      <h1 style="color:white">Immo Plus GmbH</h1>
+      <h2 style="color:white">Dienstleistungen für Immobilienverwaltungen</h2>
+    </div>
+
+  </div>
+
+
+  <div class="container row">
+
+    <div class="columns four my-shadow">
+      <h1>The City</h1>
+      <p>Chania is the capital of the Chania region on the island of Crete. The city can be divided in two parts, the old town and the modern city.</p>
+      <p>Resize the browser window to see how the content respond to the resizing.</p>
+    </div>
+
+    <div class="columns four my-card my-shadow">
+      <div class="">
+        this goes avay once the icon is in place
+      </div>
+      <h1>The City</h1>
+      <p>Chania is the capital of the Chania region on the island of Crete. The city can be divided in two parts, the old town and the modern city.</p>
+      <p>Resize the browser window to see how the content respond to the resizing.</p>
+    </div>
+
+    <div class="columns four my-shadow">
+      <h1>The City</h1>
+      <p>Chania is the capital of the Chania region on the island of Crete. The city can be divided in two parts, the old town and the modern city.</p>
+      <p>Resize the browser window to see how the content respond to the resizing.</p>
+    </div>
+  </div>
+
+
+  <div class="footer-1">
+    <h1>footer 1</h1>
+    <p>line 1</p>
+    <p>line 2</p>
+    <p>line 3</p>
+    <p>line 4</p>
+  </div>
+
+</body>
+
+</html>
