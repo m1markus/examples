@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ "$1" == "" ]; then
-    PORT=8080
+    PORT=9000
 else
     PORT="$1"
 fi
