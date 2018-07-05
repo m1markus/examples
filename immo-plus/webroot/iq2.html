@@ -13,14 +13,47 @@
 
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
+    <!--
+        font-family: 'Fira Sans', sans-serif;
+
+        color: #5688b3    rgb(86,136,179)
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans">
+    -->
     <style>
+        @font-face {
+            font-family: 'myFSThin';
+            src: url('FiraSans-Thin.ttf');
+        }
+
+        @font-face {
+            font-family: 'myFSThin2';
+            src: url('FiraSans-Light.ttf');
+        }
+
+        @font-face {
+            font-family: 'myFSThin3';
+            src: url('FiraSans-ExtraLight.ttf');
+        }
+
+        @font-face {
+            font-family: 'myFSThin4';
+            src: url('FiraSans-Regular.ttf');
+        }
+
+
+        @font-face {
+            font-family: 'mylcd';
+            src: url('LCDPHONE.TTF');
+        }
 
         /*
         https://www.w3schools.com/w3css/w3css_color_generator.asp
 
         w3-hover-text-theme
-        
+
         */
+
         .w3-theme-l5 {
             color: #000 !important;
             background-color: #fdfcfb !important
@@ -105,7 +138,7 @@
         }
 
         .w3-hover-text-theme:hover {
-            color: #dfcfbe !important
+            color: #5688b3 !important
         }
 
         .w3-hover-border-theme:hover {
@@ -142,6 +175,39 @@
 
         .footer p {
             color: white;
+            /*
+            font-family: 'Fira Sans', sans-serif;
+            */
+            font-family: 'myFSThin';
+        }
+
+        .my-paragraph p {
+            font-family: 'myFSThin2';
+        }
+
+        #lcd {
+            color: black;
+            font-family: 'mylcd';
+        }
+
+        #fs1 {
+            color: black;
+            font-family: 'myFSThin';
+        }
+
+        #fs2 {
+            color: black;
+            font-family: 'myFSThin2';
+        }
+
+        #fs3 {
+            color: black;
+            font-family: 'myFSThin3';
+        }
+
+        #fs4 {
+            color: black;
+            font-family: 'myFSThin4';
         }
     </style>
 
@@ -288,7 +354,7 @@
         <p>My über mich</p>
     </div>
 
-    <div id="idContact" class="w3-container w3-gray">
+    <div id="idContact" class="w3-container w3-gray my-paragraph">
         <p>My Kontakt</p>
         <p>My Kontakt</p>
         <p>My Kontakt</p>
@@ -320,7 +386,27 @@
     </div>
 
     <div class="w3-container w3-gray footer">
-        <p>© 2018 Immo Quick GmbH - Alle Rechte vorbehalten.</p>
+        <p>Copyright © 2018 Immo Quick GmbH - Alle Rechte vorbehalten.</p>
+        <p>designed by m1m.ch</p>
+    </div>
+
+    <div id="fs1" class="footer3">
+        <p>Copyright © 2018 Immo Quick GmbH - Alle Rechte vorbehalten.</p>
+        <p>designed by m1m.ch</p>
+    </div>
+
+    <div id="fs2" class="footer3">
+        <p>Copyright © 2018 Immo Quick GmbH - Alle Rechte vorbehalten.</p>
+        <p>designed by m1m.ch</p>
+    </div>
+
+    <div id="fs3" class="footer3">
+        <p>Copyright © 2018 Immo Quick GmbH - Alle Rechte vorbehalten.</p>
+        <p>designed by m1m.ch</p>
+    </div>
+
+    <div id="fs4" class="footer3">
+        <p>Copyright © 2018 Immo Quick GmbH - Alle Rechte vorbehalten.</p>
         <p>designed by m1m.ch</p>
     </div>
 
