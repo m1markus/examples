@@ -17,7 +17,7 @@ public class WebServerTest {
         suite.test("simple_equal_check-value-1", context -> {
             String s = "value-1";
             context.assertEquals("value-1", s);
-        });8<<
+        });
         suite.test("simple_equal_check-value-2", context -> {
             String s = "value-2";
             context.assertEquals("value-2", s, "don't know why it has failed");
