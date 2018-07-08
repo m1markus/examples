@@ -3,34 +3,30 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="keywords" content="Immobilen Verwaltung Immobilienverwaltung Dienstleistung">
-    <meta name="description" content="Dienstleistungen für Immobilienverwaltungen">
+    <meta name="keywords" content="Immobilen Verwaltung Immobilienverwaltung Dienstleistung Basel Binningen">
+    <meta name="description" content="Dienstleistungen für Immobilienverwaltungen im Raum Basel / Binningen">
     <meta name="author" content="Markus Müller">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Immo Quick</title>
 
+    <!--
+        can be designed on: https://favicon.io/
+    -->
+    <link rel="icon" type="image/png" href="favicon.png">
+
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
-    <!--
-        font-family: 'Fira Sans', sans-serif;
-
-        color: #5688b3    rgb(86,136,179)
-
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans">
-    -->
-
-    <link href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed" rel="stylesheet">
-    <!--
-        font-family: 'Fira Sans Extra Condensed', sans-serif;
-    -->
 
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans+Condensed" rel="stylesheet">
     <!--
         font-family: 'Fira Sans Condensed', sans-serif;
     -->
 
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed" rel="stylesheet">
+    <!--
+        font-family: 'Fira Sans Extra Condensed', sans-serif;
+    -->
 
     <style>
         @font-face {
@@ -59,104 +55,102 @@
             src: url('LCDPHONE.TTF');
         }
 
-        /*
-        https://www.w3schools.com/w3css/w3css_color_generator.asp
+        /*  company color takten from the PDF
+            color: #5186a8    rgb(81,134,168)
 
-        w3-hover-text-theme
-
+            https://www.w3schools.com/w3css/w3css_color_generator.asp
         */
 
         .w3-theme-l5 {
             color: #000 !important;
-            background-color: #fdfcfb !important
+            background-color: #f4f8fa !important
         }
 
         .w3-theme-l4 {
             color: #000 !important;
-            background-color: #f9f5f2 !important
+            background-color: #dce7ee !important
         }
 
-        .w3-theme-l3 {
+        .w3-theme-l3w3 {
             color: #000 !important;
-            background-color: #f2ece5 !important
+            background-color: #b9cfdd !important
         }
 
         .w3-theme-l2 {
             color: #000 !important;
-            background-color: #ece2d8 !important
+            background-color: #96b7cc !important
         }
 
         .w3-theme-l1 {
-            color: #000 !important;
-            background-color: #e5d9cb !important
+            color: #fff !important;
+            background-color: #739fbb !important
         }
 
         .w3-theme-d1 {
-            color: #000 !important;
-            background-color: #d1bba2 !important
+            color: #fff !important;
+            background-color: #497a98 !important
         }
 
         .w3-theme-d2 {
-            color: #000 !important;
-            background-color: #c4a687 !important
+            color: #fff !important;
+            background-color: #416c87 !important
         }
 
         .w3-theme-d3 {
             color: #fff !important;
-            background-color: #b6926b !important
+            background-color: #395f76 !important
         }
 
         .w3-theme-d4 {
             color: #fff !important;
-            background-color: #a67d52 !important
+            background-color: #315165 !important
         }
 
         .w3-theme-d5 {
             color: #fff !important;
-            background-color: #8a6844 !important
+            background-color: #294454 !important
         }
 
         .w3-theme-light {
             color: #000 !important;
-            background-color: #fdfcfb !important
+            background-color: #f4f8fa !important
         }
 
         .w3-theme-dark {
             color: #fff !important;
-            background-color: #8a6844 !important
+            background-color: #294454 !important
         }
 
         .w3-theme-action {
             color: #fff !important;
-            background-color: #8a6844 !important
+            background-color: #294454 !important
         }
 
         .w3-theme {
-            color: #000 !important;
-            background-color: #dfcfbe !important
+            color: #fff !important;
+            background-color: #5186a8 !important
         }
 
         .w3-text-theme {
-            color: #dfcfbe !important
+            color: #5186a8 !important
         }
 
         .w3-border-theme {
-            border-color: #dfcfbe !important
+            border-color: #5186a8 !important
         }
 
         .w3-hover-theme:hover {
-            color: #000 !important;
-            background-color: #dfcfbe !important
+            color: #fff !important;
+            background-color: #5186a8 !important
         }
 
         .w3-hover-text-theme:hover {
-            color: #5688b3 !important
+            color: #5186a8 !important
         }
 
         .w3-hover-border-theme:hover {
-            border-color: #dfcfbe !important
+            border-color: #5186a8 !important
         }
-
 
         /* main content
          */
@@ -183,6 +177,11 @@
             background-image: url("img/immoQuickLogo.png");
             background-repeat: no-repeat;
             background-size: 100%;
+        }
+
+        .iq-vcard-image {
+            max-width: 350px;
+            height: auto;
         }
 
         .footer p {
@@ -254,8 +253,6 @@
         w3-bottombar 
 
         w3-border-white w3-bottombar
-
-
     -->
 
     <!--
@@ -317,34 +314,25 @@
     -->
 
 
-    <div id="idVCard" class="w3-container w3-yellow">
-        <div class="w3-display-container w3-red">
-            <div class="w3-display-middle">Middle</div>
-        </div>
-        <div class="w3-row-padding">
-
-            <div class="w3-col">
+    <div id="idVCard" class="w3-container w3-theme-l3w3">
+        <div class="w3-display-container" style="height: 300px;">
+            <div class="w3-display-middle">
+                <img class="iq-vcard-image" src="img/vcard_mrs_back.png" alt="vCard_back">
+            </div>
+            <div class="w3-display-middle">
                 <a href="iq_sandra_mueller.vcard.vcf" class="w3-button w3-round w3-black">Download vCard 3.0</a>
-                <p class="hausschrift">Sandra Müller</p>
-                <p class="hausschrift-2">Sandra Müller</p>
-                <p class="hausschrift">Geschäftsführerin</p>
-                <p class="hausschrift">title</p>
+            </div>
+        </div>
+
+        <div class="w3-display-container" style="height:300px;">
+            <div class="w3-display-middle">
+                <img class="iq-vcard-image" src="img/vcard_mrs_front.png" alt="vCard_front">
             </div>
         </div>
     </div>
 
     <div class="w3-container">
-        <div class="w3-display-container w3-green" style="height:50px;">
-            <div class="w3-display-topleft">Top Left</div>
-            <div class="w3-display-topright">Top Right</div>
-            <div class="w3-display-bottomleft">Bottom Left</div>
-            <div class="w3-display-bottomright">Bottom Right</div>
-            <div class="w3-display-left">Left</div>
-            <div class="w3-display-right">Right</div>
-            <div class="w3-display-middle">Middle</div>
-            <div class="w3-display-topmiddle w3-hide-small">Top Middle</div>
-            <div class="w3-display-bottommiddle w3-hide-small">Bottom Middle</div>
-        </div>
+
     </div>
 
 
@@ -438,7 +426,7 @@
     </div>
 
     <div class="w3-container w3-gray footer">
-        <p>Copyright © 2018 Immo Quick GmbH - Alle Rechte vorbehalten.</p>
+        <p>Copyright 2018 © Immo Quick GmbH - Alle Rechte vorbehalten.</p>
         <p>designed by m1m.ch</p>
     </div>
 
