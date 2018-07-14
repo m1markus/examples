@@ -155,9 +155,9 @@
         /* main content
          */
 
-         body {
+        body {
             font-family: 'Fira Sans Condensed', sans-serif;
-         }
+        }
 
         #home {
             width: 100%;
@@ -241,6 +241,16 @@
             /* font-family: 'Fira Sans Extra Condensed', sans-serif; */
             toto: 'not-exists'
         }
+
+        .iq-main-content:before {
+            content: "";
+            display: block;
+            height: 50px;
+            margin: -0px 0 0;
+            /*
+            background-color: red;
+            */
+        }
     </style>
 
 
@@ -297,10 +307,12 @@
         </div>
     </div>
 
+
+    <!--
+
     <div id="home" class="w3-container" style="display: block">
     </div>
 
-    <!--
         <div class="w3-row-padding">
             <div class="w3-third">
                 <div class="w3-card w3-yellow">
@@ -326,9 +338,9 @@
         </div>
     -->
 
-<!-- w3-theme-l2 w3-theme-l3w3 
+    <!-- w3-theme-l2 w3-theme-l3w3 
 -->
-<!--
+    <!--
     <div id="idVCard" class="w3-container w3-theme-l2">
         <div class="w3-display-container" style="height: 300px;">
             <div class="w3-display-middle">
@@ -352,7 +364,7 @@
     </div>
 
 
-    <div id="idService" class="w3-container w3-gray">
+    <div id="idService" class="iq-main-content w3-container w3-gray">
         <p>My Dienstleisungen</p>
         <p>My Dienstleisungen</p>
         <p>My Dienstleisungen</p>
@@ -383,7 +395,7 @@
         <p>My Dienstleisungen</p>
     </div>
 
-    <div id="idAboutMe" class="w3-container w3-gray">
+    <div id="idAboutMe" class="iq-main-content w3-container w3-gray">
         <p>My über mich</p>
         <p>My über mich</p>
         <p>My über mich</p>
@@ -410,7 +422,7 @@
         <p>My über mich</p>
     </div>
 
-    <div id="idContact" class="w3-container w3-gray my-paragraph">
+    <div id="idContact" class="iq-main-content w3-container w3-gray my-paragraph">
         <p>My Kontakt</p>
         <p>My Kontakt</p>
         <p>My Kontakt</p>
