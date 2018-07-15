@@ -159,8 +159,17 @@
             font-family: 'Fira Sans Condensed', sans-serif;
         }
 
+        /*
+        https://cssgradient.io/
+        from: #294454
+        to:   #5186a8
+        */
         #home {
+            /*
             background-color: #5186a8
+            */
+            background: rgb(41,68,84);
+            background: linear-gradient(90deg, rgba(41,68,84,1) 0%, rgba(81,134,168,1) 65%);
         }
 
         .iq-slogan {
@@ -168,12 +177,17 @@
         }
 
         #iq-slogan-div {
+            /*
             background-color: red;
+            background: rgb(41,68,84);
+            */    
             margin-top: 110px;
             margin-left: 40px;
+            /*
             border-style: solid;
             border-width: 5px 5px 5px 5px;
             border-color: yellow;
+            */
             padding: 20px;
         }
 
@@ -195,9 +209,7 @@
         #logo {
             width: 200px;
             height: 55px;
-
             background-color: rgb(27, 94, 133);
-
             background-image: url("img/immoQuickLogo.png");
             background-repeat: no-repeat;
             background-size: 100%;
@@ -303,31 +315,31 @@
     -->
     <div class="w3-top">
 
-            <div class="w3-bar w3-white ">
-    
-                <!--            -->
-                <div id="logo" class="w3-bar-item">
-                </div>
-    
-                <a href="#idContact" class="w3-padding-16 w3-hover-text-theme w3-hover-none w3-right w3-bar-item w3-button w3-hide-small">Kontakt</a>
-                <a href="#idAboutMe" class="w3-padding-16 w3-hover-text-theme w3-hover-none w3-right w3-bar-item w3-button w3-hide-small">über mich</a>
-                <a href="#idService" class="w3-padding-16 w3-hover-text-theme w3-hover-none w3-right w3-bar-item w3-button w3-hide-small">Dienstleisungen</a>
-                <a href="#home" class="w3-padding-16 w3-hover-text-theme w3-hover-none w3-right w3-bar-item w3-button w3-hide-small">Home</a>
-                <!-- burger button -->
-                <a href="javascript:void(0)" class="w3-hover-text-theme w3-hover-none w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium"
-                    onclick="iqMenuMobileShowHide()">&#9776;</a>
+        <div class="w3-bar w3-white ">
+
+            <!--            -->
+            <div id="logo" class="w3-bar-item">
             </div>
-    
-            <!-- mobile menu
+
+            <a href="#idContact" class="w3-padding-16 w3-hover-text-theme w3-hover-none w3-right w3-bar-item w3-button w3-hide-small">Kontakt</a>
+            <a href="#idAboutMe" class="w3-padding-16 w3-hover-text-theme w3-hover-none w3-right w3-bar-item w3-button w3-hide-small">über mich</a>
+            <a href="#idService" class="w3-padding-16 w3-hover-text-theme w3-hover-none w3-right w3-bar-item w3-button w3-hide-small">Dienstleisungen</a>
+            <a href="#home" class="w3-padding-16 w3-hover-text-theme w3-hover-none w3-right w3-bar-item w3-button w3-hide-small">Home</a>
+            <!-- burger button -->
+            <a href="javascript:void(0)" class="w3-hover-text-theme w3-hover-none w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium"
+                onclick="iqMenuMobileShowHide()">&#9776;</a>
+        </div>
+
+        <!-- mobile menu
             <div id="iqMobileMenu" class="w3-bar-block w3-theme-l3w3 w3-hide w3-hide-large w3-hide-medium">
             -->
-            <div id="iqMobileMenu" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
-                <a href="#home" class="w3-bar-item w3-button">Home</a>
-                <a href="#idService" class="w3-bar-item w3-button">Dienstleisungen</a>
-                <a href="#idAboutMe" class="w3-bar-item w3-button">über mich</a>
-                <a href="#idContact" class="w3-bar-item w3-button">Kontakt</a>
-            </div>
+        <div id="iqMobileMenu" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
+            <a href="#home" class="w3-bar-item w3-button">Home</a>
+            <a href="#idService" class="w3-bar-item w3-button">Dienstleisungen</a>
+            <a href="#idAboutMe" class="w3-bar-item w3-button">über mich</a>
+            <a href="#idContact" class="w3-bar-item w3-button">Kontakt</a>
         </div>
+    </div>
 
     <!--
 
@@ -402,16 +414,45 @@
     -->
     <div id="home" class="w3-row iq-main-content">
         <div class="w3-col w3-right w3-container" style="width:400px; height: 400px;">
-            <p><span style="display:block; height: 25px;"></span></p>
+            <p>
+                <span style="display:block; height: 25px;"></span>
+            </p>
             <img class="iq-picto-house-image" src="img/piktogrammehaus.png" alt="Logo_Haus">
         </div>
         <div class="iq-slogan w3-rest w3-container">
             <div id="iq-slogan-div">
-                <h1>Mein Einsatz für Ihr Unternehmen</h1>
+                <h1 style="font-size:4vw;">Mein Einsatz für Ihr Unternehmen</h1>
             </div>
         </div>
     </div>
 
+
+    <div id="idService" class="iq-main-content w3-row-padding">
+        <div class="w3-third">
+            <div class="w3-card w3-yellow">
+                <p>w3-card eins</p>
+                <p>w3-card eins</p>
+                <p>w3-card eins</p>
+                <p>w3-card eins</p>
+                <p>w3-card eins</p>
+                <p>w3-card eins</p>
+                <p>w3-card eins</p>
+            </div>
+        </div>
+        <div class="w3-third">
+            <div class="w3-card w3-white">
+                <p>w3-card zwei</p>
+            </div>
+        </div>
+        <div class="w3-third">
+            <div class="w3-card w3-yellow">
+                <p>w3-card drei</p>
+            </div>
+        </div>
+    </div>
+
+
+    <!--
     <div id="idService" class="iq-main-content w3-container w3-gray">
         <p>1 My Dienstleisungen</p>
         <p>2 My Dienstleisungen</p>
@@ -442,6 +483,7 @@
         <p>My Dienstleisungen</p>
         <p>My Dienstleisungen</p>
     </div>
+    -->
 
     <div id="idAboutMe" class="iq-main-content w3-container w3-gray">
         <p>1 My über mich</p>
