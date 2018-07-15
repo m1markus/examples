@@ -159,17 +159,39 @@
             font-family: 'Fira Sans Condensed', sans-serif;
         }
 
+        /*
         #home {
             width: 100%;
             height: 730px;
-            /*
-            background-image: url("img/immo_quick_rasen_haus_original.jpg");
-            */
+            
+            //background-image: url("img/immo_quick_rasen_haus_original.jpg");
+            
             background-image: url("img/immo_house_blue.jpg");
 
-            /*background-image: url("img/immoQuickLogo.png");*/
+            //background-image: url("img/immoQuickLogo.png");
             background-repeat: no-repeat;
             background-size: 100%;
+        }
+*/
+
+        #home {
+            height: 500px;
+            background-color: #5186a8
+        }
+
+        .iq-picto-house-image-container {
+            position: relative;
+            overflow:auto;
+            height: 300px;
+            width: 300px;
+            top: 120px;
+         /*     left: 300px;   adjust left XXXpx value according the windows width */
+        }
+
+        .iq-picto-house-image {
+            width: 300px;
+            height: 300px;
+            float: left;
         }
 
         #logo {
@@ -298,15 +320,16 @@
                 onclick="iqMenuMobileShowHide()">&#9776;</a>
         </div>
 
-        <!-- mobile menu -->
+        <!-- mobile menu
         <div id="iqMobileMenu" class="w3-bar-block w3-theme-l3w3 w3-hide w3-hide-large w3-hide-medium">
+             -->
+        <div id="iqMobileMenu" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
             <a href="#home" class="w3-bar-item w3-button">Home</a>
             <a href="#idService" class="w3-bar-item w3-button">Dienstleisungen</a>
             <a href="#idAboutMe" class="w3-bar-item w3-button">über mich</a>
             <a href="#idContact" class="w3-bar-item w3-button">Kontakt</a>
         </div>
     </div>
-
 
     <!--
 
@@ -357,12 +380,22 @@
             </div>
         </div>
     </div>
--->
 
     <div class="w3-container">
-
     </div>
 
+    <div id="home" class="iq-main-content w3-container" style="display: block">
+        <img class="iq-picto-house-image" src="img/piktogrammehaus.png" alt="Logo_Haus">
+    </div>
+    -->
+
+    <div id="home" class="w3-container">
+        <div class="iq-picto-house-image-container w3-display-container">
+            <div class="w3-display-middle">
+                <img class="iq-picto-house-image" src="img/piktogrammehaus.png" alt="Logo_Haus">
+            </div>
+        </div>
+    </div>
 
     <div id="idService" class="iq-main-content w3-container w3-gray">
         <p>My Dienstleisungen</p>
@@ -454,7 +487,7 @@
     </div>
 
     <div class="w3-container w3-gray footer">
-        <p>Copyright 2018 © Immo Quick GmbH - Alle Rechte vorbehalten.</p>
+        <p>Copyright 2018 © Immo Quick GmbH - Alle Rechte vorbehalten</p>
         <p>designed by m1m.ch</p>
     </div>
 
