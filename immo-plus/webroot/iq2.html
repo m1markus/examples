@@ -49,114 +49,125 @@
             src: url('FiraSans-Regular.ttf');
         }
 
-
         @font-face {
             font-family: 'mylcd';
             src: url('LCDPHONE.TTF');
         }
 
-        /*  company color takten from the PDF
+        /*  official from thomas g.
+            company color takten from the PDF
             color: #5186a8    rgb(81,134,168)
+
+            taken from within gimp from the vcard
+            color: #517d99
 
             https://www.w3schools.com/w3css/w3css_color_generator.asp
         */
 
         .w3-theme-l5 {
             color: #000 !important;
-            background-color: #f4f8fa !important
+            background-color: #f4f7f9 !important
         }
 
         .w3-theme-l4 {
             color: #000 !important;
-            background-color: #dce7ee !important
+            background-color: #dbe5ec !important
         }
 
-        .w3-theme-l3w3 {
+        .w3-theme-l3 {
             color: #000 !important;
-            background-color: #b9cfdd !important
+            background-color: #b7ccd9 !important
         }
 
         .w3-theme-l2 {
             color: #000 !important;
-            background-color: #96b7cc !important
+            background-color: #93b2c6 !important
         }
 
         .w3-theme-l1 {
             color: #fff !important;
-            background-color: #739fbb !important
+            background-color: #6f99b3 !important
         }
 
         .w3-theme-d1 {
             color: #fff !important;
-            background-color: #497a98 !important
+            background-color: #49718a !important
         }
 
         .w3-theme-d2 {
             color: #fff !important;
-            background-color: #416c87 !important
+            background-color: #41657b !important
         }
 
         .w3-theme-d3 {
             color: #fff !important;
-            background-color: #395f76 !important
+            background-color: #39586c !important
         }
 
         .w3-theme-d4 {
             color: #fff !important;
-            background-color: #315165 !important
+            background-color: #314b5c !important
         }
 
         .w3-theme-d5 {
             color: #fff !important;
-            background-color: #294454 !important
+            background-color: #283f4d !important
         }
 
         .w3-theme-light {
             color: #000 !important;
-            background-color: #f4f8fa !important
+            background-color: #f4f7f9 !important
         }
 
         .w3-theme-dark {
             color: #fff !important;
-            background-color: #294454 !important
+            background-color: #283f4d !important
         }
 
         .w3-theme-action {
             color: #fff !important;
-            background-color: #294454 !important
+            background-color: #283f4d !important
         }
 
         .w3-theme {
             color: #fff !important;
-            background-color: #5186a8 !important
+            background-color: #517d99 !important
         }
 
         .w3-text-theme {
-            color: #5186a8 !important
+            color: #517d99 !important
         }
 
         .w3-border-theme {
-            border-color: #5186a8 !important
+            border-color: #517d99 !important
         }
 
         .w3-hover-theme:hover {
             color: #fff !important;
-            background-color: #5186a8 !important
+            background-color: #517d99 !important
         }
 
         .w3-hover-text-theme:hover {
-            color: #5186a8 !important
+            color: #517d99 !important
         }
 
         .w3-hover-border-theme:hover {
-            border-color: #5186a8 !important
+            border-color: #517d99 !important
         }
 
         /* main content
          */
 
         body {
+            /*
             font-family: 'Fira Sans Condensed', sans-serif;
+            font-family: 'Fira Sans Extra Condensed', sans-serif;
+            */
+            font-family: 'myFSThin2';
+        }
+
+        .iq-font {
+            font-family: 'myFSThin2';
         }
 
         /*
@@ -164,12 +175,18 @@
         from: #294454
         to:   #5186a8
         */
+
         #home {
             /*
             background-color: #5186a8
             */
-            background: rgb(41,68,84);
-            background: linear-gradient(90deg, rgba(41,68,84,1) 0%, rgba(81,134,168,1) 65%);
+            background: rgb(40,63,77);
+            background: linear-gradient(90deg, rgba(40,63,77,1) 0%, rgba(81,125,153,1) 81%);
+        }
+
+        .iq-slogan-gradient {
+            background: rgb(40,63,77);
+            background: linear-gradient(90deg, rgba(40,63,77,1) 0%, rgba(81,125,153,1) 81%);
         }
 
         .iq-slogan {
@@ -180,7 +197,7 @@
             /*
             background-color: red;
             background: rgb(41,68,84);
-            */    
+            */
             margin-top: 110px;
             margin-left: 40px;
             /*
@@ -200,6 +217,39 @@
             top: 120px;
             left: 300px;   adjust left XXXpx value according the windows width 
         }*/
+
+        #iq-service-1 {
+            border-style: solid;
+            border-width: 40px;
+            border-color: white;
+            /*
+            border-color: red;
+            */
+        }
+
+        #iq-service-2 {
+            border-style: solid;
+            border-width: 40px;
+            border-color: white;
+            /*
+            border-color: green;
+            */
+        }
+
+        #iq-service-3 {
+            border-style: solid;
+            border-width: 40px;
+            border-color: white;
+            /*
+            border-color: blue;
+            */
+        }
+
+        .iq-border-color-debug {
+            border-style: solid;
+            border-width: 5px 5px 5px 5px;
+            border-color: yellow;
+        }
 
         .iq-picto-house-image {
             width: 300px;
@@ -257,14 +307,6 @@
             font-family: 'myFSThin4';
         }
 
-        .hausschrift {
-            font-family: 'Fira Sans Extra Condensed', sans-serif;
-        }
-
-        .hausschrift-2 {
-            font-family: 'Fira Sans Condensed', sans-serif;
-        }
-
         #idService {
             font-family: 'Fira Sans Condensed', sans-serif;
         }
@@ -285,8 +327,18 @@
         }
     </style>
 
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+        crossorigin="anonymous"></script>
 
     <script>
+        $(document).ready(function () {
+            //alert('dom ready');
+            onBrowserResize();
+            debugger;
+
+            window.addEventListener("resize", onBrowserResize);
+        });
+
         function iqMenuMobileShowHide() {
             var x = document.getElementById("iqMobileMenu");
             if (x.className.indexOf("w3-show") == -1) {
@@ -294,6 +346,25 @@
             } else {
                 x.className = x.className.replace(" w3-show", "");
             }
+        }
+
+        function fmy1() {
+            alert('something has triggered this dialog');
+            return true;
+        }
+
+        function onBrowserResize() {
+            var width = window.innerWidth
+                || document.documentElement.clientWidth
+                || document.body.clientWidth;
+
+            var height = window.innerHeight
+                || document.documentElement.clientHeight
+                || document.body.clientHeight;
+
+            var screenDimension = "x:" + width + " y:" + height;
+
+            objDisplaySize = $("#display-size").text(screenDimension);
         }
     </script>
 
@@ -306,7 +377,6 @@
         w3-bar
         w3-red
         w3-bottombar 
-
         w3-border-white w3-bottombar
     -->
 
@@ -317,7 +387,8 @@
 
         <div class="w3-bar w3-white ">
 
-            <!--            -->
+            <!-- desktop menu
+            -->
             <div id="logo" class="w3-bar-item">
             </div>
 
@@ -346,71 +417,13 @@
     <div id="home" class="w3-container" style="display: block">
     </div>
 
-        <div class="w3-row-padding">
-            <div class="w3-third">
-                <div class="w3-card w3-yellow">
-                    <p>w3-card eins</p>
-                    <p>w3-card eins</p>
-                    <p>w3-card eins</p>
-                    <p>w3-card eins</p>
-                    <p>w3-card eins</p>
-                    <p>w3-card eins</p>
-                    <p>w3-card eins</p>
-                </div>
-            </div>
-            <div class="w3-third">
-                <div class="w3-card w3-white">
-                    <p>w3-card zwei</p>
-                </div>
-            </div>
-            <div class="w3-third">
-                <div class="w3-card w3-yellow">
-                    <p>w3-card drei</p>
-                </div>
-            </div>
-        </div>
-    -->
-
-    <!-- w3-theme-l2 w3-theme-l3w3 
--->
-    <!--
-    <div id="idVCard" class="w3-container w3-theme-l2">
-        <div class="w3-display-container" style="height: 300px;">
-            <div class="w3-display-middle">
-                <img class="iq-vcard-image" src="img/vcard_mrs_back.png" alt="vCard_back">
-            </div>
-            <div class="w3-display-middle">
-                <a href="iq_sandra_mueller.vcard.vcf" class="w3-button w3-round w3-black">Download vCard 3.0</a>
-            </div>
-        </div>
-
-        <div class="w3-display-container" style="height:300px;">
-            <div class="w3-display-middle">
-                <img class="iq-vcard-image" src="img/vcard_mrs_front.png" alt="vCard_front">
-            </div>
-        </div>
-    </div>
-
-    <div class="w3-container">
-    </div>
-
-    <div id="home" class="iq-main-content w3-container" style="display: block">
-        <img class="iq-picto-house-image" src="img/piktogrammehaus.png" alt="Logo_Haus">
-    </div>
-
-
-    <div id="home" class="w3-container">
-        <div class="iq-picto-house-image-container w3-display-container">
-            <div class="w3-display-middle">
-                <img class="iq-picto-house-image" src="img/piktogrammehaus.png" alt="Logo_Haus">
-            </div>
-        </div>
-    </div>
-
     -->
 
     <!--
         https://www.w3schools.com/w3css/w3css_grid.asp
+        https://www.w3schools.com/w3css/w3css_responsive.asp
+
+        background-color:rgba(0, 0, 0, 0.5);
     -->
     <div id="home" class="w3-row iq-main-content">
         <div class="w3-col w3-right w3-container" style="width:400px; height: 400px;">
@@ -421,34 +434,81 @@
         </div>
         <div class="iq-slogan w3-rest w3-container">
             <div id="iq-slogan-div">
-                <h1 style="font-size:4vw;">Mein Einsatz für Ihr Unternehmen</h1>
+                <h1 style="font-size:4vw;">"Mein Einsatz für Ihr Unternehmen"</h1>
             </div>
         </div>
     </div>
 
 
-    <div id="idService" class="iq-main-content w3-row-padding">
-        <div class="w3-third">
-            <div class="w3-card w3-yellow">
-                <p>w3-card eins</p>
-                <p>w3-card eins</p>
-                <p>w3-card eins</p>
-                <p>w3-card eins</p>
-                <p>w3-card eins</p>
-                <p>w3-card eins</p>
-                <p>w3-card eins</p>
+    <div class="w3-row iq-border-color-debug iq-slogan-gradient">
+        <div class="w3-col w3-display-container s12 m8  iq-border-color-debug w3-center">
+            <div id="iq-slogan iq-slogan-div w3-display-middle">
+                <h1 style="font-size:4vw;">Mein Einsatz für Ihr Unternehmen</h1>
             </div>
         </div>
-        <div class="w3-third">
-            <div class="w3-card w3-white">
-                <p>w3-card zwei</p>
+        <div class="w3-col w3-container s12 m4  iq-border-color-debug w3-center">
+            <img class="iq-picto-house-image" src="img/piktogrammehaus.png" alt="Logo_Haus">
+        </div>
+    </div>
+
+
+    <div id="pane-1" class="w3-container w3-gray">
+        <h2 id="display-size">pane 1</h2>
+    </div>
+
+
+    <div id="idService" class="iq-main-content w3-row">
+        <div class="w3-col m6 l4">
+            <div id="iq-service-1">
+                <div class="w3-card w3-gray">
+                    <img class="iq-picto-house-image" src="img/piktogrammehaus.png" alt="Logo_Haus">
+                    <div class="w3-container w3-white iq-font">
+                        <p>w3-card eins: es ist unglaublich dass dieser text für nix ist und nur dazu dient den platz zu verschwenden
+                            um zu sehen wie umbrüche dargestellt werden oder ob daraus etwa ein schöner blocksatz wird oder
+                            sonst was was ich mir zu diesem zeitpunkt noch gar nicht vostellen kann.
+                        </p>
+                        <p>w3-card eins</p>
+                        <p>w3-card eins</p>
+                        <p>w3-card eins</p>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="w3-third">
-            <div class="w3-card w3-yellow">
-                <p>w3-card drei</p>
+
+        <div class="w3-col m6 l4">
+            <div id="iq-service-2">
+                <div class="w3-card w3-gray">
+                    <img class="iq-picto-house-image" src="img/piktogrammehaus.png" alt="Logo_Haus">
+                    <div class="w3-container w3-white iq-font">
+                        <p>w3-card zwei: es ist unglaublich dass dieser text für nix ist und nur dazu dient den platz zu verschwenden
+                            um zu sehen wie umbrüche dargestellt werden oder ob daraus etwa ein schöner blocksatz wird oder
+                            sonst was was ich mir zu diesem zeitpunkt noch gar nicht vostellen kann.
+                        </p>
+                        <p>w3-card zwei</p>
+                        <p>w3-card zwei</p>
+                        <p>w3-card zwei</p>
+                    </div>
+                </div>
             </div>
         </div>
+
+        <div class="w3-col m6 l4">
+            <div id="iq-service-3">
+                <div class="w3-card w3-gray">
+                    <img class="iq-picto-house-image" src="img/piktogrammehaus.png" alt="Logo_Haus">
+                    <div class="w3-container w3-white iq-font">
+                        <p>w3-card drei: es ist unglaublich dass dieser text für nix ist und nur dazu dient den platz zu verschwenden
+                            um zu sehen wie umbrüche dargestellt werden oder ob daraus etwa ein schöner blocksatz wird oder
+                            sonst was was ich mir zu diesem zeitpunkt noch gar nicht vostellen kann.
+                        </p>
+                        <p>w3-card drei</p>
+                        <p>w3-card drei</p>
+                        <p>w3-card drei</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
 
