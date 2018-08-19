@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="keywords" content="Immobilen Verwaltung Freelancer Immobilienverwaltung Dienstleistung Basel Binningen">
-    <meta name="description" content="Dienstleistungen für Immobilienverwaltungen im Raum Basel / Binningen">
+    <meta name="keywords" content="Immobilen Verwaltung Freelancer Immobilienverwaltung Dienstleistung Basel Baselland Binningen">
+    <meta name="description" content="Dienstleistungen für Immobilienverwaltungen im Raum Basel und Baselland">
     <meta name="author" content="Markus Müller">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -183,12 +183,12 @@
             background-color: #5186a8
             */
             background: rgb(40, 63, 77);
-            background: linear-gradient(90deg, rgba(40, 63, 77, 1) 0%, rgba(81, 125, 153, 1) 81%);
+            background: linear-gradient(90deg, rgba(81, 125, 153, 1) 0%, rgba(40, 63, 77, 1) 90%);
         }
 
         .iq-slogan-gradient {
             background: rgb(40, 63, 77);
-            background: linear-gradient(90deg, rgba(40, 63, 77, 1) 0%, rgba(81, 125, 153, 1) 81%);
+            background: linear-gradient(90deg, rgba(81, 125, 153, 1) 0%, rgba(40, 63, 77, 1) 90%);
         }
 
         .iq-slogan {
@@ -249,7 +249,12 @@
         }
 
         .iq-image-mrs-profil {
-            width: 450px;
+
+            height: 200px;
+
+            /*
+            width: 300px;
+            */
         }
 
         #logo {
@@ -264,6 +269,27 @@
         .iq-vcard-image {
             max-width: 350px;
             height: auto;
+        }
+
+        .iq-main-picture {
+            background-image: url("img/hurry-1920x1278.jpg");
+            background-repeat: no-repeat;
+            opacity: 0.5;
+        }
+
+        .iq-main-text {
+            color: red;
+            opacity: 1.0;
+        }
+
+        .mytext {
+            color: white;
+            position: absolute;
+            top: 150px;
+            left: 150px;
+            text-align: right;
+            display: inline-block;
+            border: solid 1px green;
         }
 
         .footer p {
@@ -320,6 +346,10 @@
             /*
             background-color: red;
             */
+        }
+
+        path {
+            fill: white;
         }
     </style>
 
@@ -465,26 +495,36 @@
     „Mein Einsatz für Ihr Unternehmen“
     -->
 
+    <!--
     <div class="w3-row iq-slogan-gradient">
-        <!--
-        <div class="w3-col s12 m8 w3-center">
-            <div class="w3-display-container" style="height:350px;">
-                <div class="w3-display-middle">
-                    <div class="iq-slogan iq-slogan-div w3-display-middle w3-center">
-
-                    </div>
+        <div class="w3-col w3-container s12 w3-center">
+            <div class="iq-main-picture w3-display-container" style="height:550px;">
+                <div class="w3-display-middle ">
+                    <h1>this is my text in the title</h1>
                 </div>
             </div>
         </div>
-        -->
-        <div class="w3-col w3-container s12 w3-center">
-            <div class="w3-display-container" style="height:550px;">
-                <div class="w3-display-middle ">
-                    <img class="iq-picto-house-image" src="img/piktogrammehaus.png" alt="Logo_Haus">
-                </div>
+
+    </div>
+    -->
+
+    <!-- Header 
+    <header class="w3-display-container w3-content w3-wide" style="max-width:1500px;" id="home">
+        <img class="w3-image" src="/img/hurry-1920x1278.jpg" alt="Architecture" width="1500" height="800">
+        <div class="w3-display-middle w3-margin-top w3-center">
+          <h1 class="w3-xxlarge w3-text-white"><span class="w3-padding w3-black w3-opacity-min"><b>BR</b></span> <span class="w3-hide-small w3-text-light-grey">Architects</span></h1>
+        </div>
+    </header>
+    -->
+
+    <div class="w3-display-container iq-slogan-gradient">
+        <div class="iq-main-picture" style="height:550px;">
+            <div class="iq-main-text w3-display-middle">
+                <h1 style="font-size:72px;">«Mein Einsatz für Ihr Unternehmen 2»</h1>
             </div>
         </div>
     </div>
+
 
     <div class="w3-row">
         <div class="w3-col w3-container m12">
@@ -512,7 +552,7 @@
     <div id="idService" class="iq-main-content w3-row">
         <div class="w3-col m6 l4">
             <div id="iq-service-1">
-                <div class="w3-card w3-gray">
+                <div class="w3-card iq-slogan-gradient">
 
                     <div class="w3-display-container" style="height:200px;">
                         <div class="w3-display-middle">
@@ -538,7 +578,7 @@
 
         <div class="w3-col m6 l4">
             <div id="iq-service-2">
-                <div class="w3-card w3-gray">
+                <div class="w3-card iq-slogan-gradient">
 
                     <div class="w3-display-container" style="height:200px;">
                         <div class="w3-display-middle">
@@ -568,7 +608,7 @@
 
         <div class="w3-col m6 l4">
             <div id="iq-service-3">
-                <div class="w3-card w3-gray">
+                <div class="w3-card iq-slogan-gradient">
 
                     <div class="w3-display-container" style="height:200px;">
                         <div class="w3-display-middle">
@@ -629,65 +669,81 @@
     </div>
     -->
 
-    <div id="idAboutMe" class="iq-main-content w3-container w3-gray">
+    <div id="idAboutMe" class="iq-main-content w3-container w3-white">
 
-        <div class="w3-col s12 m6 l8">
-            <p>1 My über mich</p>
-            <p>2 My über mich</p>
-            <p>3 My über mich</p>
-            <p>My über mich</p>
-            <p>My über mich</p>
-            <p>My über mich</p>
-            <p>My über mich</p>
-            <p>My über mich</p>
-            <p>My über mich</p>
-            <p>My über mich</p>
-            <p>My über mich</p>
-            <p>My über mich</p>
-            <p>My über mich</p>
-            <p>My über mich</p>
-            <p>My über mich</p>
-            <p>My über mich</p>
-            <p>My über mich</p>
-            <p>My über mich</p>
-            <p>My über mich</p>
-            <p>My über mich</p>
-            <p>My über mich</p>
-            <p>My über mich</p>
-            <p>My über mich</p>
-            <p>My über mich</p>
+        <div class="w3-col m2">
+            <p>
+            </p>
         </div>
 
-        <div class="w3-col s12 m6 l4">
-                <img class="iq-image-mrs-profil" src="img/photo_mrs_profil.jpg" alt="mrs_profil">          
+        <div class="w3-col s12 m4">
+
+
+            <h3>
+                Brauchen Sie mehr Zeit?
+            </h3>
+            <p>
+                Die Immo Quick GmbH wurde im 2018 gegründet mit der Mission, Ihnen unbürokratisch und einfach mehr Zeit zu verschaffen. Da
+                Sie sich nun einen Augenblick Ihrer kostbaren Zeit nehmen um diese Zeilen zu lesen, fasse ich mich also kurz.
+            </p>
+
+            <h3>
+                Zu meiner Person
+            </h3>
+            <p>
+                Mein Name ist Sandra Müller, Immobilienbewirtschafterin mit eidg. Fachausweis aus Leidenschaft,
+                geboren in Basel und seit Jahren begeisterte Jogaschülerin. Ich kenne also nicht nur ein Haus sondern auch den Baum. 
+            </p>
+            <p>
+                Die letzten 20 Jahre durfte ich für renommierte Firmen in der Schweiz 
+                gemischte Liegenschaftsportfolios erfolgreich bewirtschaften. 
+                Gerne lege ich Ihnen meine Referenzen bei einer Tasse Kaffee offen. 
+                Während der Zeit als angestellte Immobilienbewirtschafterin gab es in 
+                den Unternehmen immer wieder Vakanzen unterschiedlichster Art und nach 
+                meiner Ansicht nach zu wenige frei verfügbare Fachpersonen, 
+                mit einem umfassenden Erfahrungsschatz, welche unterstützend einspringen konnten. 
+                Dies möchte ich ändern und Ihr Unternehmen bei Engpässen gerne tatkräftig unterstützen. 
+            </p>
+
+            <h3>
+                Ihr Mehrwert 
+            </h3>
+            <p>
+                Sie können zwischen verschiedenen Tätigkeitsangeboten wählen, 
+                was Ihnen und/oder Ihren Angestellten den Gewinn von einzelnen 
+                freien Stunden bis zu Tagen oder gar Wochen bringt. 
+                Sie erhalten nicht nur eine Kapazität mehr sondern ich schenke Ihnen 
+                zusätzlich noch eine kostenlose Arbeitszeit. 
+                Wie das geht, erfahren Sie beim ersten Kennenlernen. 
+            </p>
+
+            <p>
+                Buchen Sie noch heute einen Gesprächstermin. Ich freue mich, Sie bald kennen lernen zu dürfen.
+            </p>
+
+            <p>
+                Herzlichst Ihre
+            </p>
+
+            <p>
+                Sandra Müller 
+            </p>
+        </div>
+
+        <div class="w3-col m1">
+            <p>
+            </p>
+        </div>
+
+        <div class="w3-col s12 m5">
+            <img class="iq-image-mrs-profil" src="img/photo_mrs_profil.jpg" alt="mrs_profil">
         </div>
     </div>
 
-    <div id="idContact" class="iq-main-content w3-container w3-gray my-paragraph">
+    <div id="idContact" class="iq-main-content w3-container w3-white my-paragraph">
         <p>1 My Kontakt</p>
         <p>2 My Kontakt</p>
         <p>3 My Kontakt</p>
-        <p>My Kontakt</p>
-        <p>My Kontakt</p>
-        <p>My Kontakt</p>
-        <p>My Kontakt</p>
-        <p>My Kontakt</p>
-        <p>My Kontakt</p>
-        <p>My Kontakt</p>
-        <p>My Kontakt</p>
-        <p>My Kontakt</p>
-        <p>My Kontakt</p>
-        <p>My Kontakt</p>
-        <p>My Kontakt</p>
-        <p>My Kontakt</p>
-        <p>My Kontakt</p>
-        <p>My Kontakt</p>
-        <p>My Kontakt</p>
-        <p>My Kontakt</p>
-        <p>My Kontakt</p>
-        <p>My Kontakt</p>
-        <p>My Kontakt</p>
-        <p>My Kontakt</p>
         <p>My Kontakt</p>
         <p>My Kontakt</p>
         <p>My Kontakt</p>
@@ -696,7 +752,6 @@
 
     <div class="w3-container w3-gray footer">
         <p>Copyright 2018 © Immo Quick GmbH</p>
-        <p>designed by m1m.ch</p>
     </div>
 
 </body>
@@ -704,6 +759,16 @@
 </html>
 
 <!--
+            <p>
+                Ich bin Sandra Müller und freie Immobilienbewirtschafterin in Basel.
+                
+                Als gelehrnte Speditionskauffrau ist Organisation einer meiner Stärken ebenso Zuverlässigkeit. 
+                Kurz vor der Jahrtausendwende trat ich in die Immobilienwelt ein. 
+                Als Sachbearbeiterin und nach bestandenem Fachausweis als Bewirtschafterin war ich 10 Jahre 
+                im Raum Argau und Zürich tätig.
+                Zurück in Basel durfte ich die letzten 8 Jahre ein tolles Wohn-/Gewerbeportfolio bewirtschaften.
+                Gefüllt mit diesem reichen Erfahrungsschatz habe ich im Jahr 2018 die Immo Quick GmbH gegründet.
+            </p>
 
 images from: https://pixabay.com/
 
