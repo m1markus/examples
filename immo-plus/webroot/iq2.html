@@ -250,7 +250,7 @@
 
         .iq-image-mrs-profil {
 
-            height: 200px;
+            height: 700px;
 
             /*
             width: 300px;
@@ -350,6 +350,14 @@
 
         path {
             fill: white;
+        }
+
+        @media only screen and (max-width: 992px) {
+
+            .iq-image-mrs-profil {
+                height: 500px;
+            }
+
         }
     </style>
 
@@ -667,17 +675,24 @@
         <p>My Dienstleisungen</p>
         <p>My Dienstleisungen</p>
     </div>
+
+    <div id="pane-1" class="w3-container w3-gray">
+            <h2 id="display-size">pane 1</h2>
+    </div>
     -->
 
     <div id="idAboutMe" class="iq-main-content w3-container w3-white">
 
-        <div class="w3-col m2">
+        <div class="w3-col w3-hide-medium w3-hide-large">
+            <img class="iq-image-mrs-profil" src="img/photo_mrs_profil.jpg" alt="mrs_profil">
+        </div>
+
+        <div class="w3-col m1">
             <p>
             </p>
         </div>
 
-        <div class="w3-col s12 m4">
-
+        <div class="w3-col s12 m5">
 
             <h3>
                 Brauchen Sie mehr Zeit?
@@ -735,7 +750,7 @@
             </p>
         </div>
 
-        <div class="w3-col s12 m5">
+        <div class="w3-col w3-hide-small m5">
             <img class="iq-image-mrs-profil" src="img/photo_mrs_profil.jpg" alt="mrs_profil">
         </div>
     </div>
@@ -759,17 +774,6 @@
 </html>
 
 <!--
-            <p>
-                Ich bin Sandra Müller und freie Immobilienbewirtschafterin in Basel.
-                
-                Als gelehrnte Speditionskauffrau ist Organisation einer meiner Stärken ebenso Zuverlässigkeit. 
-                Kurz vor der Jahrtausendwende trat ich in die Immobilienwelt ein. 
-                Als Sachbearbeiterin und nach bestandenem Fachausweis als Bewirtschafterin war ich 10 Jahre 
-                im Raum Argau und Zürich tätig.
-                Zurück in Basel durfte ich die letzten 8 Jahre ein tolles Wohn-/Gewerbeportfolio bewirtschaften.
-                Gefüllt mit diesem reichen Erfahrungsschatz habe ich im Jahr 2018 die Immo Quick GmbH gegründet.
-            </p>
-
 images from: https://pixabay.com/
 
 // block
