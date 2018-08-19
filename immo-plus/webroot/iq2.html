@@ -248,8 +248,8 @@
         }
 
         .iq-picto-house-image {
-            width: 450px;
-            height: 450px;
+            width: 200px;
+            height: 200px;
         }
 
         .iq-image-mrs-profil {
@@ -372,7 +372,7 @@
         $(document).ready(function () {
             //alert('dom ready');
             onBrowserResize();
-            debugger;
+            //debugger;
 
             window.addEventListener("resize", onBrowserResize);
         });
@@ -532,12 +532,13 @@
     <div class="w3-display-container iq-slogan-gradient">
         <div class="iq-main-picture" style="height:550px;">
             <div class="iq-main-text w3-display-middle">
-                <h1 style="font-size:72px;">«Mein Einsatz für Ihr Unternehmen 2»</h1>
+                <h1 style="font-size:72px;">«Mein Einsatz für Ihr Unternehmen 3»</h1>
             </div>
         </div>
     </div>
 
 
+    <!--
     <div class="w3-row">
         <div class="w3-col w3-container m12">
             <div class="iq-slogan iq-slogan-div w3-center" style="height:30px;">
@@ -547,7 +548,16 @@
             </div>
         </div>
     </div>
+    -->
 
+
+    <div id="idService" class="w3-row">
+        <div class="w3-col w3-container s12">
+            <div class="w3-center">
+                <h1><br>Dienstleistungen</h1>
+            </div>
+        </div>
+    </div>
 
     <!-- DEBUG size 
     <div id="pane-1" class="w3-container w3-gray">
@@ -558,10 +568,9 @@
     <!--
         icons in svg:
         https://iconmonstr.com/?s=key
-
     -->
 
-    <div id="idService" class="iq-main-content w3-row">
+    <div class="iq-main-content w3-row">
         <div class="w3-col m6 l4">
             <div id="iq-service-1">
                 <div class="w3-card iq-slogan-gradient">
@@ -639,8 +648,8 @@
                     </div>
 
                     <div class="w3-container w3-white iq-font">
-                            <h3>Extras</h3>
-                            <p>Fotografie Mietobjekte und Liegenschaften</p>
+                        <h3>Extras</h3>
+                        <p>Fotografie Mietobjekte und Liegenschaften</p>
                     </div>
                 </div>
             </div>
@@ -650,45 +659,22 @@
 
 
     <!--
-    <div id="idService" class="iq-main-content w3-container w3-gray">
-        <p>1 My Dienstleisungen</p>
-        <p>2 My Dienstleisungen</p>
-        <p>3 My Dienstleisungen</p>
-        <p>My Dienstleisungen</p>
-        <p>My Dienstleisungen</p>
-        <p>My Dienstleisungen</p>
-        <p>My Dienstleisungen</p>
-        <p>My Dienstleisungen</p>
-        <p>My Dienstleisungen</p>
-        <p>My Dienstleisungen</p>
-        <p>My Dienstleisungen</p>
-        <p>My Dienstleisungen</p>
-        <p>My Dienstleisungen</p>
-        <p>My Dienstleisungen</p>
-        <p>My Dienstleisungen</p>
-        <p>My Dienstleisungen</p>
-        <p>My Dienstleisungen</p>
-        <p>My Dienstleisungen</p>
-        <p>My Dienstleisungen</p>
-        <p>My Dienstleisungen</p>
-        <p>My Dienstleisungen</p>
-        <p>My Dienstleisungen</p>
-        <p>My Dienstleisungen</p>
-        <p>My Dienstleisungen</p>
-        <p>My Dienstleisungen</p>
-        <p>My Dienstleisungen</p>
-        <p>My Dienstleisungen</p>
-        <p>My Dienstleisungen</p>
-    </div>
-
     <div id="pane-1" class="w3-container w3-gray">
             <h2 id="display-size">pane 1</h2>
     </div>
     -->
 
-    <div id="idAboutMe" class="iq-main-content w3-container w3-white">
+    <div id="idAboutMe" class="w3-row">
+        <div class="w3-col w3-container s12">
+            <div class="w3-center">
+                <h1><br>über mich</h1>
+            </div>
+        </div>
+    </div>
 
-        <div class="w3-col w3-hide-medium w3-hide-large">
+    <div class="iq-main-content w3-container w3-white">
+
+        <div class="w3-col w3-hide-medium w3-hide-large w3-center">
             <img class="iq-image-mrs-profil" src="img/photo_mrs_profil.jpg" alt="mrs_profil">
         </div>
 
@@ -740,14 +726,6 @@
             <p>
                 Buchen Sie noch heute einen Gesprächstermin. Ich freue mich, Sie bald kennen lernen zu dürfen.
             </p>
-
-            <p>
-                Herzlichst Ihre
-            </p>
-
-            <p>
-                Sandra Müller 
-            </p>
         </div>
 
         <div class="w3-col m1">
@@ -760,14 +738,33 @@
         </div>
     </div>
 
-    <div id="idContact" class="iq-main-content w3-container w3-white my-paragraph">
-        <p>1 My Kontakt</p>
-        <p>2 My Kontakt</p>
-        <p>3 My Kontakt</p>
-        <p>My Kontakt</p>
-        <p>My Kontakt</p>
-        <p>My Kontakt</p>
-        <p>My Kontakt</p>
+
+    <div id="idContact" class="w3-row">
+        <div class="w3-col w3-container s12">
+            <div class="w3-center">
+                <h1><br>Kontakt</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="w3-row iq-main-content w3-container w3-white my-paragraph">
+        <div class="w3-col s12 m6 w3-center">
+            <p>
+                Immo Quick GmbH<br>
+                Blumenstrasse 15<br>
+                4102 Binningen
+            </p>
+            <p>Tel: <a href="tel:+41-61-402-02-12">+41 61 402 02 12</a></p>
+
+            <p>E-Mail: <a href="mailto:info@immo-quick.ch">info@immo-quick.ch</a></p>
+            <p><br></p>            
+        </div>
+
+        <div class="w3-col m6 w3-hide-small w3-center">
+            <div class="w3-container">
+                <img class="iq-picto-house-image" src="img/piktogrammehaus.png" alt="Logo_Haus">
+            </div>
+        </div>        
     </div>
 
     <div class="w3-container w3-gray footer">
