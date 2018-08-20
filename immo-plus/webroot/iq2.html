@@ -3,8 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="keywords" content="Immobilen Verwaltung Freelancer Immobilienverwaltung Dienstleistung Basel Binningen">
-    <meta name="description" content="Dienstleistungen für Immobilienverwaltungen im Raum Basel / Binningen">
+    <meta name="keywords" content="Immobilen Verwaltung Freelancer Immobilienverwaltung Dienstleistung Basel Baselland Binningen">
+    <meta name="description" content="Dienstleistungen für Immobilienverwaltungen im Raum Basel und Baselland">
     <meta name="author" content="Markus Müller">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -183,12 +183,12 @@
             background-color: #5186a8
             */
             background: rgb(40, 63, 77);
-            background: linear-gradient(90deg, rgba(40, 63, 77, 1) 0%, rgba(81, 125, 153, 1) 81%);
+            background: linear-gradient(90deg, rgba(81, 125, 153, 1) 0%, rgba(40, 63, 77, 1) 90%);
         }
 
         .iq-slogan-gradient {
             background: rgb(40, 63, 77);
-            background: linear-gradient(90deg, rgba(40, 63, 77, 1) 0%, rgba(81, 125, 153, 1) 81%);
+            background: linear-gradient(90deg, rgba(81, 125, 153, 1) 0%, rgba(40, 63, 77, 1) 90%);
         }
 
         .iq-slogan {
@@ -237,6 +237,10 @@
             */
         }
 
+        .iq-service-enum {
+            height: 600px;
+        }
+
         .iq-border-color-debug {
             border-style: solid;
             border-width: 5px 5px 5px 5px;
@@ -244,12 +248,17 @@
         }
 
         .iq-picto-house-image {
-            width: 450px;
-            height: 450px;
+            width: 200px;
+            height: 200px;
         }
 
         .iq-image-mrs-profil {
-            width: 450px;
+
+            height: 700px;
+
+            /*
+            width: 300px;
+            */
         }
 
         #logo {
@@ -264,6 +273,27 @@
         .iq-vcard-image {
             max-width: 350px;
             height: auto;
+        }
+
+        .iq-main-picture {
+            background-image: url("img/hurry-1920x1278.jpg");
+            background-repeat: no-repeat;
+            opacity: 0.5;
+        }
+
+        .iq-main-text {
+            color: red;
+            opacity: 1.0;
+        }
+
+        .mytext {
+            color: white;
+            position: absolute;
+            top: 150px;
+            left: 150px;
+            text-align: right;
+            display: inline-block;
+            border: solid 1px green;
         }
 
         .footer p {
@@ -321,6 +351,18 @@
             background-color: red;
             */
         }
+
+        path {
+            fill: white;
+        }
+
+        @media only screen and (max-width: 992px) {
+
+            .iq-image-mrs-profil {
+                height: 500px;
+            }
+
+        }
     </style>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
@@ -330,7 +372,7 @@
         $(document).ready(function () {
             //alert('dom ready');
             onBrowserResize();
-            debugger;
+            //debugger;
 
             window.addEventListener("resize", onBrowserResize);
         });
@@ -465,27 +507,38 @@
     „Mein Einsatz für Ihr Unternehmen“
     -->
 
+    <!--
     <div class="w3-row iq-slogan-gradient">
-        <!--
-        <div class="w3-col s12 m8 w3-center">
-            <div class="w3-display-container" style="height:350px;">
-                <div class="w3-display-middle">
-                    <div class="iq-slogan iq-slogan-div w3-display-middle w3-center">
-
-                    </div>
+        <div class="w3-col w3-container s12 w3-center">
+            <div class="iq-main-picture w3-display-container" style="height:550px;">
+                <div class="w3-display-middle ">
+                    <h1>this is my text in the title</h1>
                 </div>
             </div>
         </div>
-        -->
-        <div class="w3-col w3-container s12 w3-center">
-            <div class="w3-display-container" style="height:550px;">
-                <div class="w3-display-middle ">
-                    <img class="iq-picto-house-image" src="img/piktogrammehaus.png" alt="Logo_Haus">
-                </div>
+
+    </div>
+    -->
+
+    <!-- Header 
+    <header class="w3-display-container w3-content w3-wide" style="max-width:1500px;" id="home">
+        <img class="w3-image" src="/img/hurry-1920x1278.jpg" alt="Architecture" width="1500" height="800">
+        <div class="w3-display-middle w3-margin-top w3-center">
+          <h1 class="w3-xxlarge w3-text-white"><span class="w3-padding w3-black w3-opacity-min"><b>BR</b></span> <span class="w3-hide-small w3-text-light-grey">Architects</span></h1>
+        </div>
+    </header>
+    -->
+
+    <div class="w3-display-container iq-slogan-gradient">
+        <div class="iq-main-picture" style="height:550px;">
+            <div class="iq-main-text w3-display-middle">
+                <h1 style="font-size:72px;">«Mein Einsatz für Ihr Unternehmen 3»</h1>
             </div>
         </div>
     </div>
 
+
+    <!--
     <div class="w3-row">
         <div class="w3-col w3-container m12">
             <div class="iq-slogan iq-slogan-div w3-center" style="height:30px;">
@@ -495,7 +548,16 @@
             </div>
         </div>
     </div>
+    -->
 
+
+    <div id="idService" class="w3-row">
+        <div class="w3-col w3-container s12">
+            <div class="w3-center">
+                <h1><br>Dienstleistungen</h1>
+            </div>
+        </div>
+    </div>
 
     <!-- DEBUG size 
     <div id="pane-1" class="w3-container w3-gray">
@@ -506,13 +568,12 @@
     <!--
         icons in svg:
         https://iconmonstr.com/?s=key
-
     -->
 
-    <div id="idService" class="iq-main-content w3-row">
+    <div class="iq-main-content w3-row">
         <div class="w3-col m6 l4">
             <div id="iq-service-1">
-                <div class="w3-card w3-gray">
+                <div class="w3-card iq-slogan-gradient">
 
                     <div class="w3-display-container" style="height:200px;">
                         <div class="w3-display-middle">
@@ -520,17 +581,31 @@
                                 <path d="M13.514 2.444l-10.815 10.785c-.449.449-.678 1.074-.625 1.707l.393 4.696c.041.479.422.86.9.9l4.697.394c.633.053 1.258-.177 1.707-.626l11.875-11.844c.196-.196.195-.512 0-.707l-3.536-3.536c-.195-.195-.511-.196-.707 0l-8.878 8.848c-.162.162-.253.382-.253.611v.725c0 .184.148.332.332.332h.725c.229 0 .448-.092.61-.254l7.11-7.08 1.415 1.415-7.386 7.354c-.375.375-.885.586-1.414.586h-2.414c-.555 0-1-.448-1-1v-2.414c0-.53.211-1.039.586-1.414l9.506-9.477c.781-.781 2.049-.781 2.829-.001l4.243 4.243c.391.391.586.902.586 1.414 0 .512-.196 1.025-.587 1.416l-12.35 12.319c-.748.747-1.76 1.164-2.81 1.164-.257 0-6.243-.467-6.499-.487-.664-.052-1.212-.574-1.268-1.267-.019-.242-.486-6.246-.486-6.499 0-1.05.416-2.062 1.164-2.811l10.936-10.936 1.414 1.444z"
                                 />
                             </svg>
+
                         </div>
                     </div>
 
                     <div class="w3-container w3-white iq-font">
-                        <p>w3-card eins: es ist unglaublich dass dieser text für nix ist und nur dazu dient den platz zu verschwenden
-                            um zu sehen wie umbrüche dargestellt werden oder ob daraus etwa ein schöner blocksatz wird oder
-                            sonst was was ich mir zu diesem zeitpunkt noch gar nicht vostellen kann.
+
+                        <h3>Innendienst<br>Bei Ihnen vor Ort</h3>
+
+                        <p>Temporäre Büroeinsätze</p>
+                        <p>
+                            Immobilienbewirtschaftung von A - Z<br>
+                            (vorwiegend REM-basierend, andere
+                            Systeme/Programme erlernbar)
                         </p>
-                        <p>w3-card eins</p>
-                        <p>w3-card eins</p>
-                        <p>w3-card eins</p>
+
+                        <h3>Einzelne buchbare Tätigkeiten</h3>
+
+                        <p>Erstellen von Heiz- und Betriebskosenabrechnungen</p>
+                        <p>
+                            Unterstützung bei Vermarktungsaktivitäten, Erarbeitung und Erbringung von
+                            objektbezogenen Ideen für den Leerstandsabbau
+                        </p>
+                        <p>Mithilfe bei Erstvermietungen</p>
+                        <p>Marktmieten definieren</p>
+                        <p>Mitarbeitereinführung und individuelles Coaching</p>
                     </div>
                 </div>
             </div>
@@ -538,7 +613,7 @@
 
         <div class="w3-col m6 l4">
             <div id="iq-service-2">
-                <div class="w3-card w3-gray">
+                <div class="w3-card iq-slogan-gradient">
 
                     <div class="w3-display-container" style="height:200px;">
                         <div class="w3-display-middle">
@@ -550,17 +625,9 @@
                     </div>
 
                     <div class="w3-container w3-white iq-font">
-                        <p>w3-card zwei: es ist unglaublich dass dieser text für nix ist und nur dazu dient den platz zu verschwenden
-                            um zu sehen wie umbrüche dargestellt werden oder ob daraus etwa ein schöner blocksatz wird oder
-                            sonst was was ich mir zu diesem zeitpunkt noch gar nicht vostellen kann.
-                        </p>
-                        <p>w3-card zwei
-                            <!--
-                            <i class="material-icons">face</i>
-                        -->
-                        </p>
-                        <p>w3-card zwei</p>
-                        <p>w3-card zwei</p>
+                        <h3>Aussendienst</h3>
+                        <p>Wohnungsab- und übergaben</p>
+                        <p>Durchführung von Objektbesichtigungen</p>
                     </div>
                 </div>
             </div>
@@ -568,7 +635,7 @@
 
         <div class="w3-col m6 l4">
             <div id="iq-service-3">
-                <div class="w3-card w3-gray">
+                <div class="w3-card iq-slogan-gradient">
 
                     <div class="w3-display-container" style="height:200px;">
                         <div class="w3-display-middle">
@@ -581,13 +648,8 @@
                     </div>
 
                     <div class="w3-container w3-white iq-font">
-                        <p>w3-card drei: es ist unglaublich dass dieser text für nix ist und nur dazu dient den platz zu verschwenden
-                            um zu sehen wie umbrüche dargestellt werden oder ob daraus etwa ein schöner blocksatz wird oder
-                            sonst was was ich mir zu diesem zeitpunkt noch gar nicht vostellen kann.
-                        </p>
-                        <p>w3-card drei</p>
-                        <p>w3-card drei</p>
-                        <p>w3-card drei</p>
+                        <h3>Extras</h3>
+                        <p>Fotografie Mietobjekte und Liegenschaften</p>
                     </div>
                 </div>
             </div>
@@ -597,106 +659,116 @@
 
 
     <!--
-    <div id="idService" class="iq-main-content w3-container w3-gray">
-        <p>1 My Dienstleisungen</p>
-        <p>2 My Dienstleisungen</p>
-        <p>3 My Dienstleisungen</p>
-        <p>My Dienstleisungen</p>
-        <p>My Dienstleisungen</p>
-        <p>My Dienstleisungen</p>
-        <p>My Dienstleisungen</p>
-        <p>My Dienstleisungen</p>
-        <p>My Dienstleisungen</p>
-        <p>My Dienstleisungen</p>
-        <p>My Dienstleisungen</p>
-        <p>My Dienstleisungen</p>
-        <p>My Dienstleisungen</p>
-        <p>My Dienstleisungen</p>
-        <p>My Dienstleisungen</p>
-        <p>My Dienstleisungen</p>
-        <p>My Dienstleisungen</p>
-        <p>My Dienstleisungen</p>
-        <p>My Dienstleisungen</p>
-        <p>My Dienstleisungen</p>
-        <p>My Dienstleisungen</p>
-        <p>My Dienstleisungen</p>
-        <p>My Dienstleisungen</p>
-        <p>My Dienstleisungen</p>
-        <p>My Dienstleisungen</p>
-        <p>My Dienstleisungen</p>
-        <p>My Dienstleisungen</p>
-        <p>My Dienstleisungen</p>
+    <div id="pane-1" class="w3-container w3-gray">
+            <h2 id="display-size">pane 1</h2>
     </div>
     -->
 
-    <div id="idAboutMe" class="iq-main-content w3-container w3-gray">
-
-        <div class="w3-col s12 m6 l8">
-            <p>1 My über mich</p>
-            <p>2 My über mich</p>
-            <p>3 My über mich</p>
-            <p>My über mich</p>
-            <p>My über mich</p>
-            <p>My über mich</p>
-            <p>My über mich</p>
-            <p>My über mich</p>
-            <p>My über mich</p>
-            <p>My über mich</p>
-            <p>My über mich</p>
-            <p>My über mich</p>
-            <p>My über mich</p>
-            <p>My über mich</p>
-            <p>My über mich</p>
-            <p>My über mich</p>
-            <p>My über mich</p>
-            <p>My über mich</p>
-            <p>My über mich</p>
-            <p>My über mich</p>
-            <p>My über mich</p>
-            <p>My über mich</p>
-            <p>My über mich</p>
-            <p>My über mich</p>
-        </div>
-
-        <div class="w3-col s12 m6 l4">
-                <img class="iq-image-mrs-profil" src="img/photo_mrs_profil.jpg" alt="mrs_profil">          
+    <div id="idAboutMe" class="w3-row">
+        <div class="w3-col w3-container s12">
+            <div class="w3-center">
+                <h1><br>über mich</h1>
+            </div>
         </div>
     </div>
 
-    <div id="idContact" class="iq-main-content w3-container w3-gray my-paragraph">
-        <p>1 My Kontakt</p>
-        <p>2 My Kontakt</p>
-        <p>3 My Kontakt</p>
-        <p>My Kontakt</p>
-        <p>My Kontakt</p>
-        <p>My Kontakt</p>
-        <p>My Kontakt</p>
-        <p>My Kontakt</p>
-        <p>My Kontakt</p>
-        <p>My Kontakt</p>
-        <p>My Kontakt</p>
-        <p>My Kontakt</p>
-        <p>My Kontakt</p>
-        <p>My Kontakt</p>
-        <p>My Kontakt</p>
-        <p>My Kontakt</p>
-        <p>My Kontakt</p>
-        <p>My Kontakt</p>
-        <p>My Kontakt</p>
-        <p>My Kontakt</p>
-        <p>My Kontakt</p>
-        <p>My Kontakt</p>
-        <p>My Kontakt</p>
-        <p>My Kontakt</p>
-        <p>My Kontakt</p>
-        <p>My Kontakt</p>
-        <p>My Kontakt</p>
-        <p>My Kontakt</p>
+    <div class="iq-main-content w3-container w3-white">
+
+        <div class="w3-col w3-hide-medium w3-hide-large w3-center">
+            <img class="iq-image-mrs-profil" src="img/photo_mrs_profil.jpg" alt="mrs_profil">
+        </div>
+
+        <div class="w3-col m1">
+            <p>
+            </p>
+        </div>
+
+        <div class="w3-col s12 m5">
+
+            <h3>
+                Brauchen Sie mehr Zeit?
+            </h3>
+            <p>
+                Die Immo Quick GmbH wurde im 2018 gegründet mit der Mission, Ihnen unbürokratisch und einfach mehr Zeit zu verschaffen. Da
+                Sie sich nun einen Augenblick Ihrer kostbaren Zeit nehmen um diese Zeilen zu lesen, fasse ich mich also kurz.
+            </p>
+
+            <h3>
+                Zu meiner Person
+            </h3>
+            <p>
+                Mein Name ist Sandra Müller, Immobilienbewirtschafterin mit eidg. Fachausweis aus Leidenschaft,
+                geboren in Basel und seit Jahren begeisterte Jogaschülerin. Ich kenne also nicht nur ein Haus sondern auch den Baum. 
+            </p>
+            <p>
+                Die letzten 20 Jahre durfte ich für renommierte Firmen in der Schweiz 
+                gemischte Liegenschaftsportfolios erfolgreich bewirtschaften. 
+                Gerne lege ich Ihnen meine Referenzen bei einer Tasse Kaffee offen. 
+                Während der Zeit als angestellte Immobilienbewirtschafterin gab es in 
+                den Unternehmen immer wieder Vakanzen unterschiedlichster Art und nach 
+                meiner Ansicht nach zu wenige frei verfügbare Fachpersonen, 
+                mit einem umfassenden Erfahrungsschatz, welche unterstützend einspringen konnten. 
+                Dies möchte ich ändern und Ihr Unternehmen bei Engpässen gerne tatkräftig unterstützen. 
+            </p>
+
+            <h3>
+                Ihr Mehrwert 
+            </h3>
+            <p>
+                Sie können zwischen verschiedenen Tätigkeitsangeboten wählen, 
+                was Ihnen und/oder Ihren Angestellten den Gewinn von einzelnen 
+                freien Stunden bis zu Tagen oder gar Wochen bringt. 
+                Sie erhalten nicht nur eine Kapazität mehr sondern ich schenke Ihnen 
+                zusätzlich noch eine kostenlose Arbeitszeit. 
+                Wie das geht, erfahren Sie beim ersten Kennenlernen. 
+            </p>
+
+            <p>
+                Buchen Sie noch heute einen Gesprächstermin. Ich freue mich, Sie bald kennen lernen zu dürfen.
+            </p>
+        </div>
+
+        <div class="w3-col m1">
+            <p>
+            </p>
+        </div>
+
+        <div class="w3-col w3-hide-small m5">
+            <img class="iq-image-mrs-profil" src="img/photo_mrs_profil.jpg" alt="mrs_profil">
+        </div>
+    </div>
+
+
+    <div id="idContact" class="w3-row">
+        <div class="w3-col w3-container s12">
+            <div class="w3-center">
+                <h1><br>Kontakt</h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="w3-row iq-main-content w3-container w3-white my-paragraph">
+        <div class="w3-col s12 m6 w3-center">
+            <p>
+                Immo Quick GmbH<br>
+                Blumenstrasse 15<br>
+                4102 Binningen
+            </p>
+            <p>Tel: <a href="tel:+41-61-402-02-12">+41 61 402 02 12</a></p>
+
+            <p>E-Mail: <a href="mailto:info@immo-quick.ch">info@immo-quick.ch</a></p>
+            <p><br></p>            
+        </div>
+
+        <div class="w3-col m6 w3-hide-small w3-center">
+            <div class="w3-container">
+                <img class="iq-picto-house-image" src="img/piktogrammehaus.png" alt="Logo_Haus">
+            </div>
+        </div>        
     </div>
 
     <div class="w3-container w3-gray footer">
         <p>Copyright 2018 © Immo Quick GmbH</p>
-        <p>designed by m1m.ch</p>
     </div>
 
 </body>
@@ -704,7 +776,6 @@
 </html>
 
 <!--
-
 images from: https://pixabay.com/
 
 // block
