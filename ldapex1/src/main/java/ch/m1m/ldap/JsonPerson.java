@@ -7,6 +7,16 @@ public class JsonPerson {
 
     private JsonAddress address;
 
+
+    public JsonPerson() {
+
+    }
+
+    public JsonPerson(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -29,5 +39,14 @@ public class JsonPerson {
 
     public void setAddress(JsonAddress address) {
         this.address = address;
+    }
+
+    @Override
+    public String toString() {
+        return "JsonPerson{" +
+                "firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", address=" + address +
+                '}';
     }
 }
