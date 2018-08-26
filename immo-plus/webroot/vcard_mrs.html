@@ -73,6 +73,14 @@
     </style>
 
     <script>
+        function iqMenuMobileShowHide() {
+            var x = document.getElementById("iqMobileMenu");
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+            } else {
+                x.className = x.className.replace(" w3-show", "");
+            }
+        }
     </script>
 
 </head>
@@ -99,7 +107,7 @@
                     <div id="iqMobileMenu" class="w3-bar-block w3-theme-l3w3 w3-hide w3-hide-large w3-hide-medium">
                     -->
         <div id="iqMobileMenu" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
-            <a href="#home" onclick="iqMenuMobileShowHide()" class="w3-bar-item w3-button">Home</a>
+            <a href="/" onclick="iqMenuMobileShowHide()" class="w3-bar-item w3-button">Home</a>
         </div>
     </div>
 
