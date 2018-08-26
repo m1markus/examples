@@ -13,30 +13,35 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
     <link href="https://fonts.googleapis.com/css?family=Fira+Sans+Condensed" rel="stylesheet">
+
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed" rel="stylesheet">
+
+    <link href="iq.css" rel="stylesheet">
     <!--
         font-family: 'Fira Sans Condensed', sans-serif;
     -->
 
     <style>
+                /* 
+
         @font-face {
             font-family: 'myFSThin';
             src: url('FiraSans-Thin.ttf');
         }
 
-        /*  company color takten from the PDF
+ company color takten from the PDF
                 color: #5186a8    rgb(81,134,168)
     
                 https://www.w3schools.com/w3css/w3css_color_generator.asp
             */
 
-
-
         /* main content
-             */
+             
 
         body {
             font-family: 'Fira Sans Condensed', sans-serif;
         }
+        */
 
         .iq-vcard-image {
             max-width: 350px;
@@ -56,14 +61,14 @@
             margin-top: 0px;
             padding-top: 0px;
             border: 25px solid white;
-            border-bottom: 0px;
+            border-top: 0px;
         }
 
         .iq-container-front {
             margin-top: 0px;
             padding-top: 0px;
             border: 25px solid white;
-            border-top: 0px;
+            border-bottom: 0px;
         }
     </style>
 
@@ -74,10 +79,45 @@
 
 <body>
 
+    <!-- menu-->
+    <div class="w3-top">
+
+        <div class="w3-bar w3-white ">
+
+            <!-- desktop menu
+                    -->
+            <div id="logo" class="w3-bar-item">
+            </div>
+
+            <a href="/" class="w3-padding-16 w3-hover-text-theme w3-hover-none w3-bar-item w3-right w3-button w3-hide-small">Home</a>
+            <!-- burger button -->
+            <a href="javascript:void(0)" class="w3-hover-text-theme w3-hover-none w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium"
+                onclick="iqMenuMobileShowHide()">&#9776;</a>
+        </div>
+
+        <!-- mobile menu
+                    <div id="iqMobileMenu" class="w3-bar-block w3-theme-l3w3 w3-hide w3-hide-large w3-hide-medium">
+                    -->
+        <div id="iqMobileMenu" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
+            <a href="#home" onclick="iqMenuMobileShowHide()" class="w3-bar-item w3-button">Home</a>
+        </div>
+    </div>
+
+    <div id="home" class="w3-row w3-white w3-container" style="width:1px; height: 55px;"></div>
+
     <!--
     <div id="idVCard" class="w3-container">
         -->
     <div id="idVCard" class="w3-container w3-white">
+
+        <!-- front side of the vcard -->
+        <div class="iq-container-front w3-display-container w3-white" style="height:300px;">
+            <div class="iq-shadow w3-display-middle">
+                <img class="iq-vcard-image" src="img/vcard_mrs_front.png" alt="vCard_front">
+            </div>
+        </div>
+
+        <!-- back side of the vcard -->
         <div class="iq-container-back w3-display-container w3-white" style="height: 300px;">
             <div class="iq-shadow w3-display-middle">
                 <img class="iq-vcard-image" src="img/vcard_mrs_back.png" alt="vCard_back">
@@ -87,11 +127,6 @@
             </div>
         </div>
 
-        <div class="iq-container-front w3-display-container w3-white" style="height:300px;">
-            <div class="iq-shadow w3-display-middle">
-                <img class="iq-vcard-image" src="img/vcard_mrs_front.png" alt="vCard_front">
-            </div>
-        </div>
     </div>
 
     <div class="w3-container w3-gray footer">

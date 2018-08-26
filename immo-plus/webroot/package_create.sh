@@ -14,8 +14,9 @@ tar cvfz $TAR_NAME img/vcard_mrs_back.png       \
                    vcard_mrs.html               \
                    iq_sandra_mueller_vcard.vcf  \
                    cdown.html                   \
-                   iq2.html                     \
+                   index.html                   \
                    *.ttf                        \
+                   *.css                        \
                    favicon.png 
 
 scp $TAR_NAME axmue@m1m.ch:/tmp/
