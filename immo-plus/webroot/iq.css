@@ -347,5 +347,15 @@ path {
     .iq-main-text {
         font-size: 48px;
     }
+}
 
+@media only screen and (max-width: 600px) {
+
+    .iq-image-mrs-profil {
+        height: 460px;
+    }
+
+    .iq-main-text {
+        font-size: 42px;
+    }
 }
