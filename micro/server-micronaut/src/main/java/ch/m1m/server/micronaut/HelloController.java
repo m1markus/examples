@@ -1,7 +1,6 @@
 package ch.m1m.server.micronaut;
 
 import io.micronaut.http.annotation.*;
-import io.micronaut.scheduling.annotation.Scheduled;
 import io.micronaut.session.Session;
 
 import java.util.Optional;
@@ -11,11 +10,17 @@ public class HelloController {
 
     private static final String SESS_KEY_USERNAME = "SESS_KEY_USERNAME";
 
+    @Get("/")
+    public String onlyHello() {
+
+        return "Hello World only from micronaut";
+    }
+
     @Get("/world")
     public String myWorld(Session session) {
         session.put(SESS_KEY_USERNAME, "user_world");
 
-        return "Hello World";
+        return "Hello World with session";
     }
 
     @Get("/session")
