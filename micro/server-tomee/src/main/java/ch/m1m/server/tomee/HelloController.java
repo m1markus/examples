@@ -9,14 +9,15 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.xml.bind.annotation.XmlRootElement;
 
-@Path("/greeting")
+@Path("/hello")
 @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
 @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
 public class HelloController {
 
     @GET
     public String message() {
-        return "Hi REST from TomEE";
+
+        return "Hello from TomEE";
     }
 
 }
