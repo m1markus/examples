@@ -12,6 +12,7 @@ tar cvfz $TAR_NAME img/vcard_mrs_back.png       \
                    img/gimp-hurry-1920x1278.png \
                    google783f5c3e55fb8f7c.html  \
                    vcard_mrs.html               \
+                   impressum.html               \
                    iq_sandra_mueller_vcard.vcf  \
                    cdown.html                   \
                    index.html                   \
