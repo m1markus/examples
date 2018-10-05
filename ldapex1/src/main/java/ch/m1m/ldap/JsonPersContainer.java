@@ -7,6 +7,13 @@ public class JsonPersContainer {
 
     private List<JsonPerson> personList = new ArrayList<>();
 
+    private JsonPersContainer() {}
+
+    public static JsonPersContainer newInstance() {
+        System.err.println("JsonPersContainer # newInstance() called");
+        return new JsonPersContainer();
+    }
+
     public List<JsonPerson> getPersonList() {
         return personList;
     }

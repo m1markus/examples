@@ -14,8 +14,6 @@ public class JavaTime {
 
         DateTimeFormatter myDateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'H:mm:ss.SSSxxx");
 
-
-
         Instant instant = Instant.now();
         System.out.println("GMT time: " + instant.toString());
 

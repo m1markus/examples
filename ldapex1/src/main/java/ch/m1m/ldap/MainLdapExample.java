@@ -46,6 +46,7 @@ public class MainLdapExample {
 
 		//String ldifImport = "/home/mue/work/java/ldapex1/src/main/resources/example1.ldif";
 		String ldifImport = "/home/mue/work/java/ldapex1/src/main/resources/example-com.ldif";
+		ldifImport = "/Users/mue/work/git/m1markus/examples/ldapex1/src/main/resources/example-com.ldif";
 		
 
 		// Create the configuration to use for the server.
