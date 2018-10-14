@@ -20,40 +20,49 @@ import java.util.concurrent.CopyOnWriteArraySet;
 
 https://www.baeldung.com/java-websockets
 
+https://medium.com/@lejinkr/ldap-authentication-with-spring-boot-7b2d3fd08277
+
  */
 
-@ServerEndpoint(value="/chat/{username}")
+@ServerEndpoint(
+        value = "/websockets")
+
 public class ChatEndpoint {
 
-    static Logger logger = LoggerFactory.getLogger(ChatEndpoint.class);
+    static Logger log = LoggerFactory.getLogger(ChatEndpoint.class);
 
     private Session session;
-    private static Set<ChatEndpoint> chatEndpoints
-            = new CopyOnWriteArraySet<>();
+    private static Set<ChatEndpoint> chatEndpoints = new CopyOnWriteArraySet<>();
     private static HashMap<String, String> users = new HashMap<>();
 
     @OnOpen
-    public void onOpen(
-            Session session,
-            @PathParam("username") String username) throws IOException {
+    public void onOpen(Session session) throws IOException {
 
         this.session = session;
         chatEndpoints.add(this);
-        users.put(session.getId(), username);
 
-        logger.error("THIS IS NOT AN ERROR: onOpen() got called");
+        //users.put(session.getId(), username);
 
+        log.info("THIS IS NOT AN ERROR: onOpen() got called");
+
+        /*
         Message message = new Message();
         message.setFrom(username);
         message.setContent("Connected!");
-        broadcast(message);
+        */
+        String msg = "Connected";
+
+        broadcast(msg);
     }
 
     @OnMessage
-    public void onMessage(Session session, Message message)
+    public void onMessage(String message, Session session)
             throws IOException {
 
-        message.setFrom(users.get(session.getId()));
+        log.info("onMessage() called: {}", message);
+
+        // message.setFrom(users.get(session.getId()));
+
         broadcast(message);
     }
 
@@ -61,10 +70,13 @@ public class ChatEndpoint {
     public void onClose(Session session) throws IOException {
 
         chatEndpoints.remove(this);
+        /*
         Message message = new Message();
         message.setFrom(users.get(session.getId()));
         message.setContent("Disconnected!");
-        broadcast(message);
+        */
+        String msg = users.get(session.getId()) + ": Disconnected";
+        broadcast(msg);
     }
 
     @OnError
@@ -72,13 +84,12 @@ public class ChatEndpoint {
         // Do error handling here
     }
 
-    private static void broadcast(Message message) {
+    private static void broadcast(String message) {
 
         chatEndpoints.forEach(endpoint -> {
             synchronized (endpoint) {
                 try {
-                    endpoint.session.getBasicRemote().
-                            sendObject(message);
+                    endpoint.session.getBasicRemote().sendObject(message);
                 } catch (IOException | EncodeException e) {
                     e.printStackTrace();
                 }
@@ -89,14 +100,5 @@ public class ChatEndpoint {
 
 /*
 
-    Logger logger = LoggerFactory.getLogger(LoggingController.class);
-
-    @RequestMapping("/")
-    public String index() {
-        logger.trace("A TRACE Message");
-        logger.debug("A DEBUG Message");
-        logger.info("An INFO Message");
-        logger.warn("A WARN Message");
-        logger.error("An ERROR Message");
 
  */

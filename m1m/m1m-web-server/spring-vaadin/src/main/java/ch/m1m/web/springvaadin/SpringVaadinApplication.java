@@ -9,11 +9,11 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 @SpringBootApplication
 public class SpringVaadinApplication extends SpringBootServletInitializer {
 
-	static Logger log = LoggerFactory.getLogger(SpringVaadinApplication.class);
+	//static Logger log = LoggerFactory.getLogger(SpringVaadinApplication.class);
 
 	public static void main(String[] args) {
 
-		log.error("this is not an error, just a test message");
+		//log.info("this is not an error, just a test message");
 
 		SpringApplication.run(SpringVaadinApplication.class, args);
 	}
