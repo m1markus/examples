@@ -29,6 +29,8 @@
     </dependencyManagement>
 
     <modules>
+
+        <module>sql-expression</module>
         <module>server-tomee</module>
         <!--        -->
         <module>server-micro-payara</module>
