@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Search & Find</title>
+    <meta name="description" content="main page">
+    <meta name="author" content="it's me">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script src="https://unpkg.com/vue@2.5.17/dist/vue.js"></script>
+
+    <!--
+    <link rel="stylesheet" href="css/styles.css?v=1.0">
+
+    https://stackoverflow.com/questions/44891771/bulma-css-tab-switcher
+
+    https://bulma.io/documentation/components/tabs/
+    -->
+</head>
+
+<body>
+
+    <div id="app">
+
+        <div class="columns is-mobile">
+
+            <div class="column is-1"></div>
+
+            <div class="column is-10">
+                <div class="tabs is-centered">
+                    <ul>
+                        <li v-bind:class="{ 'is-active': isFormSearchActive }"><a v-on:click="onTabSearch">Search</a></li>
+                        <li v-bind:class="{ 'is-active': isFormAddActive }"><a v-on:click="onTabAdd">Add</a></li>
+                    </ul>
+                </div>
+
+                <div id="search" v-if="isFormSearchActive">
+                    <form action="/searchLinks" method="post" @submit.stop.prevent="prevent">
+                        <div class="field">
+                            <label class="label">Search</label>
+                            <div class="control">
+                                <input class="input is-rounded" v-model="elInputSearch" v-on:keyup.enter="onSearchEnter"
+                                    type="text" name="search" autocomplete="off" placeholder="enter your keywords here...">
+                            </div>
+                        </div>
+                    </form>
+
+                    <div>
+                        <div>
+                            <div v-for="urlItem in searchResult">
+                                <div class="container is-fluid">
+                                    <p>&nbsp;</p>
+                                    <p><a v-bind:href="urlItem.url">{{ urlItem.url }}</a></p>
+                                    <p>{{ urlItem.description }}</p>
+                                    <p class="subtitle is-size-7">{{ urlItem.keywords }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="add" v-if="isFormAddActive">
+                    <form action="/addLink" method="post" @submit.stop.prevent="prevent">
+
+                        <div class="field">
+                            <label class="label">Url</label>
+                            <div class="control">
+                                <input class="input" v-model="elAddUrl" type="text" name="url" autocomplete="off"
+                                    placeholder="enter URL here"><br>
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">Description</label>
+                            <div class="control">
+                                <input class="input" v-model="elAddDesc" type="text" name="description" autocomplete="off"
+                                    placeholder="enter description here">
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label class="label">Keywords</label>
+                            <div class="control">
+                                <input class="input" v-model="elAddKeys" type="text" name="keywords" autocomplete="off"
+                                    placeholder="enter keywords here">
+                            </div>
+                        </div>
+
+                        <div class="field is-grouped">
+                            <div class="control">
+                                <button class="button" v-on:click="onLinkAdd">Add</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="column is-1"></div>
+
+        </div>
+
+    </div>
+
+<!--
+<div class="field">
+  <label class="label">Name</label>
+  <div class="control">
+    <input class="input" type="text" placeholder="Text input">
+  </div>
+</div>
+
+has-background-primary
+
+<section class="section">
+    <div class="container">
+        <h1 class="title">
+            Hello World
+        </h1>
+        <p class="subtitle">
+            My first website with <strong>Bulma</strong>!
+        </p>
+    </div>
+</section>
+
+<script src="js/scripts.js"></script>
+-->
+
+    <script>
+
+        new Vue({
+            el: '#app',
+            data: {
+                elInputSearch: '',
+                elAddUrl: '',
+                elAddDesc: '',
+                elAddKeys: '',
+                isFormSearchActive: true,
+                isFormAddActive: false,
+                searchResult: [],
+            },
+            methods: {
+                onTabSearch: function (event) {
+                    //alert('search');
+                    if (!this.isFormSearchActive) {
+                        this.isFormSearchActive = true;
+                        this.isFormAddActive = false;
+                        this.setfocusOnSearchField();
+                    }
+                },
+                setfocusOnSearchField: function () {
+                    //this.$nextTick(() => this.$refs.el-search.focus());
+                },
+                setfocusOnUrlField: function () {
+                    //this.$nextTick(() => this.$refs.el-url.focus());
+                },
+                onSearchEnter: function (event) {
+                    var searchRequest = JSON.stringify({ search: this.elInputSearch });
+                    fetch('/searchLinks', {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json, text/plain, */*',
+                            'Content-Type': 'application/json'
+                        },
+                        body: searchRequest
+                    }).then((resp) => resp.json())
+                        .then((data) => this.searchResult = data)
+                        .catch((err) => alert('error:' + err))
+                    //alert('begin execute search');
+                },
+                onTabAdd: function (event) {
+                    //alert('tab select add');
+                    if (!this.isFormAddActive) {
+                        this.isFormAddActive = true;
+                        this.isFormSearchActive = false;
+                        this.setfocusOnUrlField();
+                    }
+                },
+                onLinkAdd: function (event) {
+                    var addRequest = JSON.stringify({ url: this.elAddUrl, description: this.elAddDesc, keywords: this.elAddKeys });
+                    fetch('/addLink', {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json, text/plain, */*',
+                            'Content-Type': 'application/json'
+                        },
+                        body: addRequest
+                    })
+                        .catch((err) => alert('error:' + err))
+                },
+                prevent: function (event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    return false;
+                }
+            },
+            created() {
+                this.setfocusOnSearchField();
+                //alert('this comes on startup');
+            }
+        });
+
+    </script>
+</body>
+
+</html>
