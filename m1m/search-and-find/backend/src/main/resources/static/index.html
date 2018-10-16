@@ -20,92 +20,106 @@
 
     https://bulma.io/documentation/components/tabs/
     -->
+
+    <style>
+        /* prevent flickering on startup (until vue is initialized and takes over)
+         */
+        [v-cloak] {
+          display: none;
+        }
+    </style>
+
 </head>
 
 <body>
 
     <div id="app">
+        <div v-cloak>
+            <div class="columns is-mobile">
 
-        <div class="columns is-mobile">
+                <div class="column is-1"></div>
 
-            <div class="column is-1"></div>
+                <div class="column is-10">
+                    <div class="tabs is-centered">
+                        <ul>
+                            <li v-bind:class="{ 'is-active': isFormSearchActive }"><a v-on:click="onTabSearch">Search</a></li>
+                            <li v-bind:class="{ 'is-active': isFormAddActive }"><a v-on:click="onTabAdd">Add</a></li>
+                        </ul>
+                    </div>
 
-            <div class="column is-10">
-                <div class="tabs is-centered">
-                    <ul>
-                        <li v-bind:class="{ 'is-active': isFormSearchActive }"><a v-on:click="onTabSearch">Search</a></li>
-                        <li v-bind:class="{ 'is-active': isFormAddActive }"><a v-on:click="onTabAdd">Add</a></li>
-                    </ul>
-                </div>
-
-                <div id="search" v-if="isFormSearchActive">
-                    <form action="/searchLinks" method="post" @submit.stop.prevent="prevent">
-                        <div class="field">
-                            <label class="label">Search</label>
-                            <div class="control">
-                                <input class="input is-rounded" v-model="elInputSearch" v-on:keyup.enter="onSearchEnter"
-                                    type="text" name="search" autocomplete="off" placeholder="enter your keywords here...">
+                    <div id="search" v-if="isFormSearchActive">
+                        <form action="/searchLinks" method="post" @submit.stop.prevent="prevent">
+                            <div class="field">
+                                <label class="label">Search</label>
+                                <div class="control">
+                                    <input class="input is-rounded" v-model="elInputSearch" v-on:keyup.enter="onSearchEnter"
+                                        type="text" name="search" autocomplete="off" placeholder="enter your keywords here...">
+                                </div>
                             </div>
-                        </div>
-                    </form>
+                        </form>
 
-                    <div>
                         <div>
-                            <div v-for="urlItem in searchResult">
-                                <div class="container is-fluid">
-                                    <p>&nbsp;</p>
-                                    <p><a v-bind:href="urlItem.url">{{ urlItem.url }}</a></p>
-                                    <p>{{ urlItem.description }}</p>
-                                    <p class="subtitle is-size-7">{{ urlItem.keywords }}</p>
+                            <div>
+                                <div v-for="urlItem in searchResult" :key="urlItem.id">
+                                    <div class="container is-fluid">
+                                        <p>&nbsp;</p>
+                                        <p><a v-bind:href="urlItem.url">{{ urlItem.url }}</a></p>
+                                        <p>{{ urlItem.description }}</p>
+                                        <p class="subtitle is-size-7">{{ urlItem.keywords }}</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+
+                    <div id="add" v-if="isFormAddActive">
+                        <form action="/addLink" method="post" @submit.stop.prevent="prevent">
+
+                            <div class="field">
+                                <label class="label">Url</label>
+                                <div class="control">
+                                    <input class="input" v-model="elAddUrl" type="text" name="url" autocomplete="off"
+                                        placeholder="enter URL here"><br>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label class="label">Description</label>
+                                <div class="control">
+                                    <input class="input" v-model="elAddDesc" type="text" name="description"
+                                        autocomplete="off" placeholder="enter description here">
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label class="label">Keywords</label>
+                                <div class="control">
+                                    <input class="input" v-model="elAddKeys" type="text" name="keywords" autocomplete="off"
+                                        placeholder="enter keywords here">
+                                </div>
+                            </div>
+
+                            <div class="field is-grouped">
+                                <div class="control">
+                                    <button class="button" v-on:click="onLinkAdd">Add</button>
+                                </div>
+                                <div>
+                                    <label v-if="addErrorMessage" class="label">{{addErrorMessage}}</label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
 
-                <div id="add" v-if="isFormAddActive">
-                    <form action="/addLink" method="post" @submit.stop.prevent="prevent">
+                <div class="column is-1"></div>
 
-                        <div class="field">
-                            <label class="label">Url</label>
-                            <div class="control">
-                                <input class="input" v-model="elAddUrl" type="text" name="url" autocomplete="off"
-                                    placeholder="enter URL here"><br>
-                            </div>
-                        </div>
-
-                        <div class="field">
-                            <label class="label">Description</label>
-                            <div class="control">
-                                <input class="input" v-model="elAddDesc" type="text" name="description" autocomplete="off"
-                                    placeholder="enter description here">
-                            </div>
-                        </div>
-
-                        <div class="field">
-                            <label class="label">Keywords</label>
-                            <div class="control">
-                                <input class="input" v-model="elAddKeys" type="text" name="keywords" autocomplete="off"
-                                    placeholder="enter keywords here">
-                            </div>
-                        </div>
-
-                        <div class="field is-grouped">
-                            <div class="control">
-                                <button class="button" v-on:click="onLinkAdd">Add</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
             </div>
-
-            <div class="column is-1"></div>
 
         </div>
 
     </div>
 
-<!--
+    <!--
 <div class="field">
   <label class="label">Name</label>
   <div class="control">
@@ -141,6 +155,7 @@ has-background-primary
                 isFormSearchActive: true,
                 isFormAddActive: false,
                 searchResult: [],
+                addErrorMessage: undefined
             },
             methods: {
                 onTabSearch: function (event) {
@@ -188,8 +203,21 @@ has-background-primary
                             'Content-Type': 'application/json'
                         },
                         body: addRequest
+                    }).then((resp) => {
+                        if (resp.status == 200) {
+                            this.clearFormAddFields();
+                            this.addErrorMessage = undefined;
+                        } else {
+                            this.addErrorMessage = 'Error occured, status code ' + resp.status;
+                        }
+                    }).catch((err) => {
+                        this.addErrorMessage = err.message;
                     })
-                        .catch((err) => alert('error:' + err))
+                },
+                clearFormAddFields() {
+                    this.elAddUrl = '';
+                    this.elAddDesc = '';
+                    this.elAddKeys = '';
                 },
                 prevent: function (event) {
                     event.preventDefault();

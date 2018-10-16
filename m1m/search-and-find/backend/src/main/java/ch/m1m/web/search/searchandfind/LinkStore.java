@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+// mvn versions:set -DnewVersion=1.0.1-SNAPSHOT
+
 public class LinkStore {
 
     private static String FILE_PATH = "./my_links.txt";
@@ -62,17 +64,43 @@ public class LinkStore {
 
         } catch (JsonProcessingException e) {
             log.error("failed to convert to JSON", e);
+            throw new RuntimeException(e);
+
         } catch (IOException e) {
             log.error("failed to write file {}", FILE_PATH, e);
+            throw new RuntimeException(e);
         }
     }
 
-    public void add(LinkEntry inLinkEntry) {
+    public void preventNullOrEmpty(LinkEntry inLinkEntry) {
 
-        if (inLinkEntry.getId() == null) {
-            UUID uuid = UUID.randomUUID();
-            inLinkEntry.setId(uuid.toString());
-            log.info("generated new uuid for new entry id=", uuid.toString());
+        String errorMessage = "null or empty value not allowed";
+
+        String val = inLinkEntry.getUrl();
+        if (val == null || val.equals("")) {
+            throw new RuntimeException(errorMessage);
+        }
+        val = inLinkEntry.getDescription();
+        if (val == null || val.equals("")) {
+            throw new RuntimeException(errorMessage);
+        }
+        val = inLinkEntry.getKeywords();
+        if (val == null || val.equals("")) {
+            throw new RuntimeException(errorMessage);
+        }
+    }
+
+    public StatusResponse add(LinkEntry inLinkEntry) {
+
+        preventNullOrEmpty(inLinkEntry);
+
+        //if (true) throw new RuntimeException("this is not a real error");
+
+        String entryKey = inLinkEntry.getId();
+        if (entryKey == null) {
+            entryKey = UUID.randomUUID().toString();
+            inLinkEntry.setId(entryKey);
+            log.info("generated new uuid for new entry id=", entryKey);
         }
 
         // convert keywords to lowercase
@@ -82,6 +110,8 @@ public class LinkStore {
 
         allLinks.add(inLinkEntry);
         save();
+
+        return new StatusResponse("created", entryKey);
     }
 
     public List<LinkEntry> getTestData() {

@@ -17,14 +17,13 @@ public class LinkRestEndpoint {
     private static LinkStore linkStore = new LinkStore();
 
     @PostMapping("/addLink")
-    public LinkEntry addLink(@RequestBody LinkEntry inEntry) {
+    public StatusResponse addLink(@RequestBody LinkEntry inEntry) {
 
         log.info("/addLink called with: entry={}", inEntry);
 
-        linkStore.add(inEntry);
-        linkStore.save();
+        StatusResponse resp = linkStore.add(inEntry);
 
-        return null;
+        return resp;
     }
 
     @PostMapping("/searchLinks")
