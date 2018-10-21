@@ -121,12 +121,13 @@
                                 </div>
                             </div>
 
-                            <div class="field is-grouped">
-                                <div class="control">
+                            <div class="level is-mobile">
+                                <div class="level-left">
                                     <button class="button" v-on:click="onLinkAdd">Add</button>
                                 </div>
-                                <div>
-                                    <div v-if="addErrorMessage" class="my-success">{{addErrorMessage}}</div>
+                                <div class="level-left">
+                                    <div v-if="addErrorMessage" class="my-error">{{addErrorMessage}}</div>
+                                    <div v-if="hasSuccessMessage" class="my-success">{{hasSuccessMessage}}</div>
                                 </div>
                             </div>
                         </form>
@@ -177,7 +178,8 @@ has-background-primary
                 isFormSearchActive: true,
                 isFormAddActive: false,
                 searchResult: [],
-                addErrorMessage: undefined
+                addErrorMessage: undefined,
+                hasSuccessMessage: undefined
             },
             methods: {
                 onTabSearch: function (event) {
@@ -229,7 +231,9 @@ has-background-primary
                         if (resp.status == 200) {
                             this.clearFormAddFields();
                             this.addErrorMessage = undefined;
+                            this.showSuccessMessage('Successfully added a new entry');
                         } else {
+                            hasSuccessMessage = undefined;
                             this.addErrorMessage = 'Error occured, status code ' + resp.status;
                         }
                     }).catch((err) => {
@@ -240,6 +244,14 @@ has-background-primary
                     this.elAddUrl = '';
                     this.elAddDesc = '';
                     this.elAddKeys = '';
+                },
+                showSuccessMessage(messageText) {
+                    this.addErrorMessage = undefined;
+                    this.hasSuccessMessage = messageText;
+                    console.log('showSuccessMessage called with:' + messageText);
+                    setTimeout(() => {
+                        this.hasSuccessMessage = undefined;
+                    }, 2000);
                 },
                 prevent: function (event) {
                     event.preventDefault();
