@@ -27,6 +27,28 @@
         [v-cloak] {
           display: none;
         }
+
+        .my-error {
+            background-color: rgba(255, 0, 0, 0.3);
+            border-radius: 3px;
+            border: 1px solid rgb(116, 19, 19);
+            color: rgb(116, 19, 19);
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-top: 4px;
+            padding-bottom: 4px;
+        }
+
+        .my-success {
+            background-color: rgba(0, 255, 0, 0.2);
+            border-radius: 3px;
+            border: 1px solid rgb(19, 116, 19);
+            color: rgb(19, 116, 19);
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
     </style>
 
 </head>
@@ -61,8 +83,8 @@
                         <div>
                             <div>
                                 <div v-for="urlItem in searchResult" :key="urlItem.id">
+                                    <hr>
                                     <div class="container is-fluid">
-                                        <p>&nbsp;</p>
                                         <p><a v-bind:href="urlItem.url">{{ urlItem.url }}</a></p>
                                         <p>{{ urlItem.description }}</p>
                                         <p class="subtitle is-size-7">{{ urlItem.keywords }}</p>
@@ -104,7 +126,7 @@
                                     <button class="button" v-on:click="onLinkAdd">Add</button>
                                 </div>
                                 <div>
-                                    <label v-if="addErrorMessage" class="label">{{addErrorMessage}}</label>
+                                    <div v-if="addErrorMessage" class="my-success">{{addErrorMessage}}</div>
                                 </div>
                             </div>
                         </form>
