@@ -231,6 +231,9 @@ has-background-primary
                             this.clearFormAddFields();
                             this.addErrorMessage = undefined;
                             this.showSuccessMessage('Successfully added a new entry');
+                            this.$nextTick(function () {
+                                this.$refs.elUrl.focus();
+                            });
                         } else {
                             hasSuccessMessage = undefined;
                             this.addErrorMessage = 'Error occured, status code ' + resp.status;
