@@ -74,8 +74,9 @@
                             <div class="field">
                                 <label class="label">Search</label>
                                 <div class="control">
-                                    <input class="input is-rounded" v-model="elInputSearch" v-on:keyup.enter="onSearchEnter"
-                                        type="text" name="search" autocomplete="off" placeholder="enter your keywords here...">
+                                    <input autofocus ref="elSearch" class="input is-rounded" v-model="elInputSearch"
+                                        v-on:keyup.enter="onSearchEnter" type="text" name="search" autocomplete="off"
+                                        placeholder="enter your keywords here...">
                                 </div>
                             </div>
                         </form>
@@ -100,8 +101,8 @@
                             <div class="field">
                                 <label class="label">Url</label>
                                 <div class="control">
-                                    <input class="input" v-model="elAddUrl" type="text" name="url" autocomplete="off"
-                                        placeholder="enter URL here"><br>
+                                    <input class="input" ref="elUrl" v-model="elAddUrl" type="text" name="url"
+                                        autocomplete="off" placeholder="enter URL here"><br>
                                 </div>
                             </div>
 
@@ -168,7 +169,7 @@ has-background-primary
 
     <script>
 
-        new Vue({
+        app = new Vue({
             el: '#app',
             data: {
                 elInputSearch: '',
@@ -187,14 +188,10 @@ has-background-primary
                     if (!this.isFormSearchActive) {
                         this.isFormSearchActive = true;
                         this.isFormAddActive = false;
-                        this.setfocusOnSearchField();
+                        this.$nextTick(function () {
+                            this.$refs.elSearch.focus();
+                        });
                     }
-                },
-                setfocusOnSearchField: function () {
-                    //this.$nextTick(() => this.$refs.el-search.focus());
-                },
-                setfocusOnUrlField: function () {
-                    //this.$nextTick(() => this.$refs.el-url.focus());
                 },
                 onSearchEnter: function (event) {
                     var searchRequest = JSON.stringify({ search: this.elInputSearch });
@@ -215,7 +212,9 @@ has-background-primary
                     if (!this.isFormAddActive) {
                         this.isFormAddActive = true;
                         this.isFormSearchActive = false;
-                        this.setfocusOnUrlField();
+                        this.$nextTick(function () {
+                            this.$refs.elUrl.focus();
+                        });
                     }
                 },
                 onLinkAdd: function (event) {
@@ -259,9 +258,13 @@ has-background-primary
                     return false;
                 }
             },
-            created() {
-                this.setfocusOnSearchField();
-                //alert('this comes on startup');
+            mounted() {
+                this.$nextTick(() => {
+                    //var el = app.$refs.el-search;
+                    //el.focus();
+                    //vm.$refs.el-search.$el.focus();
+                    //alert('this comes on startup');
+                });
             }
         });
 
