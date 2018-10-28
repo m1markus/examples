@@ -16,9 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-// mvn versions:set -DnewVersion=1.0.1-SNAPSHOT
-// mvn versions:commit
-
 public class LinkStore {
 
     private static String FILE_PATH = "./my_links.txt";
