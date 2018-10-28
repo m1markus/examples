@@ -5,7 +5,7 @@
 
 	<groupId>ch.m1m.web.search</groupId>
 	<artifactId>search-and-find</artifactId>
-	<version>0.0.3</version>
+	<version>0.0.4</version>
 	<packaging>jar</packaging>
 
 	<name>search-and-find</name>
@@ -14,7 +14,7 @@
 	<parent>
 		<groupId>ch.m1m.web.search</groupId>
 		<artifactId>search-and-find-reactor</artifactId>
-		<version>0.0.3</version>
+		<version>0.0.4</version>
 		<relativePath>..</relativePath>
 	</parent>
 
