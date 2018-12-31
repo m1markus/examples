@@ -26,6 +26,26 @@ public class LinkRestEndpoint {
         return resp;
     }
 
+    @PostMapping("/editLink")
+    public StatusResponse editLink(@RequestBody LinkEntry inEntry) {
+
+        log.info("/editLink called with: entry={}", inEntry);
+
+        StatusResponse resp = linkStore.update(inEntry);
+
+        return resp;
+    }
+
+    @PostMapping("/deleteLink")
+    public StatusResponse deleteLink(@RequestBody LinkEntry inEntry) {
+
+        log.info("/deleteLink called with: entry={}", inEntry);
+
+        StatusResponse resp = linkStore.delete(inEntry);
+
+        return resp;
+    }
+
     @PostMapping("/searchLinks")
     public List<LinkEntry> searchLinks(@RequestBody  SearchRequest inSearch) {
 

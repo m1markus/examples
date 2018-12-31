@@ -5,7 +5,7 @@
 
 	<groupId>ch.m1m.web.search</groupId>
 	<artifactId>search-and-find</artifactId>
-	<version>0.0.4</version>
+	<version>0.0.5-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>search-and-find</name>
@@ -14,7 +14,7 @@
 	<parent>
 		<groupId>ch.m1m.web.search</groupId>
 		<artifactId>search-and-find-reactor</artifactId>
-		<version>0.0.4</version>
+		<version>0.0.5-SNAPSHOT</version>
 		<relativePath>..</relativePath>
 	</parent>
 
@@ -30,6 +30,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		<!--
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		-->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

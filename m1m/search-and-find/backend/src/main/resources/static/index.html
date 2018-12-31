@@ -10,6 +10,11 @@
     <meta name="author" content="it's me">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    <!--
+    https://fontawesome.com/icons?d=gallery&q=delete
+    -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
+    
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <script src="https://unpkg.com/vue@2.5.17/dist/vue.js"></script>
 
@@ -95,7 +100,14 @@
                                     <div class="container is-fluid">
                                         <p><a v-bind:href="urlItem.url">{{ urlItem.url }}</a></p>
                                         <p>{{ urlItem.description }}</p>
-                                        <p class="subtitle is-size-7">{{ urlItem.keywords }}</p>
+                                        <p class="subtitle is-size-7">
+                                            <span class="icon is-small" v-on:click="onLinkEdit(urlItem)">
+                                                <i class="fas fa-edit"></i>
+                                            </span>
+                                            <span class="icon is-small" v-on:click="onLinkDelete(urlItem)">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </span>
+                                            {{ urlItem.keywords }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -190,7 +202,7 @@ has-background-primary
                 hasSuccessMessage: undefined
             },
             methods: {
-                onTabSearch: function (event) {
+                onTabSearch(event) {
                     //alert('search');
                     if (!this.isFormSearchActive) {
                         this.isFormSearchActive = true;
@@ -201,7 +213,7 @@ has-background-primary
                         });
                     }
                 },
-                onSearchEnter: function (event) {
+                onSearchEnter(event) {
                     var searchRequest = JSON.stringify({ search: this.elInputSearch });
                     fetch('/searchLinks', {
                         method: 'POST',
@@ -215,7 +227,7 @@ has-background-primary
                         .catch((err) => alert('error:' + err))
                     //alert('begin execute search');
                 },
-                onTabAdd: function (event) {
+                onTabAdd(event) {
                     //alert('tab select add');
                     if (!this.isFormAddActive) {
                         this.isFormAddActive = true;
@@ -225,7 +237,7 @@ has-background-primary
                         });
                     }
                 },
-                onLinkAdd: function (event) {
+                onLinkAdd(event) {
                     var addRequest = JSON.stringify({ url: this.elAddUrl, description: this.elAddDesc, keywords: this.elAddKeys });
                     fetch('/addLink', {
                         method: 'POST',
@@ -242,6 +254,30 @@ has-background-primary
                             this.$nextTick(function () {
                                 this.$refs.elUrl.focus();
                             });
+                        } else {
+                            hasSuccessMessage = undefined;
+                            this.addErrorMessage = 'Error occured, status code ' + resp.status;
+                        }
+                    }).catch((err) => {
+                        this.addErrorMessage = err.message;
+                    })
+                },
+                onLinkEdit(urlItem) {
+                    alert('on Edit ' + urlItem)                    
+                },
+                onLinkDelete(urlItem) {
+                    // alert('on Delete ' + urlItem.id)
+                    var addRequest = JSON.stringify({ id: urlItem.id });
+                    fetch('/deleteLink', {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json, text/plain, */*',
+                            'Content-Type': 'application/json'
+                        },
+                        body: addRequest
+                    }).then((resp) => {
+                        if (resp.status == 200) {
+                            this.onSearchEnter(undefined)
                         } else {
                             hasSuccessMessage = undefined;
                             this.addErrorMessage = 'Error occured, status code ' + resp.status;

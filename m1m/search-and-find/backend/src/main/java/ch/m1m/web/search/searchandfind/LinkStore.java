@@ -112,6 +112,42 @@ public class LinkStore {
         return new StatusResponse("created", entryKey);
     }
 
+
+    public StatusResponse update(LinkEntry inLinkEntry) {
+
+        String entryKey = inLinkEntry.getId();
+
+        for(int ii=0; ii < allLinks.size(); ii++) {
+            LinkEntry linkEntry = allLinks.get(ii);
+            if (linkEntry.getId().equals(inLinkEntry.getId())) {
+                // found the matching instance, overwrite it
+                allLinks.set(ii, inLinkEntry);
+                break;
+            }
+        }
+        save();
+
+        return new StatusResponse("updated", entryKey);
+    }
+
+
+    public StatusResponse delete(LinkEntry inLinkEntry) {
+
+        String entryKey = inLinkEntry.getId();
+
+        for(int ii=0; ii < allLinks.size(); ii++) {
+            LinkEntry linkEntry = allLinks.get(ii);
+            if (linkEntry.getId().equals(inLinkEntry.getId())) {
+                // found the matching instance, delete it
+                allLinks.remove(ii);
+                break;
+            }
+        }
+        save();
+
+        return new StatusResponse("deleted", entryKey);
+    }
+
     public List<LinkEntry> getTestData() {
         List<LinkEntry> result = new ArrayList<>();
 
@@ -142,7 +178,6 @@ public class LinkStore {
     /* return something like that: ^(?=.*CAT)(?=.*ELEPHANT)(?=.*DOG).*
      *
      */
-
     public String buildRegExpFromInput(String inKeywords) {
 
         String retPattern = "^";;
