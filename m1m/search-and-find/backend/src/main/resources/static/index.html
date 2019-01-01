@@ -13,8 +13,9 @@
     <!--
     https://fontawesome.com/icons?d=gallery&q=delete
     -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
-    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns"
+        crossorigin="anonymous">
+
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
     <script src="https://unpkg.com/vue@2.5.17/dist/vue.js"></script>
 
@@ -152,6 +153,49 @@
                             </div>
                         </form>
                     </div>
+
+                    <div id="edit" v-if="isFormEditActive">
+                        <form action="/editLink" method="post" @submit.stop.prevent="prevent">
+
+                            <div class="field">
+                                <label class="label">Url</label>
+                                <div class="control">
+                                    <input class="input" ref="elUrl" v-model="elAddUrl" type="text" name="url"
+                                        autocomplete="off" placeholder="enter URL here"><br>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label class="label">Description</label>
+                                <div class="control">
+                                    <input class="input" v-model="elAddDesc" type="text" name="description"
+                                        autocomplete="off" placeholder="enter description here">
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label class="label">Keywords</label>
+                                <div class="control">
+                                    <input class="input" v-model="elAddKeys" type="text" name="keywords" autocomplete="off"
+                                        placeholder="enter keywords here">
+                                </div>
+                            </div>
+
+                            <div class="level is-mobile">
+                                <div class="level-left">
+                                    <button class="button" v-on:click="onEditCancel">Cancel</button>
+                                </div>
+                                <div class="level-left">
+                                    <button class="button" v-on:click="onEditSave">Save</button>
+                                </div>
+                                <div class="level-left">
+                                    <div v-if="addErrorMessage" class="my-error">{{addErrorMessage}}</div>
+                                    <div v-if="hasSuccessMessage" class="my-success">{{hasSuccessMessage}}</div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
                 </div>
 
                 <div class="column is-1"></div>
@@ -196,6 +240,7 @@ has-background-primary
                 elAddDesc: '',
                 elAddKeys: '',
                 isFormSearchActive: true,
+                isFormEditActive: false,
                 isFormAddActive: false,
                 searchResult: [],
                 addErrorMessage: undefined,
@@ -230,8 +275,10 @@ has-background-primary
                 onTabAdd(event) {
                     //alert('tab select add');
                     if (!this.isFormAddActive) {
+                        this.clearFormAddFields();
                         this.isFormAddActive = true;
                         this.isFormSearchActive = false;
+                        this.isFormEditActive = false;
                         this.$nextTick(function () {
                             this.$refs.elUrl.focus();
                         });
@@ -263,7 +310,44 @@ has-background-primary
                     })
                 },
                 onLinkEdit(urlItem) {
-                    alert('on Edit ' + urlItem)                    
+                    // set the fields do edit
+                    this.id = urlItem.id;
+                    this.elAddUrl = urlItem.url;
+                    this.elAddDesc = urlItem.description;
+                    this.elAddKeys = urlItem.keywords;
+                    // set visibility
+                    this.isFormSearchActive = false;
+                    this.isFormEditActive = true;
+                },
+                onEditCancel(event) {
+                    this.isFormEditActive = false;
+                    this.isFormSearchActive = true;
+                },
+                onEditSave(event) {
+                    var editRequest = JSON.stringify({ id: this.id, url: this.elAddUrl, description: this.elAddDesc, keywords: this.elAddKeys });
+                    fetch('/editLink', {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json, text/plain, */*',
+                            'Content-Type': 'application/json'
+                        },
+                        body: editRequest
+                    }).then((resp) => {
+                        if (resp.status == 200) {
+                            this.addErrorMessage = undefined;
+                            this.showSuccessMessage('Successfully updated');
+                            // update the list
+                            this.onSearchEnter(undefined)
+                            // return to the original search screen
+                            this.isFormEditActive = false;
+                            this.isFormSearchActive = true;
+                        } else {
+                            hasSuccessMessage = undefined;
+                            this.addErrorMessage = 'Error occured, status code ' + resp.status;
+                        }
+                    }).catch((err) => {
+                        this.addErrorMessage = err.message;
+                    })
                 },
                 onLinkDelete(urlItem) {
                     // alert('on Delete ' + urlItem.id)
