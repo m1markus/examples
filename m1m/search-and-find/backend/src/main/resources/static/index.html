@@ -1,0 +1,405 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Search & Find</title>
+    <meta name="description" content="main page">
+    <meta name="author" content="it's me">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    <!--
+    https://fontawesome.com/icons?d=gallery&q=delete
+    -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns"
+        crossorigin="anonymous">
+
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script src="https://unpkg.com/vue@2.5.17/dist/vue.js"></script>
+
+    <!--
+    <link rel="stylesheet" href="css/styles.css?v=1.0">
+
+    https://stackoverflow.com/questions/44891771/bulma-css-tab-switcher
+
+    https://bulma.io/documentation/components/tabs/
+    -->
+
+    <style>
+        /* prevent flickering on startup (until vue is initialized and takes over)
+         */
+        [v-cloak] {
+          display: none;
+        }
+
+        .my-error {
+            background-color: rgba(255, 0, 0, 0.3);
+            border-radius: 3px;
+            border: 1px solid rgb(116, 19, 19);
+            color: rgb(116, 19, 19);
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-top: 4px;
+            padding-bottom: 4px;
+        }
+
+        .my-success {
+            background-color: rgba(0, 255, 0, 0.2);
+            border-radius: 3px;
+            border: 1px solid rgb(19, 116, 19);
+            color: rgb(19, 116, 19);
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        hr {
+            height: 1px;
+            color: hsl(0, 0%, 86%);
+            background-color: hsl(0, 0%, 86%);
+            border: none;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="app">
+        <div v-cloak>
+            <div class="columns is-mobile">
+
+                <div class="column is-1"></div>
+
+                <div class="column is-10">
+                    <div class="tabs is-centered">
+                        <ul>
+                            <li v-bind:class="{ 'is-active': isFormSearchActive }"><a v-on:click="onTabSearch">Search</a></li>
+                            <li v-bind:class="{ 'is-active': isFormAddActive }"><a v-on:click="onTabAdd">Add</a></li>
+                        </ul>
+                    </div>
+
+                    <div id="search" v-if="isFormSearchActive">
+                        <form action="/searchLinks" method="post" @submit.stop.prevent="prevent">
+                            <div class="field">
+                                <label class="label">Search</label>
+                                <div class="control">
+                                    <input autofocus ref="elSearch" class="input is-rounded" v-model="elInputSearch"
+                                        v-on:keyup.enter="onSearchEnter" type="text" name="search" autocomplete="off"
+                                        placeholder="enter your keywords here...">
+                                </div>
+                            </div>
+                        </form>
+
+                        <div>
+                            <div>
+                                <div v-for="urlItem in searchResult" :key="urlItem.id">
+                                    <hr>
+                                    <div class="container is-fluid">
+                                        <p><a v-bind:href="urlItem.url">{{ urlItem.url }}</a></p>
+                                        <p>{{ urlItem.description }}</p>
+                                        <p class="subtitle is-size-7">
+                                            <span class="icon is-small" v-on:click="onLinkEdit(urlItem)">
+                                                <i class="fas fa-edit"></i>
+                                            </span>
+                                            <span class="icon is-small" v-on:click="onLinkDelete(urlItem)">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </span>
+                                            {{ urlItem.keywords }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="add" v-if="isFormAddActive">
+                        <form action="/addLink" method="post" @submit.stop.prevent="prevent">
+
+                            <div class="field">
+                                <label class="label">Url</label>
+                                <div class="control">
+                                    <input class="input" ref="elUrl" v-model="elAddUrl" type="text" name="url"
+                                        autocomplete="off" placeholder="enter URL here"><br>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label class="label">Description</label>
+                                <div class="control">
+                                    <input class="input" v-model="elAddDesc" type="text" name="description"
+                                        autocomplete="off" placeholder="enter description here">
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label class="label">Keywords</label>
+                                <div class="control">
+                                    <input class="input" v-model="elAddKeys" type="text" name="keywords" autocomplete="off"
+                                        placeholder="enter keywords here">
+                                </div>
+                            </div>
+
+                            <div class="level is-mobile">
+                                <div class="level-left">
+                                    <button class="button" v-on:click="onLinkAdd">Add</button>
+                                </div>
+                                <div class="level-left">
+                                    <div v-if="addErrorMessage" class="my-error">{{addErrorMessage}}</div>
+                                    <div v-if="hasSuccessMessage" class="my-success">{{hasSuccessMessage}}</div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div id="edit" v-if="isFormEditActive">
+                        <form action="/editLink" method="post" @submit.stop.prevent="prevent">
+
+                            <div class="field">
+                                <label class="label">Url</label>
+                                <div class="control">
+                                    <input class="input" ref="elUrl" v-model="elAddUrl" type="text" name="url"
+                                        autocomplete="off" placeholder="enter URL here"><br>
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label class="label">Description</label>
+                                <div class="control">
+                                    <input class="input" v-model="elAddDesc" type="text" name="description"
+                                        autocomplete="off" placeholder="enter description here">
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label class="label">Keywords</label>
+                                <div class="control">
+                                    <input class="input" v-model="elAddKeys" type="text" name="keywords" autocomplete="off"
+                                        placeholder="enter keywords here">
+                                </div>
+                            </div>
+
+                            <div class="level is-mobile">
+                                <div class="level-left">
+                                    <button class="button" v-on:click="onEditCancel">Cancel</button>
+                                </div>
+                                <div class="level-left">
+                                    <button class="button" v-on:click="onEditSave">Save</button>
+                                </div>
+                                <div class="level-left">
+                                    <div v-if="addErrorMessage" class="my-error">{{addErrorMessage}}</div>
+                                    <div v-if="hasSuccessMessage" class="my-success">{{hasSuccessMessage}}</div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+
+                <div class="column is-1"></div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!--
+<div class="field">
+  <label class="label">Name</label>
+  <div class="control">
+    <input class="input" type="text" placeholder="Text input">
+  </div>
+</div>
+
+has-background-primary
+
+<section class="section">
+    <div class="container">
+        <h1 class="title">
+            Hello World
+        </h1>
+        <p class="subtitle">
+            My first website with <strong>Bulma</strong>!
+        </p>
+    </div>
+</section>
+
+<script src="js/scripts.js"></script>
+-->
+
+    <script>
+
+        app = new Vue({
+            el: '#app',
+            data: {
+                elInputSearch: '',
+                elAddUrl: '',
+                elAddDesc: '',
+                elAddKeys: '',
+                isFormSearchActive: true,
+                isFormEditActive: false,
+                isFormAddActive: false,
+                searchResult: [],
+                addErrorMessage: undefined,
+                hasSuccessMessage: undefined
+            },
+            methods: {
+                onTabSearch(event) {
+                    //alert('search');
+                    if (!this.isFormSearchActive) {
+                        this.isFormSearchActive = true;
+                        this.isFormAddActive = false;
+                        this.$nextTick(function () {
+                            this.$refs.elSearch.focus();
+                            this.$refs.elSearch.select();
+                        });
+                    }
+                },
+                onSearchEnter(event) {
+                    var searchRequest = JSON.stringify({ search: this.elInputSearch });
+                    fetch('/searchLinks', {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json, text/plain, */*',
+                            'Content-Type': 'application/json'
+                        },
+                        body: searchRequest
+                    }).then((resp) => resp.json())
+                        .then((data) => this.searchResult = data)
+                        .catch((err) => alert('error:' + err))
+                    //alert('begin execute search');
+                },
+                onTabAdd(event) {
+                    //alert('tab select add');
+                    if (!this.isFormAddActive) {
+                        this.clearFormAddFields();
+                        this.isFormAddActive = true;
+                        this.isFormSearchActive = false;
+                        this.isFormEditActive = false;
+                        this.$nextTick(function () {
+                            this.$refs.elUrl.focus();
+                        });
+                    }
+                },
+                onLinkAdd(event) {
+                    var addRequest = JSON.stringify({ url: this.elAddUrl, description: this.elAddDesc, keywords: this.elAddKeys });
+                    fetch('/addLink', {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json, text/plain, */*',
+                            'Content-Type': 'application/json'
+                        },
+                        body: addRequest
+                    }).then((resp) => {
+                        if (resp.status == 200) {
+                            this.clearFormAddFields();
+                            this.addErrorMessage = undefined;
+                            this.showSuccessMessage('Successfully added a new entry');
+                            this.$nextTick(function () {
+                                this.$refs.elUrl.focus();
+                            });
+                        } else {
+                            hasSuccessMessage = undefined;
+                            this.addErrorMessage = 'Error occured, status code ' + resp.status;
+                        }
+                    }).catch((err) => {
+                        this.addErrorMessage = err.message;
+                    })
+                },
+                onLinkEdit(urlItem) {
+                    // set the fields do edit
+                    this.id = urlItem.id;
+                    this.elAddUrl = urlItem.url;
+                    this.elAddDesc = urlItem.description;
+                    this.elAddKeys = urlItem.keywords;
+                    // set visibility
+                    this.isFormSearchActive = false;
+                    this.isFormEditActive = true;
+                },
+                onEditCancel(event) {
+                    this.isFormEditActive = false;
+                    this.isFormSearchActive = true;
+                },
+                onEditSave(event) {
+                    var editRequest = JSON.stringify({ id: this.id, url: this.elAddUrl, description: this.elAddDesc, keywords: this.elAddKeys });
+                    fetch('/editLink', {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json, text/plain, */*',
+                            'Content-Type': 'application/json'
+                        },
+                        body: editRequest
+                    }).then((resp) => {
+                        if (resp.status == 200) {
+                            this.addErrorMessage = undefined;
+                            this.showSuccessMessage('Successfully updated');
+                            // update the list
+                            this.onSearchEnter(undefined)
+                            // return to the original search screen
+                            this.isFormEditActive = false;
+                            this.isFormSearchActive = true;
+                        } else {
+                            hasSuccessMessage = undefined;
+                            this.addErrorMessage = 'Error occured, status code ' + resp.status;
+                        }
+                    }).catch((err) => {
+                        this.addErrorMessage = err.message;
+                    })
+                },
+                onLinkDelete(urlItem) {
+                    // alert('on Delete ' + urlItem.id)
+                    var addRequest = JSON.stringify({ id: urlItem.id });
+                    fetch('/deleteLink', {
+                        method: 'POST',
+                        headers: {
+                            'Accept': 'application/json, text/plain, */*',
+                            'Content-Type': 'application/json'
+                        },
+                        body: addRequest
+                    }).then((resp) => {
+                        if (resp.status == 200) {
+                            this.onSearchEnter(undefined)
+                        } else {
+                            hasSuccessMessage = undefined;
+                            this.addErrorMessage = 'Error occured, status code ' + resp.status;
+                        }
+                    }).catch((err) => {
+                        this.addErrorMessage = err.message;
+                    })
+                },
+                clearFormAddFields() {
+                    this.elAddUrl = '';
+                    this.elAddDesc = '';
+                    this.elAddKeys = '';
+                },
+                showSuccessMessage(messageText) {
+                    this.addErrorMessage = undefined;
+                    this.hasSuccessMessage = messageText;
+                    console.log('showSuccessMessage called with:' + messageText);
+                    setTimeout(() => {
+                        this.hasSuccessMessage = undefined;
+                    }, 2000);
+                },
+                prevent: function (event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    return false;
+                }
+            },
+            mounted() {
+                this.$nextTick(() => {
+                    //var el = app.$refs.el-search;
+                    //el.focus();
+                    //vm.$refs.el-search.$el.focus();
+                    //alert('this comes on startup');
+                });
+            }
+        });
+
+    </script>
+</body>
+
+</html>
