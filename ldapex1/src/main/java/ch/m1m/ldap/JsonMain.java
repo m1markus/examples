@@ -20,11 +20,11 @@ public class JsonMain {
 
         //test_PersContainer();
 
-        //test_Address_compatability();
+        test_Address_compatability();
 
         //test_Date_jsr310();
 
-        test_LocalDate_plain();
+        //test_LocalDate_plain();
     }
 
 
