@@ -8,6 +8,7 @@
 **/.apt_generated
 **/logs
 **/target
+**/*.xcodeproj
 .checkstyle
 .factorypath
 *.launch
