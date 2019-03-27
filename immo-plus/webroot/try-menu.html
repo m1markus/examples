@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="de-CH">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="Immobilen Verwaltung Immobilienverwaltung Dienstleistung Basel Binningen">
+    <meta name="description" content="Dienstleistungen für Immobilienverwaltungen im Raum Basel / Binningen">
+    <meta name="author" content="Markus Müller">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Immo Quick</title>
+
+ 
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <!--
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans+Condensed" rel="stylesheet">
+
+        font-family: 'Fira Sans Condensed', sans-serif;
+    -->
+    <!--
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed" rel="stylesheet">
+
+        font-family: 'Fira Sans Extra Condensed', sans-serif;
+    -->
+
+    <style>
+
+
+        /* main content
+         */
+
+        body {
+            /*
+            font-family: 'Fira Sans Condensed', sans-serif;
+            font-family: 'Fira Sans Extra Condensed', sans-serif;
+            */
+            font-family: 'myFSThin2';
+        }
+
+        .iq-font {
+            font-family: 'myFSThin2';
+        }
+
+        /*
+        https://cssgradient.io/
+        from: #294454
+        to:   #5186a8
+        */
+
+        .iq-slogan {
+            color: white;
+        }
+
+        #iq-slogan-div {
+            /*
+            background-color: red;
+            background: rgb(41,68,84);
+            */
+            margin-top: 110px;
+            margin-left: 40px;
+            /*
+            border-style: solid;
+            border-width: 5px 5px 5px 5px;
+            border-color: yellow;
+            */
+            padding: 20px;
+        }
+
+        /*
+        .iq-picto-house-image-container {
+            position: relative;
+            overflow: auto;
+            height: 300px;
+            width: 300px;
+            top: 120px;
+            left: 300px;   adjust left XXXpx value according the windows width 
+        }*/
+
+ 
+
+  
+    </style>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha256-3edrmyuQ0w65f8gfBsqowzjJe2iM6n0nKciPUp8y+7E="
+        crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function () {
+            //alert('dom ready');
+            onBrowserResize();
+            debugger;
+
+            window.addEventListener("resize", onBrowserResize);
+        });
+
+        function iqMenuMobileShowHide() {
+            var x = document.getElementById("iqMobileMenu");
+            if (x.className.indexOf("w3-show") == -1) {
+                x.className += " w3-show";
+            } else {
+                x.className = x.className.replace(" w3-show", "");
+            }
+        }
+
+        function fmy1() {
+            alert('something has triggered this dialog');
+            return true;
+        }
+
+        function onBrowserResize() {
+            var width = window.innerWidth
+                || document.documentElement.clientWidth
+                || document.body.clientWidth;
+
+            var height = window.innerHeight
+                || document.documentElement.clientHeight
+                || document.body.clientHeight;
+
+            var screenDimension = "x:" + width + " y:" + height;
+
+            objDisplaySize = $("#display-size").text(screenDimension);
+        }
+    </script>
+
+</head>
+
+<body>
+
+    <!-- 
+        w3-sidebar 
+        w3-bar
+        w3-red
+        w3-bottombar 
+        w3-border-white w3-bottombar
+    -->
+
+    <!--
+        https://www.w3schools.com/w3css/w3css_navigation.asp
+    -->
+    <div class="w3-top">
+
+        <div class="w3-bar w3-white ">
+
+            <!-- desktop menu
+            -->
+            <div id="logo" class="w3-bar-item">
+            </div>
+        
+            <a href="#idContact" class="w3-padding-16 w3-hover-text-theme w3-hover-none w3-right w3-bar-item w3-button w3-hide-small">Kontakt</a>
+            <a href="#idAboutMe" class="w3-padding-16 w3-hover-text-theme w3-hover-none w3-right w3-bar-item w3-button w3-hide-small">über mich</a>
+            <a href="#idService" class="w3-padding-16 w3-hover-text-theme w3-hover-none w3-right w3-bar-item w3-button w3-hide-small">Dienstleisungen</a>
+            <a href="#home" class="w3-padding-16 w3-hover-text-theme w3-hover-none w3-right w3-bar-item w3-button w3-hide-small">Home</a>
+            <!-- burger button -->
+            <a href="javascript:void(0)" class="w3-hover-text-theme w3-hover-none w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium"
+                onclick="iqMenuMobileShowHide()">ABC &#9776;</a>
+        </div>
+
+        <!-- mobile menu
+            <div id="iqMobileMenu" class="w3-bar-block w3-theme-l3w3 w3-hide w3-hide-large w3-hide-medium">
+            -->
+        <div id="iqMobileMenu" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
+            <a href="#home" class="w3-bar-item w3-button">Home</a>
+            <a href="#idService" class="w3-bar-item w3-button">Dienstleisungen</a>
+            <a href="#idAboutMe" class="w3-bar-item w3-button">über mich</a>
+            <a href="#idContact" class="w3-bar-item w3-button">Kontakt</a>
+        </div>
+    </div>
+
+    <div id="home" class="w3-row w3-red w3-container" style="width:400px; height: 55px;"></div>
+
+</body>
+
+</html>
+
+<!--
+// block
+style="display: none;" 
+-->
