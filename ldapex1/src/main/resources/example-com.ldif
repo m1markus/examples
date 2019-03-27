@@ -78,6 +78,7 @@ ou: groups
 description: People who can manage accounting entries
 uniquemember: uid=scarter, ou=People, dc=example,dc=com
 uniquemember: uid=tmorris, ou=People, dc=example,dc=com
+uniquemember: uid=mue, ou=People, dc=example,dc=com
 cn: Accounting Managers
 
 dn: cn=Directory Administrators,ou=Groups,dc=example,dc=com
@@ -169,7 +170,6 @@ ou: Payroll
 ou: People
 uidNumber: 1119
 gidNumber: 1000
-
 
 
 dn: uid=abarnes,ou=People,dc=example,dc=com

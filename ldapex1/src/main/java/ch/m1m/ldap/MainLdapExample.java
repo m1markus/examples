@@ -3,17 +3,11 @@ package ch.m1m.ldap;
 import com.unboundid.ldap.listener.InMemoryDirectoryServer;
 import com.unboundid.ldap.listener.InMemoryDirectoryServerConfig;
 import com.unboundid.ldap.listener.InMemoryListenerConfig;
-import com.unboundid.ldap.sdk.LDAPConnection;
-import com.unboundid.ldap.sdk.LDAPException;
-import com.unboundid.ldap.sdk.LDAPSearchException;
-import com.unboundid.ldap.sdk.SearchResult;
-import com.unboundid.ldap.sdk.SearchResultEntry;
-import com.unboundid.ldap.sdk.SearchScope;
+import com.unboundid.ldap.sdk.*;
 
-
-// https://www.ldap.com/unboundid-ldap-sdk-for-java
-// https://docs.ldap.com/ldap-sdk/docs/index.html
-// https://docs.ldap.com/ldap-sdk/docs/ldapsdk-faq.html#search
+// doc:  https://docs.ldap.com/ldap-sdk/docs/index.html
+// FAQ:  https://docs.ldap.com/ldap-sdk/docs/ldapsdk-faq.html
+// Java: https://www.ldap.com/unboundid-ldap-sdk-for-java
 
 /**
  * Created by mue on 15.07.17.
@@ -32,12 +26,29 @@ public class MainLdapExample {
 		
 		//SearchResult searchResult = conn.search("dc=example,dc=com", SearchScope.SUB, "(cn=*)");
 		// SearchResult searchResult = conn.search("dc=example,dc=com", SearchScope.SUB, "(cn=Markus Mueller)");
-		
+
+		// ok but no groups
+		//SearchResult searchResult = conn.search("dc=example,dc=com", SearchScope.SUB, "(uid=mue)");
+
 		SearchResult searchResult = conn.search("dc=example,dc=com", SearchScope.SUB, "(uid=mue)");
 		System.out.println(searchResult.getEntryCount() + " entries returned.");
 		for (SearchResultEntry e : searchResult.getSearchEntries()) {
+
 			System.out.println(e.toLDIFString());
 			System.out.println();
+			System.out.println("from result... dn : " + e.getDN());
+			Attribute attribute = e.getAttribute("mail");
+			if (attribute != null) {
+				System.out.println("  mail : " + attribute.getValue());
+			}
+			String [] ou = e.getAttributeValues("ou");
+			if (ou != null) {
+				int ii = 0;
+				for (ii = 0; ii < ou.length; ii++) {
+					System.out.println("  ou : " + ou[ii]);
+				}
+			}
+
 		}	
 	}
 	
@@ -46,8 +57,7 @@ public class MainLdapExample {
 
 		//String ldifImport = "/home/mue/work/java/ldapex1/src/main/resources/example1.ldif";
 		String ldifImport = "/home/mue/work/java/ldapex1/src/main/resources/example-com.ldif";
-		ldifImport = "/Users/mue/work/git/m1markus/examples/ldapex1/src/main/resources/example-com.ldif";
-		
+		ldifImport = "./src/main/resources/example-com.ldif";
 
 		// Create the configuration to use for the server.
 		InMemoryDirectoryServerConfig config = new InMemoryDirectoryServerConfig("dc=example,dc=com");

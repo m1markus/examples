@@ -76,9 +76,6 @@ public class JcePKCS12Example
     {
         Security.addProvider(new BouncyCastleProvider());
 
-
-
-
         //genSelfSignedCert();
         System.exit(0);
 

@@ -1,13 +1,10 @@
 package ch.m1m.ldap;
 
-import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.time.Duration;
 import java.time.LocalDateTime;
 
 public class Prime {
-
-
 
     public static void main(String... args) {
 
