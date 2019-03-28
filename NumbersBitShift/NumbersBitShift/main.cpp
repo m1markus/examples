@@ -25,6 +25,68 @@ unsigned char bNumber[] = {
     'H'
 };
 
+// from: https://codereview.stackexchange.com/questions/43256/binary-string-to-integer-and-integer-to-binary-string
+//
+/*
+ Parameters:
+ s   - String with a maximum of log2(ULONG_MAX) binary characters
+ num - Memory address to store the result in
+ Return:
+ - Status integer
+ Error:
+ - Negative returned on error check errno
+ */
+int binstr2ul(const char *s, unsigned long *num)
+{
+    unsigned long rc;
+    for (rc = 0; '\0' != *s; s++) {
+        if (rc > (ULONG_MAX/2)) {
+            errno = ERANGE;
+            return -1;
+        } else if ('1' == *s) {
+            rc = (rc * 2) + 1;
+        } else if ('0' == *s) {
+            rc *= 2;
+        } else {
+            errno = EINVAL;
+            return -1;
+        }
+    }
+    *num = rc;
+    return 0;
+}
+
+/*
+ Parameters:
+ num     - The number to convert to a binary string
+ s       - Pointer to a memory region to return the string to
+ len     - Size in bytes of the region pointed to by s
+ Return:
+ - Pointer to the beginning of the string
+ Error:
+ - NULL returned on error check errno
+ */
+char *ul2binstr(unsigned long num, char *s, size_t len)
+{
+    if (0 == len) {
+        errno = EINVAL;
+        return NULL;
+    } else {
+        s[--len] = '\0';
+    }
+    
+    do {
+        if (0 == len) {
+            errno = ERANGE;
+            return NULL;
+        } else {
+            s[--len] = ((num & 1) ? '1' : '0');
+        }
+    } while ((num >>= 1) != 0);
+    
+    return s + len;
+}
+
 // from: https://www.dreamincode.net/forums/topic/195111-how-to-convert-binary-to-decimal-using-c-programming/
 //
 // char c = convert_bit_string_to_byte("1001");
@@ -79,23 +141,103 @@ void print_byte_array_as_bit_string(unsigned char *bNumber, int nSize)
     }
 }
 
+void strreplace(char s[], char chr, char repl_chr)
+{
+    int i=0;
+    while(s[i]!='\0')
+    {
+        if(s[i]==chr)
+        {
+            s[i]=repl_chr;
+        }
+        i++;
+    }
+    return;
+}
+
+void convert_3_digit_to_emo_buffer(char digit_1[8][9], char digit_2[8][9], char digit_3[8][9], unsigned char *emo_buffer24, int emo_buffer_size)
+{
+    unsigned long ul_char;
+    int emo_buffer_index = 0;
+    int rc;
+    char sz_buff[16];
+    
+    for (int ii=0; ii<8; ii++) {
+        
+        // digit 1
+        //
+        strcpy(sz_buff, digit_1[ii]);
+        strreplace(sz_buff, ' ', '0');
+        strreplace(sz_buff, '#', '1');
+        rc = binstr2ul(sz_buff, &ul_char);
+        emo_buffer24[emo_buffer_index++] = (unsigned char)ul_char;
+        
+        // digit 2
+        //
+        strcpy(sz_buff, digit_2[ii]);
+        strreplace(sz_buff, ' ', '0');
+        strreplace(sz_buff, '#', '1');
+        rc = binstr2ul(sz_buff, &ul_char);
+        emo_buffer24[emo_buffer_index++] = (unsigned char)ul_char;
+        
+        // digit 3
+        //
+        strcpy(sz_buff, digit_3[ii]);
+        strreplace(sz_buff, ' ', '0');
+        strreplace(sz_buff, '#', '1');
+        rc = binstr2ul(sz_buff, &ul_char);
+        emo_buffer24[emo_buffer_index++] = (unsigned char)ul_char;
+        
+        // check emp_buffer_index with emo_buffer_size
+    }
+}
+
 void print_digit(char digit_8[8][9]) {
     for (int ii=0; ii<8; ii++) {
         printf("digit: %s\n", digit_8[ii]);
     }
 }
 
+void print_emo_buffer(unsigned char *bNumber, int nSize)
+{
+    
+}
+
 int main(int argc, const char * argv[]) {
     std::cout << "NumberBitShift running...\n";
     
+    unsigned char emo_buffer24[24];
+    
+    char digit_1[8][9] = {
+        "   #    ",
+        "  ##    ",
+        " # #    ",
+        "   #    ",
+        "   #    ",
+        "   #    ",
+        "   #    ",
+        "        "
+    };
+    
+    char digit_3[8][9] = {
+        " ####   ",
+        "    #   ",
+        "    #   ",
+        " ####   ",
+        "    #   ",
+        "    #   ",
+        " ####   ",
+        "        "
+    };
+    
     char digit_8[8][9] = {
-        "  ####  ",
-        "  #  #  ",
-        "  #  #  ",
-        "  ####  ",
-        "  #  #  ",
-        "  #  #  ",
-        "  ####  ",
+        " ####   ",
+        " #  #   ",
+        " #  #   ",
+        " ####   ",
+        " #  #   ",
+        " #  #   ",
+        " ####   ",
         "        "
     };
     
@@ -104,6 +246,10 @@ int main(int argc, const char * argv[]) {
     printf("\n");
     
     print_digit(digit_8);
+    
+    convert_3_digit_to_emo_buffer(digit_1, digit_3, digit_8, emo_buffer24, 24);
+    
+    print_emo_buffer(emo_buffer24, 24);
     
     std::cout << "### end ###\n";
     return 0;
