@@ -198,9 +198,27 @@ void print_digit(char digit_8[8][9]) {
     }
 }
 
-void print_emo_buffer(unsigned char *bNumber, int nSize)
+// print the array in the following way...
+//
+// charArray24[1] charArray24[2] charArray24[3]
+// charArray24[4] ...
+// ...                           charArray24[23]
+//
+void print_emo_buffer(unsigned char *pCharArray24, int charArray24Size)
 {
+    unsigned char sz_digit_1[9];
+    unsigned char sz_digit_2[9];
+    unsigned char sz_digit_3[9];
+    int charArray24Index = 0;
     
+    for (int ii=0; ii < 8; ii++) {
+        
+        convert_byte_to_bit_string(pCharArray24[charArray24Index++], sz_digit_1, sizeof sz_digit_1);
+        convert_byte_to_bit_string(pCharArray24[charArray24Index++], sz_digit_2, sizeof sz_digit_2);
+        convert_byte_to_bit_string(pCharArray24[charArray24Index++], sz_digit_3, sizeof sz_digit_3);
+        
+        std::printf("%s %s %s\n", sz_digit_1, sz_digit_2, sz_digit_3);
+    }
 }
 
 int main(int argc, const char * argv[]) {
@@ -248,6 +266,8 @@ int main(int argc, const char * argv[]) {
     print_digit(digit_8);
     
     convert_3_digit_to_emo_buffer(digit_1, digit_3, digit_8, emo_buffer24, 24);
+    
+    // now the buffer is ready for the EMO 24x3 screen device
     
     print_emo_buffer(emo_buffer24, 24);
     
