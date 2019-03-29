@@ -271,6 +271,23 @@ int main(int argc, const char * argv[]) {
     
     print_emo_buffer(emo_buffer24, 24);
     
+    //
+    //
+    
+    char sz_buf_t1[9];
+    unsigned char c1, c2;
+    
+    std::strcpy(sz_buf_t1, "01100000");
+    c1 = convert_bit_string_to_byte(sz_buf_t1);
+    printf("bits %s  dec %d hex=%x\n", sz_buf_t1, (int)c1, (int)c1);
+    
+    printf("apply operation...\n");
+    
+    c2 = c1;
+    
+    convert_byte_to_bit_string(c2, (unsigned char*)sz_buf_t1, sizeof sz_buf_t1);
+    printf("bits %s  dec %d hex=%x\n", sz_buf_t1, (int)c2, (int)c2);
+    
     std::cout << "### end ###\n";
     return 0;
 }
