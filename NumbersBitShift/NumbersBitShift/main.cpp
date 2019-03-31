@@ -13,16 +13,130 @@
 
 //using namespace std;
 
+typedef unsigned char byte;
 
-unsigned char bNumber[] = {
-    0x05,
-    'B',
-    'C',
-    'D',
-    'E',
-    'F',
-    'G',
-    'H'
+//unsigned char emo_buffer24[24];
+byte emo_buffer24[24];
+
+char digit_0[8][9] = {
+    " ##     ",
+    "#  #    ",
+    "#  #    ",
+    "#  #    ",
+    "#  #    ",
+    "#  #    ",
+    " ##     ",
+    "        "
+};
+
+char digit_1[8][9] = {
+    "  #     ",
+    " ##     ",
+    "# #     ",
+    "  #     ",
+    "  #     ",
+    "  #     ",
+    "  #     ",
+    "        "
+};
+
+char digit_2[8][9] = {
+    " ##     ",
+    "#  #    ",
+    "   #    ",
+    "  #     ",
+    " #      ",
+    "#       ",
+    "####    ",
+    "        "
+};
+
+char digit_3[8][9] = {
+    " ##     ",
+    "#  #    ",
+    "   #    ",
+    "  #     ",
+    "   #    ",
+    "#  #    ",
+    " ##     ",
+    "        "
+};
+
+char digit_4[8][9] = {
+    "#  #    ",
+    "#  #    ",
+    "#  #    ",
+    "####    ",
+    "   #    ",
+    "   #    ",
+    "   #    ",
+    "        "
+};
+
+char digit_5[8][9] = {
+    "####    ",
+    "#       ",
+    "#       ",
+    "###     ",
+    "   #    ",
+    "#  #    ",
+    " ##     ",
+    "        "
+};
+
+char digit_6[8][9] = {
+    " ##     ",
+    "#  #    ",
+    "#       ",
+    "###     ",
+    "#  #    ",
+    "#  #    ",
+    " ##     ",
+    "        "
+};
+
+char digit_7[8][9] = {
+    "####    ",
+    "   #    ",
+    "  #     ",
+    " #      ",
+    "#       ",
+    "#       ",
+    "#       ",
+    "        "
+};
+
+char digit_8[8][9] = {
+    " ##     ",
+    "#  #    ",
+    "#  #    ",
+    " ##     ",
+    "#  #    ",
+    "#  #    ",
+    " ##     ",
+    "        "
+};
+
+char digit_9[8][9] = {
+    " ##     ",
+    "#  #    ",
+    "#  #    ",
+    " ###    ",
+    "   #    ",
+    "#  #    ",
+    " ##     ",
+    "        "
+};
+
+char sep_minutes[8][9] = {
+    "        ",
+    "        ",
+    "#       ",
+    "        ",
+    "#       ",
+    "        ",
+    "        ",
+    "        "
 };
 
 // from: https://codereview.stackexchange.com/questions/43256/binary-string-to-integer-and-integer-to-binary-string
@@ -73,6 +187,7 @@ char *ul2binstr(unsigned long num, char *s, size_t len)
         return NULL;
     } else {
         s[--len] = '\0';
+        std::memset(s, '0', len);
     }
     
     do {
@@ -85,60 +200,6 @@ char *ul2binstr(unsigned long num, char *s, size_t len)
     } while ((num >>= 1) != 0);
     
     return s + len;
-}
-
-// from: https://www.dreamincode.net/forums/topic/195111-how-to-convert-binary-to-decimal-using-c-programming/
-//
-// char c = convert_bit_string_to_byte("1001");
-//
-unsigned char convert_bit_string_to_byte(char *binstring)
-{
-    unsigned char decimalval = 0;
-    int stringpos;
-
-    for (stringpos=(int)strlen(binstring)-1; stringpos>=0; stringpos--) {
-        decimalval = decimalval<<1;
-        if (binstring[stringpos]=='1') decimalval += 1;
-    }
-
-    return decimalval;
-}
-
-// from: https://www.techworld.com.au/article/527677/how_convert_an_ascii_char_binary_string_representation_c/
-//
-// unsigned char szBits[8+1];
-// convert_byte_to_bit_string(oneChar, szBits, sizeof(szBits));
-//
-void convert_byte_to_bit_string(unsigned char input, unsigned char *output, int outStringSize)
-{
-    int remainder;
-	int BASE=2;
-	int DIGITS = (sizeof input) * 8;
-	
-    char digitsArray[3] = "01";
-    //char digitsArray[3] = "_#";
-	
-	//printf("sizeof char: %d\n", DIGITS);	  
-    for (int ii=DIGITS; ii > 0; --ii) {
-        remainder = input % BASE;
-        input = input / BASE;
-        output[ii - 1] = digitsArray[remainder];
-    }
-    // null terminate output
-    output[outStringSize -1] = '\0';
-}
-
-void print_byte_array_as_bit_string(unsigned char *bNumber, int nSize)
-{
-    unsigned char szBits[8+1];
-    
-    for (int ii=0; ii<nSize; ii++) {
-        unsigned char oneChar = bNumber[ii];
-        //std::printf("char: %c\n", oneChar);
-        //convert_byte_to_string(oneChar, szBits, sizeof(szBits));
-        convert_byte_to_bit_string(oneChar, szBits, sizeof(szBits));
-        std::printf("bit string: %s\n", szBits);
-    }
 }
 
 void strreplace(char s[], char chr, char repl_chr)
@@ -192,6 +253,19 @@ void convert_3_digit_to_emo_buffer(char digit_1[8][9], char digit_2[8][9], char 
     }
 }
 
+
+void convert_time_string_to_emo_buffer(char *pszTimeString, unsigned char *emo_buffer24, int emo_buffer_size)
+{
+    byte hour_1, hour_2;
+    byte min_1, min_2;
+    
+    
+}
+
+// end copy to arduino
+
+// begin only on macbook
+
 void print_digit(char digit_8[8][9]) {
     for (int ii=0; ii<8; ii++) {
         printf("digit: %s\n", digit_8[ii]);
@@ -204,59 +278,60 @@ void print_digit(char digit_8[8][9]) {
 // charArray24[4] ...
 // ...                           charArray24[23]
 //
-void print_emo_buffer(unsigned char *pCharArray24, int charArray24Size)
+void print_emo_buffer(unsigned char *pCharArray24, int charArray24Size, int isPrettyPrint)
 {
-    unsigned char sz_digit_1[9];
-    unsigned char sz_digit_2[9];
-    unsigned char sz_digit_3[9];
+    char sz_digit_1[9];
+    char sz_digit_2[9];
+    char sz_digit_3[9];
     int charArray24Index = 0;
     
     for (int ii=0; ii < 8; ii++) {
         
-        convert_byte_to_bit_string(pCharArray24[charArray24Index++], sz_digit_1, sizeof sz_digit_1);
-        convert_byte_to_bit_string(pCharArray24[charArray24Index++], sz_digit_2, sizeof sz_digit_2);
-        convert_byte_to_bit_string(pCharArray24[charArray24Index++], sz_digit_3, sizeof sz_digit_3);
+        ul2binstr(pCharArray24[charArray24Index++], sz_digit_1, sizeof sz_digit_1);
+        ul2binstr(pCharArray24[charArray24Index++], sz_digit_2, sizeof sz_digit_2);
+        ul2binstr(pCharArray24[charArray24Index++], sz_digit_3, sizeof sz_digit_3);
+        
+        if (isPrettyPrint) {
+            strreplace(sz_digit_1, '0', ' ');
+            strreplace(sz_digit_1, '1', '#');
+            
+            strreplace(sz_digit_2, '0', ' ');
+            strreplace(sz_digit_2, '1', '#');
+            
+            strreplace(sz_digit_3, '0', ' ');
+            strreplace(sz_digit_3, '1', '#');
+        }
         
         std::printf("%s %s %s\n", sz_digit_1, sz_digit_2, sz_digit_3);
+    }
+}
+
+void print_byte_array_as_bit_string(char *bNumber, int nSize)
+{
+    char szBits[8+1];
+    
+    for (int ii=0; ii<nSize; ii++) {
+        unsigned char oneChar = bNumber[ii];
+        //std::printf("char: %c\n", oneChar);
+        //convert_byte_to_string(oneChar, szBits, sizeof(szBits));
+        ul2binstr((unsigned long)oneChar, szBits, sizeof(szBits));
+        //convert_byte_to_bit_string(oneChar, szBits, sizeof(szBits));
+        std::printf("bit string: %s\n", szBits);
     }
 }
 
 int main(int argc, const char * argv[]) {
     std::cout << "NumberBitShift running...\n";
     
-    unsigned char emo_buffer24[24];
-    
-    char digit_1[8][9] = {
-        "   #    ",
-        "  ##    ",
-        " # #    ",
-        "   #    ",
-        "   #    ",
-        "   #    ",
-        "   #    ",
-        "        "
-    };
-    
-    char digit_3[8][9] = {
-        " ####   ",
-        "    #   ",
-        "    #   ",
-        " ####   ",
-        "    #   ",
-        "    #   ",
-        " ####   ",
-        "        "
-    };
-    
-    char digit_8[8][9] = {
-        " ####   ",
-        " #  #   ",
-        " #  #   ",
-        " ####   ",
-        " #  #   ",
-        " #  #   ",
-        " ####   ",
-        "        "
+    char bNumber[] = {
+        0x05,
+        'B',
+        'C',
+        'D',
+        'E',
+        'F',
+        'G',
+        'H'
     };
     
     print_byte_array_as_bit_string(bNumber, 8);
@@ -269,24 +344,30 @@ int main(int argc, const char * argv[]) {
     
     // now the buffer is ready for the EMO 24x3 screen device
     
-    print_emo_buffer(emo_buffer24, 24);
+    print_emo_buffer(emo_buffer24, 24, 0);
+    print_emo_buffer(emo_buffer24, 24, 1);
     
+    convert_time_string_to_emo_buffer("23:59", emo_buffer24, 24);
+    print_emo_buffer(emo_buffer24, 24, 0);
+    print_emo_buffer(emo_buffer24, 24, 1);
+
+    /*
     //
     //
-    
     char sz_buf_t1[9];
-    unsigned char c1, c2;
+    unsigned long l1, l2;
     
-    std::strcpy(sz_buf_t1, "01100000");
-    c1 = convert_bit_string_to_byte(sz_buf_t1);
-    printf("bits %s  dec %d hex=%x\n", sz_buf_t1, (int)c1, (int)c1);
+    printf("  new operations...\n");
     
-    printf("apply operation...\n");
+    std::strcpy(sz_buf_t1, "10000000");
+    binstr2ul(sz_buf_t1, &l1);
+    printf("bits %s  dec %lu hex=%lx\n", sz_buf_t1, l1, l1);
     
-    c2 = c1;
-    
-    convert_byte_to_bit_string(c2, (unsigned char*)sz_buf_t1, sizeof sz_buf_t1);
-    printf("bits %s  dec %d hex=%x\n", sz_buf_t1, (int)c2, (int)c2);
+    l2 = l1;
+    std::strcpy(sz_buf_t1, "deadbeef");
+    ul2binstr(l2, sz_buf_t1, 9);
+    printf("bits %s  dec %lu hex=%lx\n", sz_buf_t1, l2, l2);
+     */
     
     std::cout << "### end ###\n";
     return 0;
