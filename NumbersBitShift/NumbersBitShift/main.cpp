@@ -139,6 +139,30 @@ char sep_minutes[8][9] = {
     "        "
 };
 
+byte b_digit_0[8];
+byte b_digit_1[8];
+byte b_digit_2[8];
+byte b_digit_3[8];
+byte b_digit_4[8];
+byte b_digit_5[8];
+byte b_digit_6[8];
+byte b_digit_7[8];
+byte b_digit_8[8];
+byte b_digit_9[8];
+byte b_separator[8];
+
+/*
+void convert_string_digit_to_byte_digit(char [] p) //, byte *out)
+{
+    
+}
+
+void init_b_digit()
+{
+    convert_string_digit_to_byte_digit(b_digit_0);
+}
+*/
+
 // from: https://codereview.stackexchange.com/questions/43256/binary-string-to-integer-and-integer-to-binary-string
 //
 /*
@@ -253,12 +277,48 @@ void convert_3_digit_to_emo_buffer(char digit_1[8][9], char digit_2[8][9], char 
     }
 }
 
+void set_digit_byte_array_from_time_char(char inChar, byte *pOutArray[])
+{
+    char **psz_digit_string_arra = nullptr;
+    
+    switch(inChar) {
+        case '0':
+            //psz_digit_string_arra = digit_0;
+            break;
+        case '1':
+            break;
+        case '2':
+            break;
+        case '3':
+            break;
+        case '4':
+            break;
+        case '5':
+            break;
+        case '6':
+            break;
+        case '7':
+            break;
+        case '8':
+            break;
+        case '9':
+            break;
+        case ':':
+            break;
+        default:
+            int ii = 0;
+    }
+    
+    // digit_0
+    
+}
 
 void convert_time_string_to_emo_buffer(char *pszTimeString, unsigned char *emo_buffer24, int emo_buffer_size)
 {
-    byte hour_1, hour_2;
-    byte min_1, min_2;
-    
+    byte hour_1[8];
+    byte hour_2[8];
+    byte min_1[8];
+    byte min_2[8];
     
 }
 
@@ -351,7 +411,6 @@ int main(int argc, const char * argv[]) {
     print_emo_buffer(emo_buffer24, 24, 0);
     print_emo_buffer(emo_buffer24, 24, 1);
 
-    /*
     //
     //
     char sz_buf_t1[9];
@@ -359,16 +418,19 @@ int main(int argc, const char * argv[]) {
     
     printf("  new operations...\n");
     
+    /*
     std::strcpy(sz_buf_t1, "10000000");
     binstr2ul(sz_buf_t1, &l1);
     printf("bits %s  dec %lu hex=%lx\n", sz_buf_t1, l1, l1);
+    */
     
     l2 = l1;
+    l2 = (1 << 7)|(1 << 3);
+
     std::strcpy(sz_buf_t1, "deadbeef");
     ul2binstr(l2, sz_buf_t1, 9);
     printf("bits %s  dec %lu hex=%lx\n", sz_buf_t1, l2, l2);
-     */
-    
+
     std::cout << "### end ###\n";
     return 0;
 }
