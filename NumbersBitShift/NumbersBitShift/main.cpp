@@ -15,10 +15,9 @@
 
 typedef unsigned char byte;
 
-//unsigned char emo_buffer24[24];
 byte emo_buffer24[24];
 
-char digit_0[8][9] = {
+const char * digit_0[] = {
     " ##     ",
     "#  #    ",
     "#  #    ",
@@ -29,7 +28,7 @@ char digit_0[8][9] = {
     "        "
 };
 
-char digit_1[8][9] = {
+const char * digit_1[] = {
     "  #     ",
     " ##     ",
     "# #     ",
@@ -40,7 +39,7 @@ char digit_1[8][9] = {
     "        "
 };
 
-char digit_2[8][9] = {
+const char * digit_2[] = {
     " ##     ",
     "#  #    ",
     "   #    ",
@@ -51,7 +50,7 @@ char digit_2[8][9] = {
     "        "
 };
 
-char digit_3[8][9] = {
+const char * digit_3[] = {
     " ##     ",
     "#  #    ",
     "   #    ",
@@ -62,7 +61,7 @@ char digit_3[8][9] = {
     "        "
 };
 
-char digit_4[8][9] = {
+const char * digit_4[] = {
     "#  #    ",
     "#  #    ",
     "#  #    ",
@@ -73,7 +72,7 @@ char digit_4[8][9] = {
     "        "
 };
 
-char digit_5[8][9] = {
+const char * digit_5[] = {
     "####    ",
     "#       ",
     "#       ",
@@ -84,7 +83,7 @@ char digit_5[8][9] = {
     "        "
 };
 
-char digit_6[8][9] = {
+const char * digit_6[] = {
     " ##     ",
     "#  #    ",
     "#       ",
@@ -95,7 +94,7 @@ char digit_6[8][9] = {
     "        "
 };
 
-char digit_7[8][9] = {
+const char * digit_7[] = {
     "####    ",
     "   #    ",
     "  #     ",
@@ -106,7 +105,7 @@ char digit_7[8][9] = {
     "        "
 };
 
-char digit_8[8][9] = {
+const char * digit_8[] = {
     " ##     ",
     "#  #    ",
     "#  #    ",
@@ -117,7 +116,7 @@ char digit_8[8][9] = {
     "        "
 };
 
-char digit_9[8][9] = {
+const char * digit_9[] = {
     " ##     ",
     "#  #    ",
     "#  #    ",
@@ -128,7 +127,7 @@ char digit_9[8][9] = {
     "        "
 };
 
-char sep_minutes[8][9] = {
+const char * sep_minutes[] = {
     "        ",
     "        ",
     "#       ",
@@ -149,19 +148,41 @@ byte b_digit_6[8];
 byte b_digit_7[8];
 byte b_digit_8[8];
 byte b_digit_9[8];
-byte b_separator[8];
+byte b_sep_minutes[8];
 
-/*
-void convert_string_digit_to_byte_digit(char [] p) //, byte *out)
+int binstr2ul(const char *s, unsigned long *num);
+void strreplace(char s[], char chr, char repl_chr);
+
+
+void convert_string_digit_to_byte_digit(const char *p[], byte *pOut)
 {
-    
+    char sz_buff[16];
+    for(int ii = 0; ii < 8; ii++) {
+        unsigned long ulByte;
+        strcpy(sz_buff, p[ii]);
+        strreplace(sz_buff, ' ', '0');
+        strreplace(sz_buff, '#', '1');
+        binstr2ul(sz_buff, &ulByte);
+        byte outChar = (byte)ulByte;
+        *pOut++ = outChar;
+    }
 }
 
 void init_b_digit()
 {
-    convert_string_digit_to_byte_digit(b_digit_0);
+    convert_string_digit_to_byte_digit(digit_0, b_digit_0);
+    convert_string_digit_to_byte_digit(digit_1, b_digit_1);
+    convert_string_digit_to_byte_digit(digit_2, b_digit_2);
+    convert_string_digit_to_byte_digit(digit_3, b_digit_3);
+    convert_string_digit_to_byte_digit(digit_4, b_digit_4);
+    convert_string_digit_to_byte_digit(digit_5, b_digit_5);
+    convert_string_digit_to_byte_digit(digit_6, b_digit_6);
+    convert_string_digit_to_byte_digit(digit_7, b_digit_7);
+    convert_string_digit_to_byte_digit(digit_8, b_digit_8);
+    convert_string_digit_to_byte_digit(digit_9, b_digit_9);
+    
+    convert_string_digit_to_byte_digit(sep_minutes, b_sep_minutes);
 }
-*/
 
 // from: https://codereview.stackexchange.com/questions/43256/binary-string-to-integer-and-integer-to-binary-string
 //
@@ -240,7 +261,7 @@ void strreplace(char s[], char chr, char repl_chr)
     return;
 }
 
-void convert_3_digit_to_emo_buffer(char digit_1[8][9], char digit_2[8][9], char digit_3[8][9], unsigned char *emo_buffer24, int emo_buffer_size)
+void convert_3_digit_to_emo_buffer(const char *digit_1[], const char *digit_2[], const char *digit_3[], unsigned char *emo_buffer24, int emo_buffer_size)
 {
     unsigned long ul_char;
     int emo_buffer_index = 0;
@@ -277,56 +298,86 @@ void convert_3_digit_to_emo_buffer(char digit_1[8][9], char digit_2[8][9], char 
     }
 }
 
-void set_digit_byte_array_from_time_char(char inChar, byte *pOutArray[])
+byte *get_digit_byte_array_from_time_char(char inChar)
 {
-    char **psz_digit_string_arra = nullptr;
+    byte *pRet;
     
     switch(inChar) {
         case '0':
-            //psz_digit_string_arra = digit_0;
+            pRet = b_digit_0;
             break;
         case '1':
+            pRet = b_digit_1;
             break;
         case '2':
+            pRet = b_digit_2;
             break;
         case '3':
+            pRet = b_digit_3;
             break;
         case '4':
+            pRet = b_digit_4;
             break;
         case '5':
+            pRet = b_digit_5;
             break;
         case '6':
+            pRet = b_digit_6;
             break;
         case '7':
+            pRet = b_digit_7;
             break;
         case '8':
+            pRet = b_digit_8;
             break;
         case '9':
+            pRet = b_digit_9;
             break;
         case ':':
+            pRet = b_sep_minutes;
             break;
         default:
-            int ii = 0;
+            pRet = nullptr;
     }
-    
-    // digit_0
-    
+    return pRet;
 }
 
 void convert_time_string_to_emo_buffer(char *pszTimeString, unsigned char *emo_buffer24, int emo_buffer_size)
 {
-    byte hour_1[8];
-    byte hour_2[8];
-    byte min_1[8];
-    byte min_2[8];
+    byte *hour_1 = get_digit_byte_array_from_time_char(pszTimeString[0]);
+    byte *hour_2 = get_digit_byte_array_from_time_char(pszTimeString[1]);
+    byte *sep = get_digit_byte_array_from_time_char(pszTimeString[2]);
+    byte *min_1 = get_digit_byte_array_from_time_char(pszTimeString[3]);
+    byte *min_2 = get_digit_byte_array_from_time_char(pszTimeString[4]);
     
+    //  l2 = (1 << 7)|(1 << 3);
+    int emo_index = 0;
+    
+    for (int ii = 0; ii < 8; ii++) {
+        
+        // screen 1
+        //
+        emo_buffer24[emo_index] = (hour_1[ii] >> 1) | (hour_2[ii] >> 6);
+        emo_index++;
+        
+        // screen 2
+        //
+        emo_buffer24[emo_index] = (hour_2[ii] << 2) | (sep[ii] >> 3) | (min_1[ii] >> 5);
+        emo_index++;
+        
+        // screen 3
+        //
+        emo_buffer24[emo_index] = (min_1[ii] << 3) | (min_2[ii] >> 2);
+        
+        emo_index++;
+    }
 }
 
 // end copy to arduino
 
 // begin only on macbook
 
-void print_digit(char digit_8[8][9]) {
+void print_digit(const char *digit_8[]) {
     for (int ii=0; ii<8; ii++) {
         printf("digit: %s\n", digit_8[ii]);
     }
@@ -366,7 +417,7 @@ void print_emo_buffer(unsigned char *pCharArray24, int charArray24Size, int isPr
     }
 }
 
-void print_byte_array_as_bit_string(char *bNumber, int nSize)
+void print_byte_array_as_bit_string(byte *bNumber, int nSize)
 {
     char szBits[8+1];
     
@@ -382,6 +433,9 @@ void print_byte_array_as_bit_string(char *bNumber, int nSize)
 
 int main(int argc, const char * argv[]) {
     std::cout << "NumberBitShift running...\n";
+    char sz_time[6];
+    
+    init_b_digit();
     
     char bNumber[] = {
         0x05,
@@ -394,7 +448,7 @@ int main(int argc, const char * argv[]) {
         'H'
     };
     
-    print_byte_array_as_bit_string(bNumber, 8);
+    print_byte_array_as_bit_string(b_digit_0, 8);
     
     printf("\n");
     
@@ -407,7 +461,9 @@ int main(int argc, const char * argv[]) {
     print_emo_buffer(emo_buffer24, 24, 0);
     print_emo_buffer(emo_buffer24, 24, 1);
     
-    convert_time_string_to_emo_buffer("23:59", emo_buffer24, 24);
+    snprintf(sz_time, sizeof(sz_time), "23:59");
+    
+    convert_time_string_to_emo_buffer(sz_time, emo_buffer24, 24);
     print_emo_buffer(emo_buffer24, 24, 0);
     print_emo_buffer(emo_buffer24, 24, 1);
 
@@ -417,6 +473,8 @@ int main(int argc, const char * argv[]) {
     unsigned long l1, l2;
     
     printf("  new operations...\n");
+    
+    l1 = 0;
     
     /*
     std::strcpy(sz_buf_t1, "10000000");
