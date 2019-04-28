@@ -200,14 +200,12 @@ int binstr2ul(const char *s, unsigned long *num)
     unsigned long rc;
     for (rc = 0; '\0' != *s; s++) {
         if (rc > (ULONG_MAX/2)) {
-            errno = ERANGE;
             return -1;
         } else if ('1' == *s) {
             rc = (rc * 2) + 1;
         } else if ('0' == *s) {
             rc *= 2;
         } else {
-            errno = EINVAL;
             return -1;
         }
     }
@@ -228,7 +226,6 @@ int binstr2ul(const char *s, unsigned long *num)
 char *ul2binstr(unsigned long num, char *s, size_t len)
 {
     if (0 == len) {
-        errno = EINVAL;
         return NULL;
     } else {
         s[--len] = '\0';
@@ -237,7 +234,6 @@ char *ul2binstr(unsigned long num, char *s, size_t len)
     
     do {
         if (0 == len) {
-            errno = ERANGE;
             return NULL;
         } else {
             s[--len] = ((num & 1) ? '1' : '0');
@@ -368,7 +364,6 @@ void convert_time_string_to_emo_buffer(char *pszTimeString, unsigned char *emo_b
         // screen 3
         //
         emo_buffer24[emo_index] = (min_1[ii] << 3) | (min_2[ii] >> 2);
-        
         emo_index++;
     }
 }
