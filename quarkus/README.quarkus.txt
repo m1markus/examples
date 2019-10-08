@@ -65,6 +65,10 @@ metrics
 
 http://localhost:8080/metrics/application
 
+docu:
+https://rieckpil.de/whatis-eclipse-microprofile-metrics/
+https://ralph.blog.imixs.com/2019/05/
+
 
 MICROPROFILE
 ============
