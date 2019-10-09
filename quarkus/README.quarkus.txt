@@ -50,6 +50,13 @@ https://blog.kumuluz.com/developers/community/2019/02/11/kumuluzee-opentracing-j
 plugins
 =======
 
+scheduler
+---------
+
+./mvnw quarkus:add-extension -Dextensions="scheduler"
+
+
+
 swagger
 -------
 ./mvnw quarkus:add-extension -Dextensions="openapi"
