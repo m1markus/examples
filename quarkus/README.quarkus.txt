@@ -50,6 +50,13 @@ https://blog.kumuluz.com/developers/community/2019/02/11/kumuluzee-opentracing-j
 plugins
 =======
 
+scheduler
+---------
+
+./mvnw quarkus:add-extension -Dextensions="scheduler"
+
+
+
 swagger
 -------
 ./mvnw quarkus:add-extension -Dextensions="openapi"
@@ -64,6 +71,10 @@ metrics
 ./mvnw quarkus:add-extension -Dextensions="metrics"
 
 http://localhost:8080/metrics/application
+
+docu:
+https://rieckpil.de/whatis-eclipse-microprofile-metrics/
+https://ralph.blog.imixs.com/2019/05/
 
 
 MICROPROFILE
