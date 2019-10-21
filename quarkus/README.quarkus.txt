@@ -75,6 +75,7 @@ http://localhost:8080/metrics/application
 docu:
 https://rieckpil.de/whatis-eclipse-microprofile-metrics/
 https://ralph.blog.imixs.com/2019/05/
+https://ralph.blog.imixs.com/2019/05/26/microprofile-metric-api-how-create-a-metric/
 
 
 MICROPROFILE
