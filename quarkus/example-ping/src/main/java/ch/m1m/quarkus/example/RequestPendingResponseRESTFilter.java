@@ -9,10 +9,10 @@ import javax.ws.rs.container.ContainerResponseContext;
 import javax.ws.rs.container.ContainerResponseFilter;
 import javax.ws.rs.ext.Provider;
 
-@Provider
-public class RequestPendingResponseFilter implements ContainerResponseFilter {
+//@Provider
+public class RequestPendingResponseRESTFilter implements ContainerResponseFilter {
 
-    private static final Logger log = LoggerFactory.getLogger(RequestPendingResponseFilter.class);
+    private static final Logger log = LoggerFactory.getLogger(RequestPendingResponseRESTFilter.class);
 
     @Inject
     ApplicationMetrics applicationMetrics;
@@ -20,8 +20,8 @@ public class RequestPendingResponseFilter implements ContainerResponseFilter {
     @Override
     public void filter(ContainerRequestContext ctxRequest, ContainerResponseContext ctxResponse) {
 
-        log.info("RequestPendingResponseFilter#filter() Response");
+        log.info("RequestPendingResponseRESTFilter#filter() Response");
 
-        applicationMetrics.getPendingRequestsGauge().dec();
+        //applicationMetrics.getPendingRequestsGauge().dec();
     }
 }

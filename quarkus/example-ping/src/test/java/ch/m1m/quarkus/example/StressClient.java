@@ -24,10 +24,10 @@ public class StressClient {
 
         StressPluginEcho stressPlugin = new StressPluginEcho();
 
-        long numIterations = 10;
-        int numThreads = 5;
+        long numIterations = 100;
+        int numThreads = 10;
 
-        // calc how many requests every thread can handle
+        // calc how many requests every thread must execute
         //
         long numIterationsPerThread = -1;
         long numIterationsOnTopForLastThread = 0;
@@ -35,6 +35,9 @@ public class StressClient {
         if (numIterations > 0) {
             numIterationsPerThread = numIterations / numThreads;
             numIterationsOnTopForLastThread = numIterations % numThreads;
+            if (numIterationsPerThread == 0) {
+                numThreads = 1;
+            }
         }
 
         // prepare thread list

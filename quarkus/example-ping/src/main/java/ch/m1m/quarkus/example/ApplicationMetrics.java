@@ -2,6 +2,7 @@ package ch.m1m.quarkus.example;
 
 import org.eclipse.microprofile.metrics.ConcurrentGauge;
 import org.eclipse.microprofile.metrics.MetricRegistry;
+import org.eclipse.microprofile.metrics.Tag;
 import org.eclipse.microprofile.metrics.annotation.RegistryType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,17 +20,17 @@ public class ApplicationMetrics {
     @RegistryType(type = MetricRegistry.Type.APPLICATION)
     private MetricRegistry metricRegistry;
 
-    private ConcurrentGauge gaugePendingRequests;
-
-
     @PostConstruct
     public void onInit() {
-        gaugePendingRequests = metricRegistry.concurrentGauge("pending_requests");
+
     }
 
-    public ConcurrentGauge getPendingRequestsGauge() {
-        return gaugePendingRequests;
+    public ConcurrentGauge getPendingRequestsGauge(String inPathInfo) {
+        String tagPath = "path";
+        log.debug("creating tag({}, {})", tagPath, inPathInfo);
+        Tag tag = new Tag(tagPath, inPathInfo);
+        ConcurrentGauge gauge = metricRegistry.concurrentGauge("pending_requests", tag);
+        return gauge;
     }
-
 
 }

@@ -67,6 +67,7 @@ public class ProxyClient {
 
                 // write response for the caller
                 //
+                //inResponse.getOutputStream()
                 inResponse.getWriter().print(respBody);
             }
 

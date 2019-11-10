@@ -1,6 +1,5 @@
 package ch.m1m.quarkus.example;
 
-import io.vertx.core.http.HttpServerRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -11,10 +10,10 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.UriInfo;
 import javax.ws.rs.ext.Provider;
 
-@Provider
-public class RequestPendingRequestFilter implements ContainerRequestFilter {
+//@Provider
+public class RequestPendingRequestRESTFilter implements ContainerRequestFilter {
 
-    private static final Logger log = LoggerFactory.getLogger(RequestPendingRequestFilter.class);
+    private static final Logger log = LoggerFactory.getLogger(RequestPendingRequestRESTFilter.class);
 
     @Inject
     ApplicationMetrics applicationMetrics;
@@ -34,13 +33,13 @@ public class RequestPendingRequestFilter implements ContainerRequestFilter {
     @Override
     public void filter(ContainerRequestContext context) {
 
-        applicationMetrics.getPendingRequestsGauge().inc();
+        //applicationMetrics.getPendingRequestsGauge().inc();
 
         final String method = context.getMethod();
         final String path = info.getPath();
         //final String address = request.remoteAddress().toString();
         String address = null;
 
-        log.info("RequestPendingRequestFilter#filter() Request {} {} from IP {}", method, path, address);
+        log.info("RequestPendingRequestRESTFilter#filter() Request {} {} from IP {}", method, path, address);
     }
 }
