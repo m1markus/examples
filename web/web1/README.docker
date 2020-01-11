@@ -1,0 +1,8 @@
+
+
+call:  docker build -t tom .
+
+
+start: docker run --rm -it -p 8888:8080 tom
+
+exec bash in running container: docker exec -it  def7c1c53ab4 /bin/bash
