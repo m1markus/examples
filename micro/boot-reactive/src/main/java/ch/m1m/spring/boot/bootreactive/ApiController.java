@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Mono;
+import reactor.core.scheduler.Schedulers;
 
 import java.time.Duration;
 
@@ -30,8 +31,10 @@ public class ApiController {
         LOG.info("req start");
         Duration delay = Duration.ofSeconds(5);
 
-        Mono<String> result = Mono.just("C Hello from Spring-Boot")
+        Mono<String> result = Mono.just("v1 C Hello from Spring-Boot")
+                .log()
                 .delayElement(delay)
+                .subscribeOn(Schedulers.parallel())
                 .doOnTerminate(() -> LOG.info("req terminated"));
 
         LOG.info("req ended");
