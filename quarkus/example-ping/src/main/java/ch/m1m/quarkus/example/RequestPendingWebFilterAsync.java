@@ -1,5 +1,6 @@
 package ch.m1m.quarkus.example;
 
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -11,10 +12,8 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-// We just say 'asyncSupported' but this is fake news
-//
 //@WebFilter(urlPatterns = "/*", asyncSupported = true)
-public class RequestPendingWebFilter implements Filter {
+public class RequestPendingWebFilterAsync implements Filter {
 
     private static final Logger log = LoggerFactory.getLogger(RequestPendingWebFilter.class);
 
@@ -31,6 +30,7 @@ public class RequestPendingWebFilter implements Filter {
             throws IOException, ServletException {
 
         String pathInfo = null;
+        boolean isSynchronousRequest = true;
 
         try {
             HttpServletRequest httpReq = (HttpServletRequest) request;
@@ -44,12 +44,23 @@ public class RequestPendingWebFilter implements Filter {
             //pathInfo = pathInfo.replaceAll("/", "-");
             log.info("RequestPendingWebFilter doFilter() onRequest {} for {} from {} asyncSupported {} asyncStarted {}",
                     method, pathInfo, remoteAddr, isAsyncSupported, isAsyncStarted);
+
+            if (pathInfo.contains("/async")) {
+                isSynchronousRequest = false;
+                AsyncContext asyncContext = WebFilterUtil.getOrCreateAsyncContext(request, response);
+                RequestPendingAsyncListener asyncListener = new RequestPendingAsyncListener(pathInfo);
+                asyncContext.addListener(asyncListener, request, response);
+            }
+
             applicationMetrics.getPendingRequestsGauge(pathInfo).inc();
             chain.doFilter(request, response);
 
         } finally {
-            log.info("RequestPendingWebFilter doFilter() onResponse");
-            applicationMetrics.getPendingRequestsGauge(pathInfo).dec();
+            if (isSynchronousRequest) {
+                log.info("RequestPendingWebFilter doFilter() onResponse");
+                applicationMetrics.getPendingRequestsGauge(pathInfo).dec();
+            }
+            log.info("RequestPendingWebFilter doFilter() returned");
         }
     }
 

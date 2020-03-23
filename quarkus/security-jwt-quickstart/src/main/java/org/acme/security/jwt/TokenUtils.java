@@ -10,7 +10,9 @@ import java.security.PublicKey;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
 import java.util.Base64;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 import org.eclipse.microprofile.jwt.Claims;
 import io.smallrye.jwt.build.Jwt;
@@ -41,10 +43,43 @@ public class TokenUtils {
         return generateTokenString(pk, "/privateKey.pem", jsonResName, timeClaims);
     }
 
+/*
+    {
+  "iss": "https://quarkus.io/using-jwt-rbac",
+  "jti": "a-123",
+  "sub": "jdoe-using-jwt-rbac",
+  "upn": "jdoe@quarkus.io",
+  "preferred_username": "jdoe",
+  "aud": "using-jwt-rbac",
+  "birthdate": "2001-07-13",
+
+  "roleMappings": {
+    "group1": "Group1MappedRole",
+    "group2": "Group2MappedRole"
+  },
+  "groups": [
+    "Echoer",
+    "Tester",
+    "Subscriber",
+    "group2"
+  ]
+}
+*/
+
     public static String generateTokenString(PrivateKey privateKey, String kid,
                                              String jsonResName, Map<String, Long> timeClaims) throws Exception {
+        //JwtClaimsBuilder claims = Jwt.claims(jsonResName);
+        JwtClaimsBuilder claims = Jwt.claims();
+        claims.issuer("https://quarkus.io/using-jwt-rbac");
+        claims.subject("jdoe-using-jwt-rbac");
+        claims.upn("jdoe@quarkus.io");
+        claims.preferredUserName("jdoe");
+        claims.claim("jti", "deadbeef");
 
-        JwtClaimsBuilder claims = Jwt.claims(jsonResName);
+        Set<String> groupSet = new HashSet<>();
+        groupSet.add("Echoer");
+        claims.groups(groupSet);
+
         long currentTimeInSecs = currentTimeInSecs();
         long exp = timeClaims != null && timeClaims.containsKey(Claims.exp.name())
                 ? timeClaims.get(Claims.exp.name()) : currentTimeInSecs + 300;

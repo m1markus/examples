@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @ApplicationScoped
 public class ApplicationMetrics {
@@ -18,11 +19,23 @@ public class ApplicationMetrics {
 
     @Inject
     @RegistryType(type = MetricRegistry.Type.APPLICATION)
-    private MetricRegistry metricRegistry;
+    MetricRegistry metricRegistry;
+
+    private static AtomicInteger currentRequests = new AtomicInteger();
 
     @PostConstruct
     public void onInit() {
 
+    }
+
+    public void requestStart() {
+        int current = currentRequests.incrementAndGet();
+        log.info("reqStart() current pending requests {}", current);
+    }
+
+    public void requestEnd() {
+        int current = currentRequests.decrementAndGet();
+        log.info("reqEnd() current pending requests {}", current);
     }
 
     public ConcurrentGauge getPendingRequestsGauge(String inPathInfo) {
@@ -30,7 +43,7 @@ public class ApplicationMetrics {
         log.debug("creating tag({}, {})", tagPath, inPathInfo);
         Tag tag = new Tag(tagPath, inPathInfo);
         ConcurrentGauge gauge = metricRegistry.concurrentGauge("pending_requests", tag);
+        log.info("TRACE gauge returned: {}", gauge);
         return gauge;
     }
-
 }

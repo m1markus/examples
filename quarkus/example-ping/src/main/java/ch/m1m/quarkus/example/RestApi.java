@@ -9,9 +9,9 @@ import javax.ws.rs.core.Response;
 import java.time.Duration;
 import java.util.List;
 import java.util.UUID;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
-@Path("/api")
+@Path("api/v1")
 public class RestApi {
 
     private static final Logger log = LoggerFactory.getLogger(RestApi.class);
@@ -19,7 +19,7 @@ public class RestApi {
     // JUnit Test and IT methods
     //
     @GET
-    @Path("/v1/junit/ping")
+    @Path("junit/ping")
     @Produces(MediaType.TEXT_PLAIN)
     public String pingGetJunit(@QueryParam("greeting") String greeting,
                                @QueryParam("name") String name) {
@@ -31,7 +31,7 @@ public class RestApi {
     }
 
     @POST
-    @Path("/v1/junit/ping")
+    @Path("junit/ping")
     @Produces(MediaType.TEXT_PLAIN)
     public Response pingPostJunit() {
 
@@ -43,7 +43,7 @@ public class RestApi {
     // http://localhost:8080/proxy/api/v1/ping?greeting=h%20i&name=markus
     //
     @GET
-    @Path("/v1/ping")
+    @Path("ping")
     @Produces(MediaType.TEXT_PLAIN)
     public String pingGet(@QueryParam("greeting") String greeting,
                           @QueryParam("name") String name) {
@@ -55,7 +55,7 @@ public class RestApi {
     }
 
     @POST
-    @Path("/v1/ping")
+    @Path("ping")
     @Produces(MediaType.TEXT_PLAIN)
     public Response pingPost() {
 
@@ -64,7 +64,7 @@ public class RestApi {
     }
 
     @GET
-    @Path("/v1/echo")
+    @Path("echo")
     @Produces(MediaType.APPLICATION_JSON)
     public EchoBody echoGet(@QueryParam("callerid") String callerId,
                             @QueryParam("messagetext") String messageText) {
@@ -92,7 +92,7 @@ public class RestApi {
     //    }
     //
     @POST
-    @Path("/v1/echo")
+    @Path("echo")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public EchoBody echoPost(EchoBody echo) {
@@ -130,10 +130,44 @@ public class RestApi {
         return echo;
     }
 
+    // async methods
+    //
+    @GET
+    @Path("async")
+    @Produces(MediaType.TEXT_PLAIN)
+    public CompletionStage<String> hello() {
+        /*
+        return CompletableFuture.supplyAsync(() -> {
+            return "hello async";
+        });
+        */
+        CompletableFuture<String> completableFuture = new CompletableFuture<>();
+
+        Executors.newCachedThreadPool().submit(() -> {
+            log.info("GET async calling sleep 5");
+            Thread.sleep(5_000);
+            log.info("GET async calling sleep 5 returned");
+            completableFuture.complete("Hello async after 5 seconds");
+            return null;
+        });
+
+        log.info("GET async endpoint returned a future");
+        return completableFuture;
+    }
+
+    @GET
+    @Path("xxx")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String hello_sync() throws ExecutionException, InterruptedException {
+        CompletableFuture<String> future = (CompletableFuture<String>) hello();
+        String ret = future.get();
+        return "xxx sync";
+    }
+
     // interface for the 'proxy' service
     //
     @GET
-    @Path("/v1/proxy")
+    @Path("proxy")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public List<ProxyRuleEntry> getAllProxyEntries() {
@@ -142,7 +176,7 @@ public class RestApi {
     }
 
     @GET
-    @Path("/v1/proxy/deleteAll")
+    @Path("proxy/deleteAll")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public void deleteAllProxyEntries() {
@@ -151,7 +185,7 @@ public class RestApi {
     }
 
     @POST
-    @Path("/v1/proxy")
+    @Path("proxy")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response addProxyEntriy(ProxyRuleEntry inEntry) {
@@ -162,7 +196,7 @@ public class RestApi {
     }
 
     @DELETE
-    @Path("/v1/proxy")
+    @Path("proxy")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response deleteProxyEntriy(ProxyRuleEntry inEntry) {
@@ -173,7 +207,7 @@ public class RestApi {
     }
 
     @PUT
-    @Path("/v1/proxy")
+    @Path("proxy")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response updateProxyEntriy(ProxyRuleEntry inEntry) {
@@ -182,5 +216,4 @@ public class RestApi {
 
         return Response.status(rc).build();
     }
-
 }

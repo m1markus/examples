@@ -9,7 +9,7 @@ import javax.ws.rs.container.ContainerResponseContext;
 import javax.ws.rs.container.ContainerResponseFilter;
 import javax.ws.rs.ext.Provider;
 
-//@Provider
+@Provider
 public class RequestPendingResponseRESTFilter implements ContainerResponseFilter {
 
     private static final Logger log = LoggerFactory.getLogger(RequestPendingResponseRESTFilter.class);
@@ -20,8 +20,19 @@ public class RequestPendingResponseRESTFilter implements ContainerResponseFilter
     @Override
     public void filter(ContainerRequestContext ctxRequest, ContainerResponseContext ctxResponse) {
 
-        log.info("RequestPendingResponseRESTFilter#filter() Response");
+        final String path = ctxRequest.getUriInfo().getPath();
+        boolean skipDecrement = false;
 
-        //applicationMetrics.getPendingRequestsGauge().dec();
+        if ("/favicon.ico".equals(path)) {
+            skipDecrement = true;
+        }
+
+        if (!skipDecrement) {
+            log.info("RequestPendingResponseRESTFilter#filter() Response on {}", path);
+            applicationMetrics.getPendingRequestsGauge(path).dec();
+            applicationMetrics.requestEnd();
+        } else {
+            log.warn("RequestPendingResponseRESTFilter#filter() Skipped metric decrement on {}", path);
+        }
     }
 }

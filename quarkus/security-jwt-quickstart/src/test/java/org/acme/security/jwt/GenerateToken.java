@@ -16,14 +16,9 @@ public class GenerateToken {
      */
     public static void main(String[] args) throws Exception {
         String claimsJson = "/JwtClaims.json";
-        if (args.length > 0) {
-            claimsJson = args[0];
-        }
         HashMap<String, Long> timeClaims = new HashMap<>();
-
         long exp = TokenUtils.currentTimeInSecs() + (24 * 3600);
         timeClaims.put(Claims.exp.name(), exp);
-
         String token = TokenUtils.generateTokenString(claimsJson, timeClaims);
         System.out.println(token);
     }
