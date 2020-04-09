@@ -1,6 +1,6 @@
 package ch.m1m;
 
-public class ClientBuilderZ implements ClientBuilder {
+public class ClientBuilderA implements ClientBuilder {
 
     public String getVersion() {
 
