@@ -2,8 +2,13 @@ package ch.m1m;
 
 public class ClientBuilderA implements ClientBuilder {
 
-    public String getVersion() {
+    private String getVersion() {
+        return "ClientBuilder " + Constant.MODULE_NAME;
+    }
 
-        return "ClientBuilder Z";
+    public void execute() {
+        System.out.println("module version is: " + getVersion());
+
+        new MessageMapperFactory().execute();
     }
 }

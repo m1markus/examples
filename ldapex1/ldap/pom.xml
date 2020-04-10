@@ -25,7 +25,7 @@
         <dependency>
             <groupId>ch.m1m.examples</groupId>
             <artifactId>jarapia</artifactId>
-            <scope>compile</scope>
+            <scope>provided</scope>
         </dependency>
 
         <dependency>

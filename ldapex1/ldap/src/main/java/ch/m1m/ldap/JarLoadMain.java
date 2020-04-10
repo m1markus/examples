@@ -1,53 +1,51 @@
 package ch.m1m.ldap;
 
 import ch.m1m.ClientBuilder;
-import ch.m1m.ClientBuilderA;
 
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-public class JarLoadTest {
+public class JarLoadMain {
 
     public static void main(String... args) throws ClassNotFoundException, IllegalAccessException, InstantiationException, IOException {
 
         System.out.println("starting...");
 
-        URLClassLoader loader1;
-        URLClassLoader loader2;
+        ClassLoader loader1;
+        ClassLoader loader2;
 
         Path currentRelativePath = Paths.get("");
         String s = currentRelativePath.toAbsolutePath().toString();
         System.out.println("Current relative path is: " + s);
 
+        //ClassLoader appClassLoader = Thread.currentThread().getContextClassLoader();
+        ClassLoader appClassLoader = JarLoadMain.class.getClassLoader();
+
+        // Thread.currentThread().setContextClassLoader(loader2);
+        // is for JNDI Context operations
+        //
         // Thread.currentThread().getContextClassLoader()
         //
         // loader1 = new URLClassLoader(new URL[] {new File("jarapia/target/jarapia-1.0-SNAPSHOT.jar").toURL()}, Thread.currentThread().getContextClassLoader());
+        // JarClassLoader
         //
-        loader1 = new URLClassLoader(new URL[] {new File("jarapia/target/jarapia-1.0-SNAPSHOT.jar").toURL()}, Thread.currentThread().getContextClassLoader());
-        loader2 = new URLClassLoader(new URL[] {new File("jarapiz/target/jarapiz-1.0-SNAPSHOT.jar").toURL()}, Thread.currentThread().getContextClassLoader());
+        loader1 = new JarClassLoader(new URL[]{new File("jarapiz/target/jarapiz-1.0-SNAPSHOT.jar").toURL()}, appClassLoader);
+        loader2 = new JarClassLoader(new URL[]{new File("jarapia/target/jarapia-1.0-SNAPSHOT.jar").toURL()}, appClassLoader);
 
-        ClassLoader clOriginal = Thread.currentThread().getContextClassLoader();
+        Class<?> c1 = loader1.loadClass("ch.m1m.ClientBuilderA");
+        ClientBuilder i1 = (ClientBuilder) c1.newInstance();
+        i1.execute();
 
-        Thread.currentThread().setContextClassLoader(loader1);
-        //Class<?> c1 = loader1.loadClass("ch.m1m.ClientBuilderA");
-        //ClientBuilder i1 = (ClientBuilder) c1.newInstance();
-        ClientBuilder i1 = new ClientBuilderA();
+        Class<?> c2 = loader2.loadClass("ch.m1m.ClientBuilderA");
+        ClientBuilder i2 = (ClientBuilder) c2.newInstance();
+        i2.execute();
 
-        System.out.println("A: " + i1.getVersion());
-
-        Thread.currentThread().setContextClassLoader(loader2);
-        //Class<?> c2 = loader2.loadClass("ch.m1m.ClientBuilderA");
-        //ClientBuilder i2 = (ClientBuilder) c2.newInstance();
-        ClientBuilder i2 = new ClientBuilderA();
-        System.out.println("Z: " + i2.getVersion());
-
-        System.out.println("press any key...");
-        System.in.read();
+        //System.out.println("press any key...");
+        //System.in.read();
 
         System.out.println("### end ###");
     }
