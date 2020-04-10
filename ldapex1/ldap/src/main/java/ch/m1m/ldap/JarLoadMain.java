@@ -5,25 +5,29 @@ import ch.m1m.ClientBuilder;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.net.URLClassLoader;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+
+/*
+
+parts from: https://stackoverflow.com/questions/11759414/java-how-to-load-different-versions-of-the-same-class
+
+ */
 
 public class JarLoadMain {
 
     public static void main(String... args) throws ClassNotFoundException, IllegalAccessException, InstantiationException, IOException {
 
-        System.out.println("starting...");
-
         ClassLoader loader1;
         ClassLoader loader2;
 
+        System.out.println("starting...");
+
+        // print current working directory
+        //
         Path currentRelativePath = Paths.get("");
         String s = currentRelativePath.toAbsolutePath().toString();
         System.out.println("Current relative path is: " + s);
-
-        //ClassLoader appClassLoader = Thread.currentThread().getContextClassLoader();
-        ClassLoader appClassLoader = JarLoadMain.class.getClassLoader();
 
         // Thread.currentThread().setContextClassLoader(loader2);
         // is for JNDI Context operations
@@ -33,6 +37,7 @@ public class JarLoadMain {
         // loader1 = new URLClassLoader(new URL[] {new File("jarapia/target/jarapia-1.0-SNAPSHOT.jar").toURL()}, Thread.currentThread().getContextClassLoader());
         // JarClassLoader
         //
+        ClassLoader appClassLoader = JarLoadMain.class.getClassLoader();
         loader1 = new JarClassLoader(new URL[]{new File("jarapiz/target/jarapiz-1.0-SNAPSHOT.jar").toURL()}, appClassLoader);
         loader2 = new JarClassLoader(new URL[]{new File("jarapia/target/jarapia-1.0-SNAPSHOT.jar").toURL()}, appClassLoader);
 
@@ -50,34 +55,3 @@ public class JarLoadMain {
         System.out.println("### end ###");
     }
 }
-
-/*
-
-from: https://stackoverflow.com/questions/11759414/java-how-to-load-different-versions-of-the-same-class
-
-
-common.jar:
-BaseInterface
-
-v1.jar:
-SomeImplementation implements BaseInterface
-
-v2.jar:
-OtherImplementation implements BaseInterface
-
-command-line:
-java -classpath common.jar YourMainClass
-// you don't put v1 nor v2 into the parent classloader classpath
-
-Then in your program:
-
-loader1 = new URLClassLoader(new URL[] {new File("v1.jar").toURL()}, Thread.currentThread().getContextClassLoader());
-loader2 = new URLClassLoader(new URL[] {new File("v2.jar").toURL()}, Thread.currentThread().getContextClassLoader());
-
-Class<?> c1 = loader1.loadClass("com.abc.Hello");
-Class<?> c2 = loader2.loadClass("com.abc.Hello");
-
-BaseInterface i1 = (BaseInterface) c1.newInstance();
-BaseInterface i2 = (BaseInterface) c2.newInstance();
-
- */
