@@ -20,7 +20,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
-		<vaadin.version>10.0.6</vaadin.version>
+		<vaadin.version>10.0.17</vaadin.version>
 		<jetty.websocket.version>9.4.12.v20180830</jetty.websocket.version>
 	</properties>
 
