@@ -1,0 +1,114 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>The html page</title>
+  <meta name="description" content="example web page">
+  <meta name="author" content="It's me">
+
+  <style>
+    body {
+      background-color: #01263a;
+      color: lightskyblue;
+    }
+
+    #button-1 {
+    /*
+    background-color: lightblue; 
+    text-align: center; 
+    */
+      color: rgb(0, 5, 5);
+    }
+
+    .chatContainer {
+      background-color: #043959;
+      border-radius: 10px;
+      padding: 10px;
+    }
+
+    .chatPeer {
+      color: white;
+  /*    background-color: blue; */
+      width: 100%;
+      display: flex; 
+      justify-content: flex-start;
+    }
+
+    .boxPeer {
+      /* background-color: #00a32a; */
+      background-color: #007017;
+      padding: 10px;
+      border-radius: 10px;
+    }
+
+    .chatMe {
+      color: white;
+ /*     background-color: red; */
+      width: 100%;
+      display: flex; 
+      justify-content: flex-end;
+    }
+
+    .boxMe {
+      /* background-color: #8c8f94; */
+      background-color: #787c82;
+      padding: 10px;
+      border-radius: 10px;
+    }
+
+    .myProducts {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    .mySpecial2 {
+      margin-left: 10px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <script src="jscript.js"></script>
+
+  <h1>this is my simple example js page / v0.0.1</h1>
+  <div class='myProducts'>
+    <div class='mySpecial2'>
+      <p>text 1: dkdkd dksjdkdsdsjd ljsd jlsf sjfl sjljsfl sfj sdlfjlsdj flsjfs dfjs fljsdlfjsdfjs end</p>
+    </div>
+    <div class='mySpecial2'>
+      <p>text 2: dkdkd dksjdkdsdsjd ljsd jlsf sjfl sjljsfl sfj sdlfjlsdj flsjfs dfjs fljsdlfjsdfjs end</p>
+    </div>
+    <div class='mySpecial2'>
+      <p>text 3: dkdkd dksjdkdsdsjd ljsd jlsf sjfl sjljsfl sfj sdlfjlsdj flsjfs dfjs fljsdlfjsdfjs end</p>
+    </div>
+    <div class='mySpecial2'>
+      <p>text 4: dkdkd dksjdkdsdsjd ljsd jlsf sjfl sjljsfl sfj sdlfjlsdj flsjfs dfjs fljsdlfjsdfjs end</p>
+    </div>
+  </div>
+
+
+  <!--
+    <button id="button-1" onclick="onButtonClick()">Click me</button>
+    -->
+  <button id="button-1">Click me</button>
+
+  <div class='chatContainer'>
+    <div class='chatPeer' custChatMsg='true'>
+      <div class='boxPeer'>chat 1</div>
+    </div>
+    <div class='chatMe' custChatMsg='true'>
+      <div class='boxMe'>chat 2</div>
+    </div>
+    <div class='chatPeer' custChatMsg='true'>
+      <div class='boxPeer'>chat 3</div>
+    </div>
+  </div>
+
+</body>
+
+</html>
