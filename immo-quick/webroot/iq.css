@@ -243,22 +243,6 @@ to:   #5186a8
     height: auto;
 }
 
-.iq-main-picture {
-    background-image: url("img/gimp-hurry-1920x1278.png");
-    background-repeat: no-repeat;
-    opacity: 1.0;
-}
-
-.iq-main-text {
-    color: white;
-    opacity: 1.0;
-    font-size: 72px;
-    font-weight: bold;
-
-    background: #333;
-    background: rgba(0,0,0,0.20);
-}
-
 /*
 span {
 color: white;
@@ -358,4 +342,14 @@ path {
     .iq-main-text {
         font-size: 42px;
     }
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    color: #1e293b;
+    background: #ffffff;
 }
