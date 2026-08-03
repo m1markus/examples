@@ -79,6 +79,12 @@
           line3.classList.remove("-rotate-45", "-translate-y-2.5");
         }
 
+        window.addEventListener("resize", () => {
+          if (window.innerWidth >= 768) {
+            closeMenu();
+          }
+        });
+
         btn.addEventListener("click", () => {
           if (menu.classList.contains("max-h-0")) {
             openMenu();
