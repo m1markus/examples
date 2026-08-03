@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="de-CH">
+<html lang="de-CH" class="scroll-smooth">
   <!-- Version: 1.0.2 -->
 
   <head>
@@ -57,28 +57,42 @@
         const btn = document.getElementById("mobileButton");
         const menu = document.getElementById("mobileMenu");
 
-        // mobile menu reference
-        //
         const line1 = document.getElementById("line1");
         const line2 = document.getElementById("line2");
         const line3 = document.getElementById("line3");
 
+        function openMenu() {
+          menu.classList.remove("max-h-0", "opacity-0");
+          menu.classList.add("max-h-96", "opacity-100");
+
+          line1.classList.add("rotate-45", "translate-y-2.5");
+          line2.classList.add("opacity-0");
+          line3.classList.add("-rotate-45", "-translate-y-2.5");
+        }
+
+        function closeMenu() {
+          menu.classList.remove("max-h-96", "opacity-100");
+          menu.classList.add("max-h-0", "opacity-0");
+
+          line1.classList.remove("rotate-45", "translate-y-2.5");
+          line2.classList.remove("opacity-0");
+          line3.classList.remove("-rotate-45", "-translate-y-2.5");
+        }
+
         btn.addEventListener("click", () => {
           if (menu.classList.contains("max-h-0")) {
-            menu.classList.remove("max-h-0", "opacity-0");
-            menu.classList.add("max-h-96", "opacity-100");
+            openMenu();
           } else {
-            menu.classList.remove("max-h-96", "opacity-100");
-            menu.classList.add("max-h-0", "opacity-0");
+            closeMenu();
           }
+        });
 
-          line1.classList.toggle("rotate-45");
-          line1.classList.toggle("translate-y-2.5");
+        const mobileLinks = menu.querySelectorAll("a");
 
-          line2.classList.toggle("opacity-0");
-
-          line3.classList.toggle("-rotate-45");
-          line3.classList.toggle("-translate-y-2.5");
+        mobileLinks.forEach((link) => {
+          link.addEventListener("click", () => {
+            closeMenu();
+          });
         });
       });
     </script>
