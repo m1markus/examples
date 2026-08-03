@@ -58,7 +58,19 @@
         const menu = document.getElementById("mobileMenu");
 
         btn.addEventListener("click", () => {
-          menu.classList.toggle("hidden");
+          if (menu.classList.contains("max-h-0")) {
+            menu.classList.remove("max-h-0");
+            menu.classList.remove("opacity-0");
+
+            menu.classList.add("max-h-96");
+            menu.classList.add("opacity-100");
+          } else {
+            menu.classList.remove("max-h-96");
+            menu.classList.remove("opacity-100");
+
+            menu.classList.add("max-h-0");
+            menu.classList.add("opacity-0");
+          }
         });
       });
 
@@ -137,16 +149,39 @@
 
         <!-- Mobile Navigation -->
 
-        <div id="mobileMenu" class="hidden md:hidden pb-5">
-          <a href="#home" class="block py-2 text-slate-700"> Home </a>
+        <div
+          id="mobileMenu"
+          class="md:hidden max-h-0 overflow-hidden opacity-0 transition-all duration-300 ease-in-out"
+        >
+          <div class="py-4 space-y-2">
+            <a
+              href="#home"
+              class="block rounded-lg px-4 py-3 hover:bg-slate-100"
+            >
+              Home
+            </a>
 
-          <a href="#idService" class="block py-2 text-slate-700">
-            Dienstleistungen
-          </a>
+            <a
+              href="#idService"
+              class="block rounded-lg px-4 py-3 hover:bg-slate-100"
+            >
+              Dienstleistungen
+            </a>
 
-          <a href="#idAboutMe" class="block py-2 text-slate-700"> Über mich </a>
+            <a
+              href="#idAboutMe"
+              class="block rounded-lg px-4 py-3 hover:bg-slate-100"
+            >
+              Über mich
+            </a>
 
-          <a href="#idContact" class="block py-2 text-slate-700"> Kontakt </a>
+            <a
+              href="#idContact"
+              class="block rounded-lg px-4 py-3 hover:bg-slate-100"
+            >
+              Kontakt
+            </a>
+          </div>
         </div>
       </div>
     </header>
