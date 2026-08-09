@@ -283,16 +283,33 @@
     <!-- Mobile menu JavaScript -->
     <!-- ========================================================= -->
     <script>
-      const mobileMenuButton = document.getElementById("mobileMenuButton");
+      const mobileMenuButton = document.getElementById("mobileButton");
       const mobileMenu = document.getElementById("mobileMenu");
-      mobileMenuButton.addEventListener("click", () => {
-        const isHidden = mobileMenu.classList.contains("hidden");
-        mobileMenu.classList.toggle("hidden");
-        mobileMenuButton.setAttribute(
-          "aria-expanded",
-          isHidden ? "true" : "false",
-        );
-      });
+      const line1 = document.getElementById("line1");
+      const line2 = document.getElementById("line2");
+      const line3 = document.getElementById("line3");
+
+      if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener("click", () => {
+          const isClosed = mobileMenu.classList.contains("max-h-0");
+
+          if (isClosed) {
+            mobileMenu.classList.remove("max-h-0", "opacity-0");
+            mobileMenu.classList.add("max-h-96", "opacity-100");
+
+            line1?.classList.add("rotate-45", "translate-y-2.5");
+            line2?.classList.add("opacity-0");
+            line3?.classList.add("-rotate-45", "-translate-y-2.5");
+          } else {
+            mobileMenu.classList.remove("max-h-96", "opacity-100");
+            mobileMenu.classList.add("max-h-0", "opacity-0");
+
+            line1?.classList.remove("rotate-45", "translate-y-2.5");
+            line2?.classList.remove("opacity-0");
+            line3?.classList.remove("-rotate-45", "-translate-y-2.5");
+          }
+        });
+      }
     </script>
   </body>
 </html>
