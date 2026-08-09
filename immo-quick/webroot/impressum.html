@@ -1,202 +1,277 @@
-<!DOCTYPE html>
-<html lang="de-CH">
-
-<head>
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>vCard Sandra Müller</title>
-
-    <link rel="icon" type="image/png" href="favicon.png">
-
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
-    <link href="https://fonts.googleapis.com/css?family=Fira+Sans+Condensed" rel="stylesheet">
-
-    <link href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed" rel="stylesheet">
-
-    <link href="iq.css" rel="stylesheet">
-    <!--
-        font-family: 'Fira Sans Condensed', sans-serif;
-    -->
-
+<!doctype html>
+<html lang="de-CH" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="keywords"
+      content="Immobilienverwaltung Immobilienbewirtschaftung Immobilen Bewirtschaftung Verwaltung Freelancer freiberufliche Dienstleistung temporär Wohnungsabnahmen Fotografie Protokolle STWEG Stockwerkeigentum Eigentumswohnungen Mietobjekte Versammlungen Basel Baselland Binningen"
+    />
+    <meta
+      name="description"
+      content="Dienstleistungen für Immobilienbewirtschaftungen im Raum Basel und Baselland"
+    />
+    <meta name="author" content="m1m.ch" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Impressum - Immo Quick</title>
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Fonts -->
+    <link
+      href="https://fonts.googleapis.com/css?family=Fira+Sans+Condensed"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Fira+Sans+Extra+Condensed"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
     <style>
-        /* 
-
-        @font-face {
-            font-family: 'myFSThin';
-            src: url('FiraSans-Thin.ttf');
-        }
-
- company color takten from the PDF
-                color: #5186a8    rgb(81,134,168)
+      @font-face {
+        font-family: "myFSThin2";
+        src: url("fonts/myFSThin2.woff2") format("woff2");
+        font-weight: normal;
+        font-style: normal;
+      }
+      body {
+        font-family: "myFSThin2", "Fira Sans Condensed", sans-serif;
+      }
+      p,
+      h1,
+      h3 {
+        font-family: "myFSThin2", "Fira Sans Condensed", sans-serif;
+      }
+    </style>
+  </head>
+  <body class="bg-white text-slate-800">
+    <!-- ========================================================= -->
+    <!-- Navigation -->
+    <!-- ========================================================= -->
+    <header
+      class="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm"
+    >
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="flex items-center justify-between h-20">
+          <!-- Logo / Home -->
+          <a
+            href="/"
+            class="text-xl font-semibold text-slate-800 hover:text-[#517d99] transition-colors"
+          >
+            Immo Quick
+          </a>
+          <!-- Desktop navigation -->
+          <nav class="hidden md:flex items-center">
+            <a
+              href="/"
+              class="px-5 py-3 text-slate-700 hover:text-[#517d99] transition-colors"
+            >
+              Home
+            </a>
+          </nav>
+          <!-- Mobile menu button -->
+          <button
+            id="mobileMenuButton"
+            type="button"
+            aria-label="Menü öffnen"
+            aria-expanded="false"
+            class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-[#517d99] transition"
+          >
+            <span class="text-2xl leading-none">☰</span>
+          </button>
+        </div>
+        <!-- Mobile navigation -->
+        <div id="mobileMenu" class="hidden md:hidden border-t border-slate-100">
+          <nav class="py-3">
+            <a
+              href="/"
+              class="block rounded-lg px-4 py-3 text-slate-700 hover:bg-slate-100 hover:text-[#517d99] transition"
+            >
+              Home
+            </a>
+          </nav>
+        </div>
+      </div>
+    </header>
     
-                https://www.w3schools.com/w3css/w3css_color_generator.asp
-            */
-
-        /* main content
-             
-
-        body {
-            font-family: 'Fira Sans Condensed', sans-serif;
-        }
-        */
-
-        .iq-vcard-image {
-            max-width: 350px;
-            height: auto;
-        }
-
-        .footer p {
-            color: white;
-            font-family: 'myFSThin';
-        }
-
-        .iq-shadow {
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        }
-
-        .iq-container-back {
-            margin-top: 0px;
-            padding-top: 0px;
-            border: 25px solid white;
-            border-top: 0px;
-        }
-
-        .iq-container-front {
-            margin-top: 0px;
-            padding-top: 0px;
-            border: 25px solid white;
-            border-bottom: 0px;
-        }
-    </style>
-
-    <script>
-        function iqMenuMobileShowHide() {
-            var x = document.getElementById("iqMobileMenu");
-            if (x.className.indexOf("w3-show") == -1) {
-                x.className += " w3-show";
-            } else {
-                x.className = x.className.replace(" w3-show", "");
-            }
-        }
-    </script>
-
-    <style>
-        p {
-            font-family: 'myFSThin2';
-        }
-
-        h1 {
-            font-family: 'myFSThin2';
-        }
-
-        h3 {
-            font-family: 'myFSThin2';
-        }
-    </style>
-
-</head>
-
-<body>
-
-    <!-- menu-->
-    <div class="w3-top">
-
-        <div class="w3-bar w3-white ">
-
-            <!-- desktop menu
-                    -->
-            <div id="logo" class="w3-bar-item">
-            </div>
-
-            <a href="/" class="w3-padding-16 w3-hover-text-theme w3-hover-none w3-bar-item w3-right w3-button w3-hide-small">Home</a>
-            <!-- burger button -->
-            <a href="javascript:void(0)" class="w3-hover-text-theme w3-hover-none w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium"
-                onclick="iqMenuMobileShowHide()">&#9776;</a>
-        </div>
-
-        <!-- mobile menu
-                    <div id="iqMobileMenu" class="w3-bar-block w3-theme-l3w3 w3-hide w3-hide-large w3-hide-medium">
-                    -->
-        <div id="iqMobileMenu" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium">
-            <a href="/" onclick="iqMenuMobileShowHide()" class="w3-bar-item w3-button">Home</a>
-        </div>
-    </div>
-
-    <div id="home" class="w3-row w3-white w3-container" style="width:1px; height: 55px;"></div>
-
-    <!--
-    <div id="idVCard" class="w3-container">
-        -->
-    <div id="impressum" class="w3-container w3-white">
-
-        <h1>Impressum</h1>
-
-
-        <h3>Kontaktadresse</h3>
-        Immo Quick GmbH<br>
-        Blumenstrasse 15<br>
-        4102 Binningen<br>
-        Schweiz<br>
-        info@immo-quick.ch</p>
-
-        <h3>Vertretungsberechtigte Personen</h3>
-        <p>Sandra Müller, Geschäftsführerin </p>
-
-        <h3>Handelsregistereintrag</h3>
-        Eingetragener Firmenname: Immo Quick GmbH<br>
-        Nummer: CHE-132.307.383<br>
-        Handelsregisteramt: Arlesheim, Kanton Basel-Landschaft</p>
-
-        <h3>Haftungsausschluss</h3>
-        <p>Der Autor übernimmt keinerlei Gewähr hinsichtlich der inhaltlichen Richtigkeit, Genauigkeit, Aktualität, Zuverlässigkeit
-            und Vollständigkeit der Informationen.</p>
-        <p>Haftungsansprüche gegen den Autor wegen Schäden materieller oder immaterieller Art, welche aus dem Zugriff oder der
-            Nutzung bzw. Nichtnutzung der veröffentlichten Informationen, durch Missbrauch der Verbindung oder durch technische
-            Störungen entstanden sind, werden ausgeschlossen.</p>
-        <p>Alle Angebote sind unverbindlich. Der Autor behält es sich ausdrücklich vor, Teile der Seiten oder das gesamte Angebot
-            ohne gesonderte Ankündigung zu verändern, zu ergänzen, zu löschen oder die Veröffentlichung zeitweise oder endgültig
-            einzustellen.
-        </p>
-
-        <h3>Haftung für Links</h3>
-        <p>Verweise und Links auf Webseiten Dritter liegen ausserhalb unseres Verantwortungsbereichs. Es wird jegliche Verantwortung
-            für solche Webseiten abgelehnt. Der Zugriff und die Nutzung solcher Webseiten erfolgen auf eigene Gefahr des
-            Nutzers oder der Nutzerin. </p>
-
-        <h3>Urheberrechte</h3>
-        <p>Die Urheber- und alle anderen Rechte an Inhalten, Bildern, Fotos oder anderen Dateien auf der Website gehören ausschliesslich
-            <strong>der Firma Immo Quick GmbH</strong> oder den speziell genannten Rechtsinhabern. Für die Reproduktion jeglicher
-            Elemente ist die schriftliche Zustimmung der Urheberrechtsträger im Voraus einzuholen.</p>
-
-
-
-        <h1>Datenschutzerklärung</h1>
-
-        <h3>Erhebung, Verarbeitung und Nutzung personenbezogener Daten</h3>
-        <p>Bei einem Besuch dieser Website erheben wir keine personenbezogenen Daten von Ihnen.</p>
-
-        <h3>Server-Log-Dateien</h3>
-        <p>Wie bei jeder Verbindung mit einem Webserver protokolliert und speichert der Server 
-            unseres Webhosting-Anbieters in der Schweiz, bestimmte technische Daten. Zu diesen Daten gehören 
-            die IP-Adresse und das Betriebssystem Ihres Geräts, die Daten, die Zugriffszeit, die Art 
-            des Browsers sowie die Browser-Anfrage inklusive der Herkunft der Anfrage (Referrer).
-            Dies ist aus technischen Gründen erforderlich, um Ihnen unsere Website zur Verfügung zu stellen. 
-            Der Webhosting-Anbieter schützt diese Daten mit technischen und organisatorischen Massnahmen vor 
-            unerlaubten Zugriffen und gibt sie nicht an Dritte weiter.
+    <!-- ========================================================= -->
+    <!-- Spacer for fixed header -->
+    <!-- ========================================================= -->
+    <div class="h-20"></div>
+    <!-- ========================================================= -->
+    <!-- Impressum / Datenschutz -->
+    <!-- ========================================================= -->
+    <main>
+      <section id="impressum" class="bg-white py-16 md:py-24">
+        <div class="max-w-4xl mx-auto px-6">
+          <!-- Impressum -->
+          <h1 class="text-4xl md:text-5xl font-light text-slate-900 mb-12">
+            Impressum
+          </h1>
+          <!-- Kontaktadresse -->
+          <div class="mb-12">
+            <h3 class="text-2xl md:text-3xl font-semibold text-slate-900 mb-5">
+              Kontaktadresse
+            </h3>
+            <p class="text-lg leading-8 text-slate-600">
+              Immo Quick GmbH<br />
+              Blumenstrasse 15<br />
+              4102 Binningen<br />
+              Schweiz<br />
+              <a
+                href="mailto:info@immo-quick.ch"
+                class="text-[#517d99] hover:text-[#39586c] transition-colors"
+              >
+                info@immo-quick.ch
+              </a>
             </p>
-
-    </div>
-
-    <div class="w3-container w3-gray footer">
-        <p style="text-align:center">Copyright 2018 © Immo Quick GmbH</p>
-        <!--
-        <p>designed by m1m.ch</p>
-        -->
-    </div>
-
-</body>
-
+          </div>
+          <!-- Vertretungsberechtigte Personen -->
+          <div class="mb-12">
+            <h3 class="text-2xl md:text-3xl font-semibold text-slate-900 mb-5">
+              Vertretungsberechtigte Personen
+            </h3>
+            <p class="text-lg leading-8 text-slate-600">
+              Sandra Müller, Geschäftsführerin
+            </p>
+          </div>
+          <!-- Handelsregistereintrag -->
+          <div class="mb-12">
+            <h3 class="text-2xl md:text-3xl font-semibold text-slate-900 mb-5">
+              Handelsregistereintrag
+            </h3>
+            <p class="text-lg leading-8 text-slate-600">
+              Eingetragener Firmenname: Immo Quick GmbH<br />
+              Nummer: CHE-132.307.383<br />
+              Handelsregisteramt: Arlesheim, Kanton Basel-Landschaft
+            </p>
+          </div>
+          <!-- Haftungsausschluss -->
+          <div class="mb-12">
+            <h3 class="text-2xl md:text-3xl font-semibold text-slate-900 mb-5">
+              Haftungsausschluss
+            </h3>
+            <div class="space-y-5">
+              <p class="text-lg leading-8 text-slate-600">
+                Der Autor übernimmt keinerlei Gewähr hinsichtlich der
+                inhaltlichen Richtigkeit, Genauigkeit, Aktualität,
+                Zuverlässigkeit und Vollständigkeit der Informationen.
+              </p>
+              <p class="text-lg leading-8 text-slate-600">
+                Haftungsansprüche gegen den Autor wegen Schäden materieller oder
+                immaterieller Art, welche aus dem Zugriff oder der Nutzung bzw.
+                Nichtnutzung der veröffentlichten Informationen, durch
+                Missbrauch der Verbindung oder durch technische Störungen
+                entstanden sind, werden ausgeschlossen.
+              </p>
+              <p class="text-lg leading-8 text-slate-600">
+                Alle Angebote sind unverbindlich. Der Autor behält es sich
+                ausdrücklich vor, Teile der Seiten oder das gesamte Angebot ohne
+                gesonderte Ankündigung zu verändern, zu ergänzen, zu löschen
+                oder die Veröffentlichung zeitweise oder endgültig einzustellen.
+              </p>
+            </div>
+          </div>
+          <!-- Haftung für Links -->
+          <div class="mb-12">
+            <h3 class="text-2xl md:text-3xl font-semibold text-slate-900 mb-5">
+              Haftung für Links
+            </h3>
+            <p class="text-lg leading-8 text-slate-600">
+              Verweise und Links auf Webseiten Dritter liegen ausserhalb unseres
+              Verantwortungsbereichs. Es wird jegliche Verantwortung für solche
+              Webseiten abgelehnt. Der Zugriff und die Nutzung solcher Webseiten
+              erfolgen auf eigene Gefahr des Nutzers oder der Nutzerin.
+            </p>
+          </div>
+          <!-- Urheberrechte -->
+          <div class="mb-20">
+            <h3 class="text-2xl md:text-3xl font-semibold text-slate-900 mb-5">
+              Urheberrechte
+            </h3>
+            <p class="text-lg leading-8 text-slate-600">
+              Die Urheber- und alle anderen Rechte an Inhalten, Bildern, Fotos
+              oder anderen Dateien auf der Website gehören ausschliesslich
+              <strong class="font-semibold text-slate-900">
+                der Firma Immo Quick GmbH
+              </strong>
+              oder den speziell genannten Rechtsinhabern. Für die Reproduktion
+              jeglicher Elemente ist die schriftliche Zustimmung der
+              Urheberrechtsträger im Voraus einzuholen.
+            </p>
+          </div>
+          <!-- ===================================================== -->
+          <!-- Datenschutz -->
+          <!-- ===================================================== -->
+          <div class="border-t border-slate-200 pt-16">
+            <h1 class="text-4xl md:text-5xl font-light text-slate-900 mb-12">
+              Datenschutzerklärung
+            </h1>
+            <!-- Personenbezogene Daten -->
+            <div class="mb-12">
+              <h3
+                class="text-2xl md:text-3xl font-semibold text-slate-900 mb-5"
+              >
+                Erhebung, Verarbeitung und Nutzung personenbezogener Daten
+              </h3>
+              <p class="text-lg leading-8 text-slate-600">
+                Bei einem Besuch dieser Website erheben wir keine
+                personenbezogenen Daten von Ihnen.
+              </p>
+            </div>
+            <!-- Server Log Dateien -->
+            <div>
+              <h3
+                class="text-2xl md:text-3xl font-semibold text-slate-900 mb-5"
+              >
+                Server-Log-Dateien
+              </h3>
+              <p class="text-lg leading-8 text-slate-600">
+                Wie bei jeder Verbindung mit einem Webserver protokolliert und
+                speichert der Server unseres Webhosting-Anbieters in der
+                Schweiz, bestimmte technische Daten. Zu diesen Daten gehören die
+                IP-Adresse und das Betriebssystem Ihres Geräts, die Daten, die
+                Zugriffszeit, die Art des Browsers sowie die Browser-Anfrage
+                inklusive der Herkunft der Anfrage (Referrer). Dies ist aus
+                technischen Gründen erforderlich, um Ihnen unsere Website zur
+                Verfügung zu stellen. Der Webhosting-Anbieter schützt diese
+                Daten mit technischen und organisatorischen Massnahmen vor
+                unerlaubten Zugriffen und gibt sie nicht an Dritte weiter.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- ========================================================= -->
+    <!-- Footer -->
+    <!-- ========================================================= -->
+    <footer class="bg-gradient-to-r from-[#283f4d] to-[#517d99] text-slate-300">
+      <div class="max-w-7xl mx-auto px-6 py-8">
+        <div
+          class="flex flex-col md:flex-row justify-between items-center gap-4 text-sm"
+        >
+          <p>© 2026 Immo Quick GmbH. Alle Rechte vorbehalten.</p>
+          <p class="text-slate-400">Design m1m.ch</p>
+        </div>
+      </div>
+    </footer>
+    <!-- ========================================================= -->
+    <!-- Mobile menu JavaScript -->
+    <!-- ========================================================= -->
+    <script>
+      const mobileMenuButton = document.getElementById("mobileMenuButton");
+      const mobileMenu = document.getElementById("mobileMenu");
+      mobileMenuButton.addEventListener("click", () => {
+        const isHidden = mobileMenu.classList.contains("hidden");
+        mobileMenu.classList.toggle("hidden");
+        mobileMenuButton.setAttribute(
+          "aria-expanded",
+          isHidden ? "true" : "false",
+        );
+      });
+    </script>
+  </body>
 </html>
