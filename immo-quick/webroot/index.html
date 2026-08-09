@@ -51,6 +51,32 @@
       h3 {
         font-family: "myFSThin2";
       }
+
+      /* vCard Flip Animation */
+      .vcard-container {
+        perspective: 1000px;
+      }
+      .vcard-inner {
+        position: relative;
+        width: 400px;
+        height: 225px; /* Approx credit card ratio */
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
+      }
+      .vcard-container:hover .vcard-inner {
+        transform: rotateY(180deg);
+      }
+      .vcard-front,
+      .vcard-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+      }
+      .vcard-back {
+        transform: rotateY(180deg);
+      }
     </style>
 
     <script>
@@ -412,7 +438,7 @@
                   Basel und seit Jahren begeisterte Yogaschülerin. Ich kenne
                   also nicht nur ein Haus sondern auch den Baum (Yogafigur).
                 </p>
-                <p class="text-slate-600 leading-8"> &nbsp; </p>
+                <p class="text-slate-600 leading-8">&nbsp;</p>
                 <p class="text-slate-600 leading-8">
                   Seit 1999 durfte ich für renommierte Firmen in der Schweiz
                   gemischte Liegenschaftsportfolios erfolgreich bewirtschaften.
@@ -482,77 +508,69 @@
             </p>
           </div>
 
-          <div class="grid lg:grid-cols-2 gap-16 items-center">
-            <div class="bg-white rounded-3xl shadow-xl p-10 space-y-10">
-              <div>
-                <div class="text-[#517d99] text-sm uppercase tracking-widest">
-                  Adresse
+          <!-- contact grid -->
+          <div class="grid lg:grid-cols-2 gap-16 items-stretch">
+            <!-- Contact information -->
+            <div
+              class="bg-white rounded-3xl shadow-xl p-10 flex flex-col justify-center min-h-[400px]"
+            >
+              <div class="space-y-10">
+                <div>
+                  <div class="text-[#517d99] text-sm uppercase tracking-widest">
+                    Adresse
+                  </div>
+                  <div class="mt-2 text-lg">
+                    Immo Quick GmbH<br />
+                    Blumenstrasse 15<br />
+                    4102 Binningen
+                  </div>
                 </div>
-
-                <div class="mt-2 text-lg">
-                  Immo Quick GmbH<br />
-
-                  Blumenstrasse 15<br />
-
-                  4102 Binningen
+                <div>
+                  <div class="text-[#517d99] text-sm uppercase tracking-widest">
+                    Telefon
+                  </div>
+                  <a
+                    href="tel:+41614020212"
+                    class="text-lg hover:text-[#517d99] transition-colors"
+                  >
+                    +41 61 402 02 12
+                  </a>
                 </div>
-              </div>
-
-              <div>
-                <div class="text-[#517d99] text-sm uppercase tracking-widest">
-                  Telefon
+                <div>
+                  <div class="text-[#517d99] text-sm uppercase tracking-widest">
+                    E-Mail
+                  </div>
+                  <a
+                    href="mailto:info@immo-quick.ch"
+                    class="text-lg hover:text-[#517d99] transition-colors"
+                  >
+                    info@immo-quick.ch
+                  </a>
                 </div>
-
-                <a href="tel:+41614020212" class="text-lg hover:text-[#517d99]">
-                  +41 61 402 02 12
-                </a>
-              </div>
-
-              <div>
-                <div class="text-[#517d99] text-sm uppercase tracking-widest">
-                  E-Mail
-                </div>
-
-                <a
-                  href="mailto:info@immo-quick.ch"
-                  class="text-lg hover:text-[#517d99]"
-                >
-                  info@immo-quick.ch
-                </a>
               </div>
             </div>
-
-            <div class="flex justify-center">
-              <img
-                src="img/piktogrammehaus.png"
-                alt="Immo Quick"
-                class="w-80 hover:scale-105 transition duration-300"
-              />
+            <!-- vCard -->
+            <div
+              class="bg-white rounded-3xl shadow-xl min-h-[400px] flex flex-col items-center justify-center"
+            >
+              <div class="relative flex items-center justify-center">
+                <img
+                  src="img/vcard_mrs_back.png"
+                  alt="vCard back"
+                  class="shadow-lg w-[400px] max-w-[85%] h-auto rounded-3xl"
+                />
+                <a
+                  href="iq_sandra_mueller_vcard.vcf"
+                  download
+                  class="absolute px-6 py-2 bg-[#283f4d] text-white rounded-full shadow-xl hover:bg-[#517d99] transition-colors duration-300 font-medium"
+                >
+                  Kontakt importieren
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </section>
-
-      <!-- vCard Section 
-      <section>
-        <div class="grid grid-cols-1 md:grid-cols-2 mt-20 gap-10">
-          <div class="flex justify-center">
-            <img
-              src="img/vcard_mrs_back.png"
-              alt="vCard back"
-              class="shadow-lg w-[400px] h-auto"
-            />
-          </div>
-
-          <div class="flex justify-center">
-            <img
-              src="img/vcard_mrs_front.png"
-              alt="vCard front"
-              class="shadow-lg w-[400px] h-auto"
-            />
-          </div>
-        </div>
-      </section>  -->
     </main>
 
     <footer class="bg-gradient-to-r from-[#283f4d] to-[#517d99] text-slate-300">
