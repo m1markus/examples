@@ -402,13 +402,18 @@
 
           <div class="grid lg:grid-cols-2 gap-20 items-center">
             <!-- FOTO -->
-
             <div>
-              <img
-                src="img/photo_mrs_profil_mirror.png"
-                alt="Sandra Müller"
-                class="rounded-3xl shadow-2xl w-full object-cover"
-              />
+              <picture>
+                <source
+                  srcset="img/photo_mrs_profil_mirror.avif"
+                  type="image/avif"
+                />
+                <img
+                  src="img/photo_mrs_profil_mirror.png"
+                  class="rounded-3xl shadow-2xl w-full object-cover"
+                  alt="picture of company owner Sandra Müller"
+                />
+              </picture>
             </div>
 
             <!-- TEXT -->
