@@ -6,8 +6,8 @@ TAR_NAME=iq_homepage.tar.gz
 
 tar cvfz $TAR_NAME img/vcard_mrs_back.png       \
                    img/vcard_mrs_front.png      \
-                   img/photo_mrs_profil_mirror.png        \
-                   img/photo_mrs_profil_mirror.avif       \
+                   img/photo_mrs_building_outside.jpg        \
+                   img/photo_mrs_building_outside.avif       \
                    img/immoQuickLogo.png        \
                    img/piktogrammehaus.png      \
                    img/gimp-hurry-1920x1278.png \
